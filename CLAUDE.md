@@ -43,7 +43,7 @@ A design system consumable by AI, designers, and engineers. Pipeline: Figma vari
 
 ## Docs rules
 
-- Generated pages carry a `<!-- GENERATED — do not hand-edit -->` banner. Never hand-edit them; regenerate via scripts. Never machine-edit handwritten pages (except appending to `changelog.mdx` and updating component frontmatter status fields). This is the #1 anticipated failure mode — respect the banner.
+- Generated pages/sections carry a `GENERATED — do not hand-edit` banner comment (`{/* … */}` in `.mdx` — HTML comments break MDX parsing; `<!-- … -->` in `.md`). Never hand-edit them; regenerate via scripts. Never machine-edit handwritten pages (except appending to `changelog.mdx` and updating component frontmatter status fields). This is the #1 anticipated failure mode — respect the banner.
 - Every phase of work ends with `/ds-update-docs` + a commit. Commands never commit by themselves.
 - Every non-trivial choice gets an ADR via `/ds-adr` **before** implementation. ADRs live in `apps/docs/src/content/docs/decisions/`.
 

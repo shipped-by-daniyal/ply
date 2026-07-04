@@ -1,0 +1,36 @@
+---
+title: Agentic Design System
+description: A design system consumable by AI, designers, and engineers — Figma tokens to accessible React components, orchestrated by Claude Code.
+template: splash
+hero:
+  tagline: One source of truth from Figma variables to accessible React components — built and kept in sync by agents, readable by humans.
+  actions:
+    - text: See the system map
+      link: /map/
+      icon: right-arrow
+    - text: Read the decisions
+      link: /decisions/
+      icon: open-book
+      variant: minimal
+---
+
+import { Card, CardGrid } from "@astrojs/starlight/components";
+
+<CardGrid stagger>
+  <Card title="Decision-first" icon="approve-check">
+    Every non-trivial choice is an ADR, written **before** implementation.
+    Changed minds get a new ADR — history is never rewritten.
+  </Card>
+  <Card title="Tokens are the API" icon="seti:json">
+    Figma variables export to DTCG JSON with usage docs embedded, build to CSS
+    custom properties and TypeScript, and no component ships a hardcoded value.
+  </Card>
+  <Card title="Accessible by construction" icon="heart">
+    Components build on React Aria, and every one passes axe checks in
+    Storybook before it ships.
+  </Card>
+  <Card title="Agent-maintained" icon="rocket">
+    `/ds-*` commands audit drift, sync tokens, and update these very docs. This
+    site is the living map of the system.
+  </Card>
+</CardGrid>
