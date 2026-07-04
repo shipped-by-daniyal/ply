@@ -1,0 +1,29 @@
+---
+title: "ADR-0002: React Aria Components as the headless layer"
+description: "Deepest built-in accessibility of the available headless libraries — the a11y expertise ships in the library, not in our heads."
+status: accepted
+date: 2026-07-05
+supersedes: null
+superseded_by: null
+tags: [components, react, accessibility]
+---
+
+## Context
+
+Components (vision step 7) must pass accessibility tests and be consumable by anyone, but the maintainer is a designer, not an a11y engineer. The headless library therefore has to carry the ARIA patterns, keyboard interactions, focus management, and touch behaviors itself. Candidates as of mid-2026: React Aria Components (Adobe), Base UI (Radix/MUI successor), Radix Primitives.
+
+## Decision
+
+Build on **React Aria Components (RAC)**. Style via plain CSS per component using RAC's `className` functions and `data-*` state attributes, consuming ADS token custom properties only.
+
+## Alternatives considered
+
+- **Base UI** — strong successor to Radix with a familiar API, but younger, with narrower component coverage (no ComboBox/DatePicker-class widgets at RAC's depth) and a shorter a11y track record.
+- **Radix Primitives** — effectively in maintenance mode; its core team moved to Base UI. Building new on it is building on a frozen foundation.
+
+## Consequences
+
+- Accessibility (ARIA semantics, keyboard nav, i18n, mobile behaviors) comes from Adobe's team by default; our tests verify rather than implement it.
+- Widest component coverage of the three, including the hard widgets we deferred (ComboBox, DatePicker) — no library switch when we get to them.
+- RAC's render-prop/className-function idiom is slightly unusual; the Button walking-skeleton (Phase 6) sets the house pattern once and `/ds-new-component` clones it.
+- Revisit only if RAC maintenance stalls or Base UI reaches coverage + track-record parity.

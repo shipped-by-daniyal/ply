@@ -1,0 +1,28 @@
+---
+title: "ADR-0001: pnpm workspaces only — no Turborepo/Nx"
+description: "3–4 packages and one human don't need a task orchestrator; root scripts with pnpm filters cover everything."
+status: accepted
+date: 2026-07-05
+supersedes: null
+superseded_by: null
+tags: [tooling, monorepo]
+---
+
+## Context
+
+The system is a monorepo (docs site, tokens package, react package) maintained by a solo designer with basic frontend knowledge, where Claude Code executes most changes. Every extra tool is another config surface the AI can get subtly wrong and the human can't debug.
+
+## Decision
+
+Use **pnpm workspaces alone** (`pnpm-workspace.yaml` with `apps/*`, `packages/*`). Task running is root `package.json` scripts using `pnpm -r` and `pnpm --filter`. No Turborepo, no Nx.
+
+## Alternatives considered
+
+- **Turborepo** — remote caching and task graphs pay off with teams and long builds; here builds are seconds and there's one contributor. Pure overhead.
+- **Nx** — same, with an even larger config/plugin surface and generator conventions to learn.
+
+## Consequences
+
+- Zero orchestration config; anyone (human or AI) can read `package.json` and understand the whole build.
+- No task caching — acceptable while full builds stay fast.
+- Revisit if a full `pnpm -r build` regularly exceeds ~60 seconds or a second contributor joins.

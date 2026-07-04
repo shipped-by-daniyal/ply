@@ -1,0 +1,28 @@
+---
+title: "ADR-0003: Style Dictionary v4+ for token builds"
+description: "First-class DTCG support and plain-JS custom formats turn one Figma-exported JSON into CSS variables, TS objects, and future outputs."
+status: accepted
+date: 2026-07-05
+supersedes: null
+superseded_by: null
+tags: [tokens, tooling, dtcg]
+---
+
+## Context
+
+Tokens are exported from Figma as a single DTCG JSON (`$value`/`$type`/`$description`, plus usage docs in `$extensions` — vision step 5). That file must build into CSS custom properties (light + dark), TypeScript token objects, and possibly a Tailwind preset later. The transform tool is the pipeline's hub and must be something Claude writes correctly on the first pass.
+
+## Decision
+
+Use **Style Dictionary v4+**. Config and custom formats live in `packages/tokens/config/sd.config.mjs`. Outputs: `dist/css/variables.css` (`:root` light, `[data-theme="dark"]` overrides), `dist/ts/tokens.ts` (typed object + name→CSS-var map). `dist/` is committed for diffability.
+
+## Alternatives considered
+
+- **Terrazzo** — elegant DTCG-native design, but a much smaller community: fewer escape hatches, less AI training data, more hallucinated config for a solo maintainer to debug.
+- **Custom scripts only** — full control, but we'd reimplement alias resolution, transforms, and formatting that Style Dictionary already does reliably; custom code is reserved for what SD can't do (the Figma export composer and DTCG diff already live in `scripts/`).
+
+## Consequences
+
+- `$description` and `$extensions` metadata flow through to outputs, so generated docs and code comments stay sourced from Figma.
+- One config file to learn; adding a Tailwind preset later is a new format entry, not a new tool.
+- SD's transform/format API has version-specific quirks — pin the major version and note it in `packages/tokens/README` when created.
