@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build outputs (exception: packages/tokens/dist is committed for diffability)
+dist/
+!packages/tokens/dist/
+.astro/
+storybook-static/
+
+# Env & OS
+.env
+.env.*
+.DS_Store
+
+# Logs & caches
+*.log
+.cache/
+.vite/
+coverage/
+
+# Editor
+.idea/
+*.local.json
+!.claude/settings.local.json
