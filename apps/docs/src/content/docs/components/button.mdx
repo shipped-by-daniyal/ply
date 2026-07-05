@@ -1,0 +1,34 @@
+---
+title: Button
+description: "Ply's Button: one master component set, variant × tone × size × state, every property token-bound."
+componentStatus: designed
+figmaNode: pending-rebuild
+since: "2026-07-05"
+---
+
+:::note[Status]
+**Designed** — being rebuilt as a single master component set per the GDS2 structure
+(one set, `size` as a variant property). Code lands in Phase 6 on React Aria's
+[Button](https://react-spectrum.adobe.com/react-aria/Button.html).
+:::
+
+## API (per [ADR-0006](/decisions/adr-0006-component-anatomy-api/))
+
+| Prop | Values | Notes |
+| --- | --- | --- |
+| `variant` | `solid` · `subtle` · `ghost` | Visual weight |
+| `tone` | `neutral` · `accent` · `danger` | Ghost supports `neutral`/`accent` only |
+| `size` | `sm` · `md` · `lg` | One scale everywhere |
+| `isDisabled` | boolean | React Aria prop; Figma models it as `state=disabled` |
+
+Figma additionally carries a `state` property (`default/hovered/pressed/disabled`) —
+code never does; interaction states come from React Aria `data-*` attributes.
+
+## Token bindings
+
+Every fill, text color, height, padding, gap, and corner radius binds a library
+token — the [background](/tokens/background/), [text](/tokens/text/), space, and
+radius tokens do all the styling. The focus ring is not a variant: a universal
+2px `border/focused` outside ring, delivered in code via `data-focus-visible`.
+
+_This page's prose is handwritten; the `componentStatus` frontmatter is machine-updated by `/ply-update-docs`._

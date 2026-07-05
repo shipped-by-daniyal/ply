@@ -1,0 +1,48 @@
+---
+title: Architecture & pipeline
+description: How a design decision travels from a Figma variable to a CSS custom property, a React component, and this site.
+sidebar:
+  order: 2
+---
+
+Ply is built so that **Figma is the source of truth for values**, **the repo is the source of truth for code**, and **agents keep the two in sync** — with every hop inspectable in git.
+
+## The pipeline, end to end
+
+```
+Figma: Token Library v1 - Ply  (10 collections · 119 primitives · 189 semantic · brand + font modes)
+│   variables · 26 text styles · 5 effect styles · sticker sheet · Token Usage tables
+│
+▼  /ply-export-tokens        chunked read-only export (~55 vars/call, aliases → names)
+export snapshot (scratchpad JSON)
+│
+▼  scripts/build-dtcg.mjs    compose DTCG: $value/$type/$description + $extensions.ply
+packages/tokens/src/*.tokens.json     primitives · brand modes · font modes · semantic light/dark
+│
+▼  scripts/lint-tokens.mjs   WCAG contrast over every pairsWith pair, both modes — CI-blocking
+▼  Style Dictionary          packages/tokens/config/sd.config.mjs
+packages/tokens/dist/css/ply.css      :root · [data-theme=dark] · [data-brand=brand-2] · [data-font=…]
+packages/tokens/dist/ts/tokens.ts     typed token map
+│
+▼  packages/react (Phase 6)  React Aria Components, plain CSS consuming var(--ply-*)
+▼  apps/docs (this site)     generated token reference + guides + ADRs, deployed to GitHub Pages
+```
+
+## Why each stage exists
+
+- **DTCG JSON as the interchange** — W3C-draft format both Figma tooling and Style Dictionary understand; `$extensions.ply` carries the Figma variable ID (rename detection), contrast pairings (`pairsWith`), and usage notes, so the JSON is AI-consumable documentation too.
+- **The contrast lint is a build gate, not a report.** Every documented background→foreground pairing must pass 4.5:1 in light *and* dark (composited over the flat surface for alpha overlays); the focus ring must pass 3:1. A coverage floor stops the lint from silently checking nothing after refactors.
+- **`dist/` is committed.** CI rebuilds and runs `git diff --exit-code` — if the committed output doesn't match the source, the build fails. Reviewers see token changes as plain diffs.
+- **Rename-never-delete in Figma.** Variable IDs are stable identity: renames preserve every component binding, doc-table row, and diff across the 2026-07 grammar migration ([ADR-0007](/decisions/adr-0007-adopt-reference-naming/)) — 138 renames landed without breaking a single binding.
+
+## Sync model
+
+There are no webhooks (Figma Professional plan). Drift is caught on demand:
+
+1. `/ply-sync-tokens` at the start of any token session — fresh export, DTCG-aware diff (`scripts/diff-tokens.mjs`), categorized drift report to `audits/`.
+2. **Values: Figma wins. Usage text: the Token Usage table wins.** The two directions never fight because they own different fields.
+3. `/ply-update-docs` after every work session — regenerates the [token reference](/tokens/) and the [system map](/map/) inventory, appends the [changelog](/changelog/).
+
+## Where decisions live
+
+Every non-trivial choice is an [ADR](/decisions/) written *before* implementation. The load-bearing ones: [ADR-0002](/decisions/adr-0002-react-aria-components/) (React Aria), [ADR-0003](/decisions/adr-0003-style-dictionary/) (Style Dictionary), [ADR-0007](/decisions/adr-0007-adopt-reference-naming/) (token naming), [ADR-0006](/decisions/adr-0006-component-anatomy-api/) (component API), [ADR-0008](/decisions/adr-0008-visual-identity-aurora/) (branding).

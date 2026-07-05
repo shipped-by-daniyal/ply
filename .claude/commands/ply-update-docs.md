@@ -40,8 +40,9 @@ Run `node scripts/diff-tokens.mjs <oldDir> packages/tokens/src` — build `<oldD
 ### 3 — Regenerate generated sections
 ```bash
 node scripts/gen-map.mjs
+node scripts/gen-token-docs.mjs
 ```
-(Regenerates the map inventory + ADR index. Additional generators join this list in later phases: `gen-token-docs.mjs` in Phase 4.)
+(gen-map: map inventory + ADR index. gen-token-docs: the whole-file-generated token reference under `docs/tokens/` — ADR-0009.)
 
 ### 4 — Changelog entry
 Launch the **docs-writer** agent with: the bucketed delta summary from step 1, the token diff from step 2 (if any), and today's date. It appends one `## YYYY-MM-DD — <headline>` section to `apps/docs/src/content/docs/changelog.mdx` per rule 3. Keep entries short: 3–6 bullets, human-readable, linking to new ADRs/pages.

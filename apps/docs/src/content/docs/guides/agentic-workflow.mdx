@@ -1,0 +1,40 @@
+---
+title: The agentic workflow
+description: How Ply maintains itself — the commands, agents, and page-ownership rules that keep one designer shipping a whole system.
+sidebar:
+  order: 4
+---
+
+Ply is maintained by one designer plus Claude Code. The automation is structured so that **judgment stays human, mechanics stay scripted, and everything leaves a paper trail**.
+
+## The commands (`/ply-*`)
+
+Deterministic runbooks checked into `.claude/commands/`. Read-only and write commands are strictly separated; writes always preview before applying.
+
+| Command | What it does |
+| --- | --- |
+| `/ply-sync-tokens` | Detects Figma↔repo drift; gated pull/push per category. Run first in any token session. |
+| `/ply-export-tokens` | Read-only Figma export → DTCG → lint + build. |
+| `/ply-doc-table` | Syncs the Figma Token Usage table with the variables (rows keyed by variable ID). |
+| `/ply-update-docs` | Regenerates every generated docs section, appends the changelog, flags handwritten pages for review. Ends every work session. |
+| `/ply-adr` | Scaffolds an ADR — written **before** implementation, always. |
+| `/ply-recommend` | Sends a proposal to the design-advisor agent for a KB-grounded verdict. |
+
+## The agents
+
+- **design-advisor** — read-only researcher. Checks proposals against the knowledge base (`kb/`: 7 system dossiers, 6 topic guides) and current best practice; returns verdict → recommendation → alternatives → risks with sources. Consulted before any tool, naming, or API decision.
+- **docs-writer** — writes Starlight MDX from structured facts (diffs, ADR metadata). Owns changelog entries; never touches handwritten prose.
+
+## Page ownership (the #1 failure mode, managed)
+
+Three classes, per [ADR-0009](/decisions/adr-0009-docs-information-architecture/):
+
+1. **Handwritten** (guides, ADRs, map prose) — machines never edit.
+2. **Whole-file generated** (everything under [Tokens](/tokens/)) — humans never edit; the `{/* GENERATED */}` banner marks them, CI verifies freshness.
+3. **Component pages** — human prose, machine frontmatter (`componentStatus`).
+
+## The paper trail
+
+- Every non-trivial choice → an [ADR](/decisions/). Changed minds get a *new* ADR that supersedes the old one — history is never rewritten.
+- Every audit → a timestamped, committed report in `audits/` (the 2026-07 naming migration shipped with a [full rename manifest](https://github.com/shipped-by-daniyal/ply/blob/main/audits/ply-rename-manifest-2026-07-05.md) — 138 renames keyed by variable ID, usable as a rollback map).
+- Every work session ends with `/ply-update-docs` + one commit. Commands never commit by themselves.

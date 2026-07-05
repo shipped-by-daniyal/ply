@@ -1,0 +1,61 @@
+---
+title: Getting started
+description: Consume Ply's tokens today and its React components when Phase 6 lands.
+sidebar:
+  order: 1
+---
+
+Ply ships as a pnpm monorepo. Today you can consume the **design tokens**; the React components arrive in Phase 6.
+
+## Use the tokens in any web project
+
+```bash
+git clone https://github.com/shipped-by-daniyal/ply
+pnpm install && pnpm tokens:build
+```
+
+The build writes two artifacts (also committed under `packages/tokens/dist/` for diffability):
+
+```css
+/* dist/css/ply.css — every semantic token as a CSS custom property */
+@import "@ply/tokens/dist/css/ply.css";
+
+.card {
+  background: var(--ply-background-surface-flat-default);
+  color: var(--ply-text-neutral-default);
+  border: 1px solid var(--ply-border-neutral-default);
+  border-radius: var(--ply-radius-200);
+}
+```
+
+```ts
+// dist/ts/tokens.ts — typed paths for tooling and inline styles
+import { tokens, cssVar } from "@ply/tokens/dist/ts/tokens";
+cssVar("background.brand.default"); // "var(--ply-background-brand-default)"
+```
+
+## Theming
+
+Three axes, all plain HTML attributes on a root element:
+
+| Axis | Attribute | Values |
+| --- | --- | --- |
+| Color mode | `data-theme` | (unset = light) · `dark` |
+| Brand | `data-brand` | (unset = Brand 1, Blue) · `brand-2` (Pink) |
+| Type | `data-font` | (unset = Inter) · `geist` · `die-grotesk-a` |
+
+```html
+<html data-theme="dark" data-brand="brand-2">
+```
+
+The brand axis is live in CSS: brand-dependent semantic variables reference the
+`--ply-colors-brand-*` ramp with `var()`, so flipping `data-brand` reskins every
+dependent token without JavaScript.
+
+## Rules that keep the system honest
+
+- **Never hardcode a value that a token covers.** In Figma, every fill/radius/spacing binds a variable; in code, styles consume `--ply-*` custom properties only.
+- **Primitives are off-limits** (`Gray/500`, `Blue/200`, …) — they exist for aliasing. Pick the [semantic token](/tokens/) whose *role* matches your use.
+- Accessibility pairings are enforced: the [token reference](/tokens/) descriptions tell you which foregrounds are contract-tested on which backgrounds.
+
+Next: read the [architecture guide](/guides/architecture/) to see how a value travels from a Figma variable to your stylesheet.

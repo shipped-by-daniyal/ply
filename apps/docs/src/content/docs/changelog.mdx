@@ -6,6 +6,23 @@ description: What changed in Ply, when, and why — appended by /ply-update-docs
 Newest first. Entries are appended by `/ply-update-docs`; each covers the work
 since the previous entry.
 
+## 2026-07-06 — The site finally documents the system, not just its decisions
+
+- [ADR-0009](/decisions/adr-0009-docs-information-architecture/) fixed the
+  docs information architecture: Start here → Guides → Tokens → Components →
+  Decisions → Changelog.
+- A generated [token reference](/tokens/) landed: 9 pages covering all 189
+  semantic tokens plus primitives, the brand ramp, and scales — swatches, CSS
+  variable names, resolved light/dark values, and descriptions — regenerated
+  by `scripts/gen-token-docs.mjs` and freshness-checked in CI.
+- Four handwritten guides: [Getting started](/guides/getting-started/),
+  [Architecture & pipeline](/guides/architecture/),
+  [Working with tokens](/guides/working-with-tokens/), and
+  [The agentic workflow](/guides/agentic-workflow/).
+- The first component page: [Button](/components/button/) (status: designed,
+  single-set rebuild pending).
+- The site grew from 13 to 28 pages.
+
 ## 2026-07-06 — The token library now mirrors the reference — names, structure, and all
 
 - Executing [ADR-0007](/decisions/adr-0007-adopt-reference-naming/), the Figma

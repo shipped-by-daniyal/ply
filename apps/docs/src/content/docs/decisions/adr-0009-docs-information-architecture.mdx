@@ -1,0 +1,36 @@
+---
+title: "ADR-0009: Docs information architecture"
+description: "The site documents the system, not just its decisions: handwritten guides, a fully generated token reference, and per-component pages with status frontmatter."
+status: accepted
+date: 2026-07-06
+supersedes: null
+superseded_by: null
+tags: [docs, automation]
+---
+
+## Context
+
+Until now the site held only ADRs, the system map, and a changelog — the maintainer's third correction point: *nothing documents what we are building or how*. This ADR fixes the information architecture and which parts are machine-owned.
+
+## Decision
+
+- **Sidebar IA**: Start here (Overview · Getting started · System map) → Guides → Tokens → Components → Decisions → Changelog. Tokens and Components autogenerate from their directories.
+- **Three page classes**:
+  1. **Handwritten** — guides, index, map prose, ADRs. Machines never edit (changelog appends and `componentStatus` frontmatter are the standing exceptions).
+  2. **Whole-file generated** — everything under `tokens/`, written by `scripts/gen-token-docs.mjs` from `packages/tokens/src/*.tokens.json` only (no Figma dependency, so CI can verify freshness with a `git diff --exit-code`). Every file carries the `{/* GENERATED — do not hand-edit */}` banner right after frontmatter. Regenerated via `/ply-update-docs`; idempotent.
+  3. **Component pages** — handwritten prose with machine-owned frontmatter: `componentStatus: designed | built | mapped | documented`, plus `figmaNode` and `since`.
+- **Token reference layout**: one page per semantic property group (`background`, `text`, `icon`, `border`, `data-viz`, `effect`) + `primitives` + `scales` + an index with counts and consumption snippets. Rows: swatch (light/dark), token path, CSS variable, resolved values, description. Deprecated tokens are excluded from reference pages (they never reach code); the index notes their existence.
+- **Swatch rendering** via a small handwritten `TokenSwatch.astro` so generated MDX stays dumb data.
+- The generator asserts every non-deprecated semantic token lands on exactly one page.
+
+## Alternatives considered
+
+- **Generating token docs from Figma directly** — rejected: adds a session-interactive dependency to a CI-verifiable artifact; the DTCG files already carry values, descriptions, and extensions.
+- **One giant tokens page** — rejected: 350+ rows in one table defeats search and scanning; per-property pages mirror how designers pick tokens.
+- **docgen-style component pages fully generated** — deferred to Phase 6 (react-docgen-typescript for the props table only; prose stays human).
+
+## Consequences
+
+- `scripts/gen-token-docs.mjs` joins `gen-map.mjs` in `/ply-update-docs` step 3, and CI regenerates + diffs `apps/docs/src/content/docs/tokens/`.
+- The CSS-variable naming rule (`("ply-" + path.join("-")).toLowerCase()`) is duplicated in the generator and pinned by comment to `sd.config.mjs` — change one, change both.
+- New components must ship a `components/<name>.mdx` page in the same milestone that designs them.

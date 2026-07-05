@@ -1,0 +1,36 @@
+---
+title: Working with tokens
+description: The day-to-day workflow for changing, adding, or auditing Ply tokens without breaking the contract.
+sidebar:
+  order: 3
+---
+
+All token work follows one loop: **change in Figma → export → lint → commit**. Code never edits token values directly.
+
+## Changing a value
+
+1. Open the token library file and start the session with `/ply-sync-tokens` — it surfaces any drift before you stack changes on top.
+2. Edit the variable's mode values in Figma (Light **and** Dark — the lint checks both).
+3. `/ply-export-tokens` — re-exports, rebuilds `packages/tokens/src` + `dist`, runs the contrast lint. A red lint means the value change broke a documented pairing: fix the value in Figma, never the dist output.
+4. Commit; `/ply-update-docs` regenerates the [token reference](/tokens/) so the site shows the new value.
+
+## Adding a token
+
+- Follow the reference grammar ([ADR-0007](/decisions/adr-0007-adopt-reference-naming/)): nested role paths, `/default` leaves where siblings have them, the `subtlest…boldest` ladder, `status/` sub-namespace.
+- Alias a primitive — raw hex in the semantic tier is an audit finding.
+- Write the description in Figma at creation time; it becomes `$description` in DTCG, the Description cell in the Token Usage table, and the docs reference text.
+- If it's a background meant to carry text, add its pairing to `pairsFor` in `scripts/build-dtcg.mjs` so the lint owns the contract.
+
+## Renaming
+
+Rename **in place** in Figma (never delete/recreate — deletion breaks every binding). The variable ID keeps identity: `diff-tokens.mjs` reports it as a rename, the Token Usage row follows automatically, and consuming components keep their bindings.
+
+## Deprecating
+
+Rename into the `deprecated/` group and prefix the description with `DEPRECATED:`. Deprecated variables stay in Figma for binding stability but are excluded from every code artifact.
+
+## Auditing
+
+- `pnpm tokens:build` — lint + build locally (CI runs the same).
+- `node scripts/diff-tokens.mjs <oldDir> packages/tokens/src` — DTCG-aware diff with rename detection.
+- Timestamped audit reports live in `audits/` and are never deleted — they are the project's memory.

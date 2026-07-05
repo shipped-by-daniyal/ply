@@ -21,5 +21,7 @@ jobs:
         run: pnpm --filter @ply/tokens build
       - name: dist matches src (committed output is current)
         run: git diff --exit-code packages/tokens/dist
+      - name: Token reference docs are current
+        run: node scripts/gen-token-docs.mjs && git diff --exit-code apps/docs/src/content/docs/tokens
       - name: Docs build
         run: pnpm --filter docs build

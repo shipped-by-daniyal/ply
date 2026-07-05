@@ -22,8 +22,21 @@ export default defineConfig({
           label: "Start here",
           items: [
             { label: "Overview", link: "/" },
+            { label: "Getting started", link: "/guides/getting-started/" },
             { label: "System map", link: "/map/" },
           ],
+        },
+        {
+          label: "Guides",
+          items: [{ autogenerate: { directory: "guides" } }],
+        },
+        {
+          label: "Tokens",
+          items: [{ autogenerate: { directory: "tokens" } }],
+        },
+        {
+          label: "Components",
+          items: [{ autogenerate: { directory: "components" } }],
         },
         {
           label: "Decisions",
