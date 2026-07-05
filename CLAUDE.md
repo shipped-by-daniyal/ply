@@ -19,7 +19,8 @@ A design system consumable by AI, designers, and engineers. Pipeline: Figma vari
 
 ## Figma constants
 
-- **Ply build file (write target):** key `3QugaiUHLUqTyqHhwCibOR` — "Token Library v1 - Ply". Started empty 2026-07-05; the new library is built here.
+- **Ply token library (write target for tokens):** key `3QugaiUHLUqTyqHhwCibOR` — "Token Library v1 - Ply". 349 variables / 9 collections, 26 text styles, 5 effect styles, Foundations sticker sheet, Token Usage tables. Published as a team library (components consume it).
+- **Ply core components (write target for components):** key `liXPUO87wtWFEKuRPoAV8C` — "Core Components - Ply". Consumes the token library via team-library variable/style imports (`importVariableByKeyAsync` — never bind by local ID across files).
 - **Reference token library (READ-ONLY, never write):** key `zEiSF5kqk7a0buxqF9BcVp`. Contains the legacy library being superseded: 10 collections / 395 variables (color-primitives 119, color-semantic 189 with Light+Dark, colors-brand 11 with 2 brand modes, font-family 2 vars with 3 font modes, space/radius/font-size/weight/line-height/breakpoints), 27 text styles, 5 effect styles, sticker sheet on `Foundations`, doc tables on `Token Usage Documentation`.
 - **Pages (by name, never by node ID).** Node IDs drift when Figma re-indexes; hardcoded IDs are a known bug class in the reference design system's commands.
 

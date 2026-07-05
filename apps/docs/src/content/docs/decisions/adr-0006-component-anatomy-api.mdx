@@ -1,0 +1,37 @@
+---
+title: "ADR-0006: Component anatomy and API conventions"
+description: "One prop trio (variant/tone/size) with closed shared vocabularies, exact 1:1 Figma-property↔code-prop naming, dot-notation composition, and a fixed spec-frame template with a11y annotations."
+status: accepted
+date: 2026-07-05
+supersedes: null
+superseded_by: null
+tags: [components, figma, api, accessibility]
+---
+
+## Context
+
+Phase 5 designs ~22 components in Figma (file `liXPUO87wtWFEKuRPoAV8C`); Phase 6 implements them on React Aria Components. Conventions fixed now determine every Figma variant property, code prop, and `.figma.md` mapping. Grounding: `kb/topics/component-api-design.md` (all seven reference systems converged on one emphasis enum + one size enum + `is*` booleans) and `kb/topics/a11y-patterns.md` (spec-template annotations).
+
+## Decision
+
+- **The prop trio, shared closed vocabularies across ALL components:**
+  - `variant` — visual weight: `solid | subtle | ghost | outline`
+  - `tone` — semantic color: `neutral | accent | danger | success | warning | info` (status tones map to `bg/status/*` tokens)
+  - `size` — `sm | md | lg` (one scale everywhere; a component may support a subset, never a superset)
+  - Booleans are `is*`-prefixed (`isDisabled`, `isLoading`) matching React Aria's own props. No new enums without an ADR.
+- **Figma ↔ code is 1:1 and lowercase:** Figma variant properties are named exactly `variant`, `tone`, `size` with exactly the code values. Figma additionally has `state` (`default | hovered | pressed | focused | disabled`) — code never has a `state` prop; states are RAC `data-*` pseudo-states. `.figma.md` maps record this as the only asymmetry.
+- **Composition over configuration:** compound dot-notation (`Menu.Item`, `Field.Label`); no `as=`/`asChild` polymorphism. Slots take React nodes (`icon={<Icon/>}`), not config objects.
+- **Tokens only:** every fill/stroke/radius/gap/text in a component binds a Ply library token; hardcoded values are audit findings. Component-tier tokens are minted only on genuine deviation (ADR-0005).
+- **Spec-frame template** (every component page carries): Anatomy (labeled parts), Variants matrix (variant × tone), States row (all five), Sizes row, **A11y panel** — accessible-name source, focus order, 24px minimum target overlay, and the token pairs used (traceable to the contrast lint) — and Do/Don't examples.
+
+## Alternatives considered
+
+- **Per-component bespoke props** (Material's pattern) — rejected: vocabulary drift is what makes AI generation hallucinate props; closed shared enums are the KB's strongest convergence finding.
+- **`asChild`/`as=` polymorphism** (Radix idiom) — rejected: composition-by-slot is more predictable for a solo maintainer and for agents; RAC idioms don't need it.
+- **States as code props** — rejected: RAC exposes interaction state via data attributes; duplicating them as props invites impossible combinations.
+
+## Consequences
+
+- `/ply-new-component` and `/ply-map-component` (Phase 6) can be fully mechanical: the Figma variant grid IS the prop API.
+- The Figma-only `state` property must be documented in every `.figma.md` so AI codegen never invents a `state` prop.
+- Components in a separate Figma file consume the token library as a published team library — the library must stay published and this file's dependency current.
