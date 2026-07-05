@@ -1,0 +1,47 @@
+---
+title: "ADR-0005: Token taxonomy and path grammar"
+description: "Three tiers, element-first names, hyphenated modifiers, a 3-rung emphasis ladder, a status sub-namespace, and mandatory contrast pairings — one grammar projected to every surface."
+status: accepted
+date: 2026-07-05
+supersedes: null
+superseded_by: null
+tags: [tokens, naming, figma]
+---
+
+## Context
+
+Phase 3 rebuilds the token library fresh in the Ply Figma file (`3QugaiUHLUqTyqHhwCibOR`), superseding the read-only reference library. The grammar chosen here names every variable, CSS custom property, and TS key the system will ever emit. Inputs: the advisor evaluation (`kb/comparisons/2026-07-05-token-path-grammar.md`), the baseline audit (`audits/ply-baseline-audit-2026-07-05.md`), and four maintainer decisions made 2026-07-05.
+
+## Decision
+
+**One grammar, four lossless projections** (Figma slashes ↔ DTCG dots ↔ `--ply-*` kebab ↔ TS `token()` path):
+
+```
+Tier 1  {category}/{step}                            blue/500, gray/alpha/400, space/400, radius/small
+Tier 2  {property}/{role}[-{emphasis}][-{state}]     bg/accent, bg/accent-subtle, text/on-accent
+        {property}/status/{role}[-{emphasis}][-{state}]   bg/status/danger-subtle-hovered
+Tier 3  {component}/{property}/{variant}[-{state}]   button/bg/primary-hovered   (empty at launch)
+```
+
+- **Modifiers join the leaf with hyphens** — never new path levels. Invariant: *no token path is a path-prefix of another token path* (DTCG structural requirement; lintable).
+- **Element-first properties, no `color/` segment:** `bg | text | icon | border | shadow | data-viz`. `font/*` is permanently reserved for typography. Nothing else abbreviated.
+- **Emphasis ladder: `subtle | (default, unsuffixed) | bold`** — grows outward (`subtler`, `subtlest`, `bolder`) only when ≥2 roles genuinely need it; growth is additive, never a rename. Unsuffixed `bg/accent` is the solid brand fill.
+- **Status roles keep their sub-namespace** (`bg/status/danger`, maintainer decision — Figma picker grouping outweighs path brevity). Closed set: `success | warning | danger | info`.
+- **States: `hovered | pressed | focused`** as leaf suffixes; `disabled` and `selected` are roles. State values follow ramp-step math (±1 step per state); the token lint flags deviations; Figma authors state variables explicitly (components need them for bindings).
+- **Contrast rule:** every solid fill mints `text/on-{role}` (`icon/on-{role}` aliases it when needed); every other background declares `$extensions.ply.pairsWith`; the build fails on WCAG violations in either mode.
+- **Tiers live in collections/files, not names** — no `sys/` prefixes. Collections: `color-primitives`, `color-semantic` (Light/Dark), `space`, `radius`, `font-size/weight/line-height/family`, `breakpoints`; `component` collection created when tier 3 first mints.
+- **Single brand in v1**: accent = the Blue ramp; the brand-ramp indirection is dropped for now, architecture reserves the axis (re-adding a brand collection later is additive). Carried forward: `data-viz/categorical/1–8`, `shadow/{close,middle,diffuse}` colors.
+- **Radius: spelled sizes** (`none | small | medium | large | xlarge | full`) — audit found the numbered scale's out-of-order insertions. **Space stays numbered/gapped** (base-4) and may be consumed directly (mode-independent).
+
+## Alternatives considered
+
+- **Nested modifier levels with explicit `default` leaves** (reference library's deeper style) — structurally forces two conventions (audit §3.3) and `-default` suffixes agents reliably hallucinate away.
+- **Flat status roles (`bg/danger`)** — shorter and more AI-native; rejected by the maintainer for Figma picker organization. The sub-namespace is a documented, closed exception.
+- **Six-rung ladder / multi-brand from day one** — audit found same-value collisions in the outer rungs and a broken Brand 2 token; both deferred behind additive growth paths.
+
+## Consequences
+
+- Every reference-library token has a deterministic new name; the value mapping comes from the 2026-07-05 export.
+- Two known contrast bugs (status-subtle text, focus border) get fixed during the rebuild, not ported.
+- The `font/*` reservation and prefix-freedom invariant go into the token lint on day one.
+- `kb/topics/naming.md` §4 updated to match (the advisor's `color/`-drop departure is now canon).

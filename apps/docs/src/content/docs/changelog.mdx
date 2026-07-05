@@ -6,6 +6,30 @@ description: What changed in Ply, when, and why — appended by /ply-update-docs
 Newest first. Entries are appended by `/ply-update-docs`; each covers the work
 since the previous entry.
 
+## 2026-07-05 — Phase 3 begins: baseline audit and the token taxonomy
+
+- Phase 3 strategy changed: the reference token library (a separate Figma file,
+  read-only) stays untouched, and Ply's library is built fresh in a new, empty
+  Figma file — no rename-in-place migration, no binding-preservation
+  constraints.
+- Full read-only export of the reference library completed via the Figma MCP:
+  10 collections, 395 variables (189 semantic tokens with Light/Dark modes, all
+  with descriptions and zero raw hex), 27 text styles, 5 effect styles.
+- Baseline audit report written to `audits/ply-baseline-audit-2026-07-05.md`.
+  Notable findings: a brand-ramp bug (the 950 step points to the Blue ramp in
+  both brand modes), same-value state collisions (e.g. boldest default ≡
+  hovered), links bypassing the brand axis, two contrast risks the planned lint
+  would catch, and out-of-order insertions in the numbered radius scale.
+- [ADR-0005](/decisions/adr-0005-token-taxonomy/) accepted: three tiers;
+  element-first properties (`bg`, `text`, `icon`, `border`) with no `color/`
+  segment; hyphenated modifier leaves (`bg/accent-hovered`); a 3-rung emphasis
+  ladder (subtle/default/bold); the status sub-namespace kept
+  (`bg/status/danger`); mandatory `text/on-{role}` contrast pairings with a
+  build-time lint; single brand in v1 with the multi-brand axis reserved;
+  radius moves to spelled sizes; data-viz and shadow tokens carried forward.
+- `kb/topics/naming.md` updated with the adopted-decision note: ADR-0005 is
+  canon where the guide disagreed.
+
 ## 2026-07-05 — Phase 2: Knowledge base and the design advisor
 
 - The knowledge base launched in `kb/`: 7 system dossiers (Material 3, Polaris,

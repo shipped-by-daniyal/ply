@@ -77,6 +77,8 @@ Two invariants make this safe: **never drop or reorder a segment** in any projec
 
 **Trade-off accepted:** these names are longer and less training-saturated than shadcn's `--primary`. Ply accepts the verbosity because the tier structure, derivable states, and lossless four-surface projection are what the agentic pipeline needs; if generation accuracy suffers, emit an optional shadcn-compatible alias layer (`--ply-surface-foreground` → `color.text.on-surface`) at build time rather than flattening the source. The Phase 3 taxonomy ADR should take this grammar, its vocabularies, and the projection invariants as its starting position.
 
+> **Adopted — ADR-0005 (2026-07-05), which modifies this section.** The accepted grammar departs from the above in three ways, per the advisor evaluation (`kb/comparisons/2026-07-05-token-path-grammar.md`) and maintainer decisions: (1) the `color.` category segment is **dropped everywhere** — properties are top-level (`bg/accent`, `text/on-accent`), with `font/*` permanently reserved for typography; (2) emphasis and state **join the leaf with hyphens** (`bg/accent-hovered`), never as child path levels — invariant: no token path may be a path-prefix of another; (3) status roles keep a sub-namespace (`bg/status/danger-subtle`). The ladder ships as `subtle | default (unsuffixed) | bold`. Example projection: `bg/status/danger-subtle-hovered` → `bg.status.danger-subtle-hovered` → `--ply-bg-status-danger-subtle-hovered`. ADR-0005 is canon wherever this section disagrees.
+
 ## 5. Sources
 
 - Nathan Curtis, [Naming Tokens in Design Systems](https://medium.com/eightshapes-llc/naming-tokens-in-design-systems-9e86c7444676) — levels framework, ordering observations (retrieved 2026-07-05)

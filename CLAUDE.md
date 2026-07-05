@@ -19,9 +19,9 @@ A design system consumable by AI, designers, and engineers. Pipeline: Figma vari
 
 ## Figma constants
 
-- **File key:** `s2fIWwgoNi8hbYhERMCrO3` (the Ply source file, inherited from the reference design system)
-- **Pages (by name, never by node ID):** `Foundations` (sticker sheet), `Token Usage` (doc tables), `Components` (component specs — Phase 5)
-- Look up pages, sections, and tables **by name** and walk down. Node IDs drift when Figma re-indexes; hardcoded IDs are a known bug class in the reference design system's commands.
+- **Ply build file (write target):** key `3QugaiUHLUqTyqHhwCibOR` — "Token Library v1 - Ply". Started empty 2026-07-05; the new library is built here.
+- **Reference token library (READ-ONLY, never write):** key `zEiSF5kqk7a0buxqF9BcVp`. Contains the legacy library being superseded: 10 collections / 395 variables (color-primitives 119, color-semantic 189 with Light+Dark, colors-brand 11 with 2 brand modes, font-family 2 vars with 3 font modes, space/radius/font-size/weight/line-height/breakpoints), 27 text styles, 5 effect styles, sticker sheet on `Foundations`, doc tables on `Token Usage Documentation`.
+- **Pages (by name, never by node ID).** Node IDs drift when Figma re-indexes; hardcoded IDs are a known bug class in the reference design system's commands.
 
 ## Figma MCP guardrails (ported from the reference design system — hard-won, do not relearn)
 
