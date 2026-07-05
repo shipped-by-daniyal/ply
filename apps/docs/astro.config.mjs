@@ -2,8 +2,9 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 
-// site/base are set when GitHub Pages deploy lands (Phase 1, step 5).
 export default defineConfig({
+  site: "https://shipped-by-daniyal.github.io",
+  base: "/ply",
   integrations: [
     starlight({
       title: "Ply",

@@ -25,5 +25,5 @@ Create a new ADR for: **$ARGUMENTS**
 2. Derive a kebab-case slug from the title (max ~5 words).
 3. If context/decision/alternatives are not already clear from the conversation, ask the user targeted questions — do not invent rationale.
 4. Copy the structure of `apps/docs/src/content/docs/decisions/_template.mdx` into `adr-NNNN-<slug>.mdx`, filling every section. Keep it under ~60 lines: an ADR is a record, not an essay.
-5. Add one line to the list in `apps/docs/src/content/docs/decisions/index.mdx` (keep numeric order; format: `- [ADR-NNNN: Title](/decisions/adr-NNNN-slug/) — one-line takeaway (status)`). If `index.mdx` carries a `GENERATED` banner (Phase 1+), skip this step — `/ply-update-docs` owns it.
+5. Run `node scripts/gen-map.mjs` — it regenerates the ADR index in `decisions/index.mdx` and the map inventory from frontmatter. Never edit the index by hand.
 6. Print the file path and a one-line summary. Do NOT commit — the user reviews and commits.
