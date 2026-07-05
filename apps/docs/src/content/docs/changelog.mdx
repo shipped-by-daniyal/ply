@@ -6,6 +6,26 @@ description: What changed in Ply, when, and why — appended by /ply-update-docs
 Newest first. Entries are appended by `/ply-update-docs`; each covers the work
 since the previous entry.
 
+## 2026-07-05 — The Ply token library exists in Figma
+
+- The v1 token library was built from scratch in the Ply Figma file under the
+  [ADR-0005](/decisions/adr-0005-token-taxonomy/) grammar: 347 variables across
+  9 collections — 119 color primitives, 160 semantic tokens (Light + Dark
+  modes, 100% alias-based, 100% with descriptions), plus space, radius (spelled
+  sizes), font-size/weight/line-height/family, and breakpoints.
+- In-file validation passed with zero findings: no duplicate names, no missing
+  mode values, no raw hex in the semantic tier, no missing descriptions, and
+  the path-prefix invariant holds.
+- Six reference-library bugs were fixed during the build rather than ported
+  (dark-mode state collisions, a non-monotonic border ramp, an under-contrast
+  focus ring, inconsistent dark text steps) — details in
+  `audits/ply-build-report-2026-07-05.md`.
+- Seven contrast-pairing tokens that had no ancestor in the reference library
+  were minted per ADR-0005: `text/on-accent`, `icon/on-accent`,
+  `text/on-neutral-bold`, and `text/on-status-*` for all four statuses.
+- Still ahead in Phase 3: text styles, effect styles, the Foundations sticker
+  sheet, and the Token Usage documentation table.
+
 ## 2026-07-05 — Phase 3 begins: baseline audit and the token taxonomy
 
 - Phase 3 strategy changed: the reference token library (a separate Figma file,
