@@ -1,0 +1,31 @@
+---
+title: "ADR-0010: Token sync policy"
+description: "Values: Figma wins. Usage documentation: the Token Usage table wins. Sync is on-demand and gated — no webhooks, no silent writes."
+status: accepted
+date: 2026-07-06
+supersedes: null
+superseded_by: null
+tags: [tokens, figma, automation]
+---
+
+## Context
+
+The sync policy has operated since Phase 4 and is stated in `CLAUDE.md` and the `/ply-sync-tokens` / `/ply-doc-table` runbooks, but was never recorded as the ADR that CLAUDE.md itself promised ("its own ADR, Phase 4"). The 2026-07-06 docs audit found changelog entries citing ADR-0005 for it — a wrong citation, since ADR-0005 covers only naming. This ADR records the standing decision; nothing about the behavior changes.
+
+## Decision
+
+- **Token values: Figma wins.** The library file is the source of truth for every mode value and alias. The repo never edits values directly; a red contrast lint is fixed in Figma and re-exported.
+- **Usage documentation: the Token Usage table wins.** The table's where/how/do/don't cells are the canonical usage text; exports read them into `$extensions.ply.usage`. Variable `$description` mirrors the variable's own description field and may be pushed table→variable by `/ply-doc-table`.
+- **Sync is on-demand, never automatic.** Figma Professional has no webhooks; `/ply-sync-tokens` runs at the start of any token session and produces a categorized drift report in `audits/` before anything moves.
+- **Every write is gated.** Drift resolution is an explicit per-category pull/push/skip choice; write commands preview before applying. Renames are detected by stable variable ID, never by name.
+
+## Alternatives considered
+
+- **Repo as source of truth (design tokens edited in git, pushed to Figma)** — rejected: the maintainer is a designer; Figma is where value decisions actually happen.
+- **Webhook/scheduled auto-sync** — unavailable on the Professional plan, and silent syncs would defeat the audit-trail discipline anyway.
+- **Single winner for everything** — rejected: values and prose have different natural homes; splitting ownership by field is what keeps the two directions from fighting.
+
+## Consequences
+
+- Changelog citations of the sync policy point here (two 2026-07-05/06 entries previously mis-cited ADR-0005; corrected as part of the docs audit).
+- `/ply-sync-tokens`, `/ply-export-tokens`, and `/ply-doc-table` implement this ADR; changing the policy means superseding this ADR first.

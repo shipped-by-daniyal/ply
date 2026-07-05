@@ -59,6 +59,7 @@ const countFile = (file) => {
   const dtcg = JSON.parse(readFileSync(path.join(TOKENS_DIR, file), "utf8"));
   for (const [name, group] of Object.entries(dtcg)) {
     if (name.startsWith("$") || typeof group !== "object") continue;
+    if ("$value" in group) { count += 1; continue; } // top-level token (e.g. font-size-100)
     groups.push(name);
     walk(group);
   }

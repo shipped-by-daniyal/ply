@@ -29,7 +29,7 @@ Ply had no visual identity: no logo, favicon, custom docs styling, or Figma cove
 | Divider accent | 4–5 px bar filled with the primary gradient |
 
 - **Wordmark**: "Ply" set in Inter Bold with the primary gradient as fill. **Monogram**: three stacked rounded bars (88×16, radius 8, 26 px vertical rhythm, 11 px x-offset per layer) colored violet/pink/cyan top-to-bottom — the plywood-layers metaphor from ADR-0004. The monogram cut is the favicon.
-- **Figma covers**: every Ply file gets a cover instance with the GDS2 anatomy (monogram + owner top, gradient wordmark + version + subtitle center, status footer with gradient divider, STATUS / LAST UPDATED blocks). File status variants: Ready to Use, Work in Progress, Deprecated.
+- **Figma covers**: every Ply file gets a cover instance with the reference design system's cover anatomy (monogram + owner top, gradient wordmark + version + subtitle center, status footer with gradient divider, STATUS / LAST UPDATED blocks). File status variants: Ready to Use, Work in Progress, Deprecated.
 - **Docs site**: `src/styles/custom.css` declares `--ply-gradient-*` props copied verbatim from this table, then maps them onto Starlight hooks (`--sl-color-accent-*`, hero, subtle card/link accents) for light and dark themes. No hardcoded brand hex anywhere else.
 - **Subtlety rule**: gradients appear as washes, dividers, and text fills — never as full-strength backgrounds behind body text. Body text always sits on base/neutral surfaces (the contrast lint's assumptions hold).
 

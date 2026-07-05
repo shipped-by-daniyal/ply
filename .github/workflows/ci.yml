@@ -25,3 +25,5 @@ jobs:
         run: node scripts/gen-token-docs.mjs && git diff --exit-code apps/docs/src/content/docs/tokens
       - name: Docs build
         run: pnpm --filter docs build
+      - name: Docs links resolve (existence + base prefix + anchors)
+        run: node scripts/check-links.mjs

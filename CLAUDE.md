@@ -19,7 +19,7 @@ A design system consumable by AI, designers, and engineers. Pipeline: Figma vari
 
 ## Figma constants
 
-- **Ply token library (write target for tokens):** key `3QugaiUHLUqTyqHhwCibOR` — "Token Library v1 - Ply". 349 variables / 9 collections, 26 text styles, 5 effect styles, Foundations sticker sheet, Token Usage tables. Published as a team library (components consume it).
+- **Ply token library (write target for tokens):** key `3QugaiUHLUqTyqHhwCibOR` — "Token Library v1 - Ply". 10 collections / 404 variables (395 exported to DTCG + 9 `deprecated/*` kept in Figma only for binding stability, ADR-0007), 26 text styles, 5 effect styles, Aurora cover, Foundations sticker sheet, Token Usage tables. Names mirror the reference library verbatim (ADR-0007). Published as a team library (components consume it); published variable keys are stable across renames.
 - **Ply core components (write target for components):** key `liXPUO87wtWFEKuRPoAV8C` — "Core Components - Ply". Consumes the token library via team-library variable/style imports (`importVariableByKeyAsync` — never bind by local ID across files).
 - **Reference token library (READ-ONLY, never write):** key `zEiSF5kqk7a0buxqF9BcVp`. Contains the legacy library being superseded: 10 collections / 395 variables (color-primitives 119, color-semantic 189 with Light+Dark, colors-brand 11 with 2 brand modes, font-family 2 vars with 3 font modes, space/radius/font-size/weight/line-height/breakpoints), 27 text styles, 5 effect styles, sticker sheet on `Foundations`, doc tables on `Token Usage Documentation`.
 - **Pages (by name, never by node ID).** Node IDs drift when Figma re-indexes; hardcoded IDs are a known bug class in the reference design system's commands.
@@ -46,7 +46,7 @@ A design system consumable by AI, designers, and engineers. Pipeline: Figma vari
 
 - Generated pages/sections carry a `GENERATED — do not hand-edit` banner comment (`{/* … */}` in `.mdx` — HTML comments break MDX parsing; `<!-- … -->` in `.md`). Never hand-edit them; regenerate via scripts. Never machine-edit handwritten pages (except appending to `changelog.mdx` and updating component frontmatter status fields). This is the #1 anticipated failure mode — respect the banner.
 - Every phase of work ends with `/ply-update-docs` + a commit. Commands never commit by themselves.
-- Internal doc links are root-relative (`/decisions/...`) — Starlight prefixes the `/ply` Pages base automatically for markdown and sidebar links. Exception: hero `actions` in frontmatter need the `/ply/` prefix written manually (only `index.mdx` does this).
+- Internal doc links are root-relative (`/decisions/...`). Starlight only base-prefixes **sidebar/nav** links; content links get the `/ply` Pages base from the `rehypeBaseLinks` plugin in `apps/docs/astro.config.mjs` — do not remove it. Exception: hero `actions` in frontmatter bypass rehype and need the `/ply/` prefix written manually (only `index.mdx` does this). `scripts/check-links.mjs` verifies every built link (existence + base + anchors) after `docs build` — CI-blocking.
 - Every non-trivial choice gets an ADR via `/ply-adr` **before** implementation. ADRs live in `apps/docs/src/content/docs/decisions/`.
 
 ## Process rules

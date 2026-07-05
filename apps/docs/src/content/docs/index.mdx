@@ -4,8 +4,9 @@ description: Ply — the agentic design system consumable by AI, designers, and 
 template: splash
 hero:
   tagline: Ply — layers that make the whole stronger. One source of truth from Figma variables to accessible React components, built and kept in sync by agents, readable by humans.
-  # Hero action links are NOT base-prefixed by Starlight (unlike markdown links
-  # and sidebar) — the /ply base must be written manually here, nowhere else.
+  # Hero action links live in frontmatter, so the rehypeBaseLinks plugin
+  # (astro.config.mjs) never sees them and Starlight doesn't prefix them either
+  # — the /ply base must be written manually here, nowhere else.
   actions:
     - text: See the system map
       link: /ply/map/

@@ -6,6 +6,29 @@ description: What changed in Ply, when, and why — appended by /ply-update-docs
 Newest first. Entries are appended by `/ply-update-docs`; each covers the work
 since the previous entry.
 
+## 2026-07-06 — Docs reaudit: every link now resolves — and stays that way
+
+- The maintainer reported broken links; the root cause was systemic. Starlight
+  only base-prefixes sidebar links, so all 65 root-relative links in page
+  content shipped without the `/ply` base and 404'd on GitHub Pages. A
+  `rehypeBaseLinks` plugin in `astro.config.mjs` now prefixes every content
+  link at build time.
+- A new checker, `scripts/check-links.mjs`, verifies all built links —
+  existence, base prefix, anchor fragments — across 1584 references on 29
+  pages (zero broken), and runs in CI on every push.
+- A 19-agent audit swept link semantics, external URLs, site chrome, and stale
+  content; 13 confirmed defects were fixed: a nonexistent `/ply-audit-figma`
+  command referenced on the [map](/map/), glossary examples using superseded
+  token names, the Phase 4 status, an inventory undercount (a `gen-map.mjs`
+  bug hid 36 top-level tokens), two leaks of the reference design system's
+  brand name, and stale `CLAUDE.md` Figma constants.
+- [ADR-0010](/decisions/adr-0010-token-sync-policy/) records the token sync
+  policy (values: Figma wins; usage text: the Token Usage table wins) — two
+  earlier changelog citations pointed at ADR-0005, which never contained it;
+  those citations now point here.
+- Link previews got a real social card: `og:image`/`twitter:image` now serve
+  the Aurora cover.
+
 ## 2026-07-06 — Button rebuilt: one master set, 96 variants
 
 - The three per-size Button sets are gone: [Button](/components/button/) is now
@@ -153,7 +176,7 @@ since the previous entry.
   across modes. The library is now 349 variables / 162 semantic tokens.
 - New machinery: `/ply-export-tokens` (read-only Figma → DTCG → build),
   `/ply-sync-tokens` (drift detection with gated pull/push per the
-  [ADR-0005](/decisions/adr-0005-token-taxonomy/) policy),
+  [ADR-0010](/decisions/adr-0010-token-sync-policy/) policy),
   `scripts/diff-tokens.mjs` (rename-aware via variable IDs), and a CI workflow
   that builds tokens + docs and fails if the committed dist drifts from src.
 - The sticker sheet and the Token Usage table were updated in the same pass
@@ -172,7 +195,7 @@ since the previous entry.
 - The `/ply-doc-table` command was added to keep the table in sync:
   idempotent, rename-aware, deprecation-not-deletion, bidirectional
   description sync (table wins usage text per
-  [ADR-0005](/decisions/adr-0005-token-taxonomy/)), preview-then-apply.
+  [ADR-0010](/decisions/adr-0010-token-sync-policy/)), preview-then-apply.
 - This completes Phase 3 (vision step 4): token audit, taxonomy, the rebuilt
   library, styles, sticker sheet, and documentation table are all done. Next:
   Phase 4 — the DTCG export pipeline to code.

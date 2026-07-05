@@ -56,8 +56,9 @@ Print a checklist (not edits!) of handwritten pages likely needing human review,
 ### 7 — Verify + persist state
 ```bash
 pnpm --filter docs build
+node scripts/check-links.mjs
 ```
-Must pass. Then write `.ds/docs-state.json`:
+Both must pass (the link check needs the fresh build). Then write `.ds/docs-state.json`:
 ```json
 { "lastSyncedSha": "<current HEAD sha>", "tokensHash": "<sha256 over the concatenated src/*.tokens.json, or null>", "lastRun": "<ISO date>" }
 ```
