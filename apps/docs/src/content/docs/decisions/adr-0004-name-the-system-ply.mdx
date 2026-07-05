@@ -1,0 +1,29 @@
+---
+title: "ADR-0004: Name the system Ply"
+description: "Plywood layers — thin plies bonded into something stronger than solid wood — mirror the 3-tier token architecture and the human+AI build."
+status: accepted
+date: 2026-07-05
+supersedes: null
+superseded_by: null
+tags: [identity, naming]
+---
+
+## Context
+
+The system needed a real name before conventions hardened around the "ADS" placeholder: the name propagates into the npm scope, CSS custom-property prefix, command names, token file, and docs identity. Constraints: one or two syllables (it prefixes every CSS variable), pronounceable, no collision with a major design system.
+
+## Decision
+
+**Ply.** The layers in plywood — individually thin, bonded into something stronger than solid wood — mirror the primitive → semantic → component token tiers, and the way designer + AI layers combine here. Conventions: `/ply-*` commands, `@ply/*` package scope, `--ply-*` CSS custom properties, `ply.tokens.json`, `$extensions` keys `ply.usage` / `ply.figma`, GitHub repo `shipped-by-daniyal/ply`.
+
+## Alternatives considered
+
+- **Facet** — "one stone, many faces"; strong, but tied to the reference design system's gem lineage rather than standing alone.
+- **Alloy** — human+AI fusion story; strong runner-up, one syllable longer everywhere it appears.
+- **Tessera, Strata, Seam, Bezel** — good metaphors, but longer prefixes or weaker fit.
+
+## Consequences
+
+- Shortest possible prefix in every surface where the name repeats thousands of times (`--ply-bg-accent` vs `--tessera-bg-accent`).
+- `@ply` npm scope availability is unverified (registry checks inconclusive); irrelevant while packages are workspace-only — fall back to `@ply-ds` if publishing ever demands it.
+- The prior system is referred to only as "the reference design system" in all Ply materials from this point on.
