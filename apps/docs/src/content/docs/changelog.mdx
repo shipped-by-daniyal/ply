@@ -6,6 +6,30 @@ description: What changed in Ply, when, and why — appended by /ply-update-docs
 Newest first. Entries are appended by `/ply-update-docs`; each covers the work
 since the previous entry.
 
+## 2026-07-05 — Phase 2: Knowledge base and the design advisor
+
+- The knowledge base launched in `kb/`: 7 system dossiers (Material 3, Polaris,
+  Carbon, Primer, Spectrum, Atlassian, shadcn/Radix) researched against live
+  2025–2026 sources with a shared 8-section rubric, plus 6 cross-cutting topic
+  guides (three-tier tokens, naming, accessibility patterns, theming, component
+  API design, agentic design systems) — all with cited sources and retrieval
+  dates.
+- The design-advisor agent and `/ply-recommend` command are live: proposals are
+  checked against the KB and current best practice before adoption, and every
+  evaluation is saved to `kb/comparisons/`.
+- First real evaluation completed: the token path grammar for the Phase 3
+  migration — verdict "adopt modified". It caught that nesting states as path
+  children (`bg/accent/hovered` under rest token `bg/accent`) is structurally
+  invalid in DTCG, and recommended hyphenated modifier leaves
+  (`bg/accent-hovered`), a trimmed 3-rung emphasis ladder, and
+  contrast-lint-verified foreground pairings. Dossier:
+  `kb/comparisons/2026-07-05-token-path-grammar.md`.
+- Notable research findings recorded in the dossiers: Base UI became
+  shadcn/ui's default primitive layer (July 2026); Polaris React was deprecated
+  for web components (Oct 2025); Spectrum 2 went stable on React Aria
+  Components (Dec 2025); Atlassian measured a 52% AI-accuracy gain from their
+  agentic layer (DESIGN.md, llms.txt, MCP server).
+
 ## 2026-07-05 — Phase 1: Docs site, the name Ply, and the auto-update loop
 
 - The system is named **Ply**
