@@ -14,7 +14,7 @@ Components (vision step 7) must pass accessibility tests and be consumable by an
 
 ## Decision
 
-Build on **React Aria Components (RAC)**. Style via plain CSS per component using RAC's `className` functions and `data-*` state attributes, consuming ADS token custom properties only.
+Build on **React Aria Components (RAC)**. Style via plain CSS per component using RAC's `className` functions and `data-*` state attributes, consuming Ply token custom properties only.
 
 ## Alternatives considered
 
@@ -25,5 +25,5 @@ Build on **React Aria Components (RAC)**. Style via plain CSS per component usin
 
 - Accessibility (ARIA semantics, keyboard nav, i18n, mobile behaviors) comes from Adobe's team by default; our tests verify rather than implement it.
 - Widest component coverage of the three, including the hard widgets we deferred (ComboBox, DatePicker) — no library switch when we get to them.
-- RAC's render-prop/className-function idiom is slightly unusual; the Button walking-skeleton (Phase 6) sets the house pattern once and `/ds-new-component` clones it.
+- RAC's render-prop/className-function idiom is slightly unusual; the Button walking-skeleton (Phase 6) sets the house pattern once and `/ply-new-component` clones it.
 - Revisit only if RAC maintenance stalls or Base UI reaches coverage + track-record parity.

@@ -6,14 +6,14 @@ import starlight from "@astrojs/starlight";
 export default defineConfig({
   integrations: [
     starlight({
-      title: "ADS",
+      title: "Ply",
       description:
         "Agentic Design System — consumable by AI, designers, and engineers.",
       social: [
         {
           icon: "github",
           label: "GitHub",
-          href: "https://github.com/shipped-by-daniyal/agentic-design-system",
+          href: "https://github.com/shipped-by-daniyal/ply",
         },
       ],
       sidebar: [

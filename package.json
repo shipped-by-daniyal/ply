@@ -1,8 +1,8 @@
 {
-  "name": "agentic-design-system",
+  "name": "ply",
   "private": true,
   "version": "0.0.0",
-  "description": "ADS — an agentic design system consumable by AI, designers, and engineers. Figma tokens → DTCG → CSS/TS → React Aria components, orchestrated by Claude Code.",
+  "description": "Ply — an agentic design system consumable by AI, designers, and engineers. Figma tokens → DTCG → CSS/TS → React Aria components, orchestrated by Claude Code.",
   "packageManager": "pnpm@10.33.2",
   "engines": {
     "node": ">=22"
@@ -10,7 +10,7 @@
   "scripts": {
     "docs:dev": "pnpm --filter docs dev",
     "docs:build": "pnpm --filter docs build",
-    "tokens:build": "pnpm --filter @ads/tokens build",
+    "tokens:build": "pnpm --filter @ply/tokens build",
     "test": "pnpm -r test",
     "build": "pnpm -r build"
   }

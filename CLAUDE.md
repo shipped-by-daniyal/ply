@@ -1,17 +1,17 @@
-# ADS — Agentic Design System
+# Ply — Agentic Design System
 
 A design system consumable by AI, designers, and engineers. Pipeline: Figma variables → DTCG JSON → Style Dictionary → CSS custom properties + TS tokens → React Aria components → Storybook + Starlight docs. One human (a designer), heavy Claude Code automation. Master plan: see `apps/docs/src/content/docs/map.mdx` once it exists.
 
 ## Repo map
 
 - `apps/docs` — Astro Starlight site (decisions/ADRs, system map, token + component docs, changelog)
-- `packages/tokens` — `src/ads.tokens.json` (DTCG, exported from Figma) + Style Dictionary build → `dist/` (committed for diffability)
+- `packages/tokens` — `src/ply.tokens.json` (DTCG, exported from Figma) + Style Dictionary build → `dist/` (committed for diffability)
 - `packages/react` — React Aria Components-based library, plain CSS per component, Storybook 9
 - `kb/` — knowledge base (`systems/` dossiers, `topics/` guides, `comparisons/` decision research)
 - `audits/` — timestamped audit reports; committed, never deleted (they're project memory)
 - `scripts/` — `build-dtcg.mjs`, `diff-tokens.mjs`, `gen-token-docs.mjs`, `gen-map.mjs`
 - `.ds/docs-state.json` — last docs-sync SHA + token snapshot hash
-- `.claude/commands/` — `/ds-*` runbooks; `.claude/agents/` — design-advisor, docs-writer
+- `.claude/commands/` — `/ply-*` runbooks; `.claude/agents/` — design-advisor, docs-writer
 
 ## Commands cheatsheet
 
@@ -19,11 +19,11 @@ A design system consumable by AI, designers, and engineers. Pipeline: Figma vari
 
 ## Figma constants
 
-- **File key:** `s2fIWwgoNi8hbYhERMCrO3` (the GDS/ADS source file)
+- **File key:** `s2fIWwgoNi8hbYhERMCrO3` (the Ply source file, inherited from the reference design system)
 - **Pages (by name, never by node ID):** `Foundations` (sticker sheet), `Token Usage` (doc tables), `Components` (component specs — Phase 5)
-- Look up pages, sections, and tables **by name** and walk down. Node IDs drift when Figma re-indexes; hardcoded IDs are a known GDS bug class.
+- Look up pages, sections, and tables **by name** and walk down. Node IDs drift when Figma re-indexes; hardcoded IDs are a known bug class in the reference design system's commands.
 
-## Figma MCP guardrails (ported from GDS — hard-won, do not relearn)
+## Figma MCP guardrails (ported from the reference design system — hard-won, do not relearn)
 
 1. **~20 KB response cap on every Figma MCP call.** Chunk variable exports (~60 variables per call), use compact field shapes (`{n,l,d}` not full words), and template-dedupe narrative text (hash the where/how/do/don't cells into template IDs; store rows as `{d, t}` refs).
 2. **Load the `figma-use` skill before any `use_figma` call.** Always.
@@ -37,18 +37,18 @@ A design system consumable by AI, designers, and engineers. Pipeline: Figma vari
 ## Token rules
 
 - Three tiers: primitives → semantic → component. Path grammar to be fixed in ADR-0004 (Phase 3) — until then, don't invent names.
-- **No hardcoded values in components — tokens only.** In Figma: every fill/radius/spacing/text bound to a variable or style. In code: CSS consumes `var(--ads-*)` custom properties only.
+- **No hardcoded values in components — tokens only.** In Figma: every fill/radius/spacing/text bound to a variable or style. In code: CSS consumes `var(--ply-*)` custom properties only.
 - Sync policy (ADR-0005, Phase 4): token **values** — Figma wins; **usage documentation** — the Token Usage table wins.
-- Start any token-touching session with `/ds-sync-tokens` (once it exists) to surface drift first.
+- Start any token-touching session with `/ply-sync-tokens` (once it exists) to surface drift first.
 
 ## Docs rules
 
 - Generated pages/sections carry a `GENERATED — do not hand-edit` banner comment (`{/* … */}` in `.mdx` — HTML comments break MDX parsing; `<!-- … -->` in `.md`). Never hand-edit them; regenerate via scripts. Never machine-edit handwritten pages (except appending to `changelog.mdx` and updating component frontmatter status fields). This is the #1 anticipated failure mode — respect the banner.
-- Every phase of work ends with `/ds-update-docs` + a commit. Commands never commit by themselves.
-- Every non-trivial choice gets an ADR via `/ds-adr` **before** implementation. ADRs live in `apps/docs/src/content/docs/decisions/`.
+- Every phase of work ends with `/ply-update-docs` + a commit. Commands never commit by themselves.
+- Every non-trivial choice gets an ADR via `/ply-adr` **before** implementation. ADRs live in `apps/docs/src/content/docs/decisions/`.
 
 ## Process rules
 
-- Before proposing a tool, pattern, or naming scheme: consult `kb/` first, or invoke the **design-advisor** agent (`/ds-recommend`) for anything with real trade-offs.
+- Before proposing a tool, pattern, or naming scheme: consult `kb/` first, or invoke the **design-advisor** agent (`/ply-recommend`) for anything with real trade-offs.
 - Work in small steps; each session should end with something committed and the docs updated.
-- Audit reports go to `audits/ads-<topic>-<YYYY-MM-DD-HHMM>.md` and are committed.
+- Audit reports go to `audits/ply-<topic>-<YYYY-MM-DD-HHMM>.md` and are committed.
