@@ -6,6 +6,26 @@ description: What changed in Ply, when, and why — appended by /ply-update-docs
 Newest first. Entries are appended by `/ply-update-docs`; each covers the work
 since the previous entry.
 
+## 2026-07-05 — Course correction: reference naming adopted, Ply-first identity
+
+- After maintainer review, a five-front course correction began — identity,
+  branding, real documentation, token naming, and component structure. This
+  entry covers the first slice.
+- Ply-first identity sweep: the docs site description, hero tagline, README,
+  and system-map vision now lead with the name Ply instead of the generic
+  "agentic design system" phrasing.
+- [ADR-0007](/decisions/adr-0007-adopt-reference-naming/) accepted: Ply's
+  token library will mirror the reference library's naming and structure
+  verbatim (nested semantic paths, six-rung emphasis ladder, brand + font mode
+  collections). Names revert; the 21 contrast value fixes are kept and the
+  WCAG contrast lint stays CI-blocking.
+- [ADR-0005](/decisions/adr-0005-token-taxonomy/) (token taxonomy) is
+  superseded by ADR-0007; `kb/topics/naming.md` notes the reversal.
+- Coming next per the approved plan: gradient branding concepts, a
+  token-library rename-in-place migration, a real docs build-out (guides +
+  token reference + component pages), and a Button rebuild as a single master
+  component set.
+
 ## 2026-07-05 — Phase 5 begins: Button sets the pattern
 
 - The token library is now a published Figma team library, and the new Core

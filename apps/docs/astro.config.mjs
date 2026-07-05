@@ -9,7 +9,7 @@ export default defineConfig({
     starlight({
       title: "Ply",
       description:
-        "Agentic Design System — consumable by AI, designers, and engineers.",
+        "Ply — the agentic design system consumable by AI, designers, and engineers.",
       social: [
         {
           icon: "github",

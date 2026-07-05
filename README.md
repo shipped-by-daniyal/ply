@@ -1,6 +1,6 @@
 # Ply
 
-An agentic design system, built to be efficiently consumable by **AI, designers, and engineers** — from token architecture in Figma through coded, accessible React components, with Claude Code automation doing the heavy lifting at every stage.
+**Ply** is an agentic design system, built to be efficiently consumable by **AI, designers, and engineers** — from token architecture in Figma through coded, accessible React components, with Claude Code automation doing the heavy lifting at every stage.
 
 ## Pipeline
 

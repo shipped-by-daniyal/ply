@@ -1,0 +1,35 @@
+---
+title: "ADR-0007: Adopt the reference library's token naming verbatim"
+description: "Ply's token library mirrors the reference library's collections, nested semantic paths, and six-rung ladder exactly — names revert, the 21 contrast value fixes stay, and the lint remains CI-blocking."
+status: accepted
+date: 2026-07-05
+supersedes: adr-0005-token-taxonomy
+superseded_by: null
+tags: [tokens, naming, figma]
+---
+
+## Context
+
+ADR-0005's restructured grammar (element-first `bg/`, hyphenated modifier leaves, 3-rung ladder) was built and shipped, then judged flawed in use by the maintainer — especially the semantic colors, whose flattened leaves group worse in the Figma picker than the reference library's nested roles. Decision (2026-07-05): copy the reference library (`zEiSF5kqk7a0buxqF9BcVp`) verbatim for v1 and regenerate the code tokens. This ADR records the reversal honestly; implementation follows it.
+
+## Decision
+
+- **Names, structure, and collections mirror the reference library exactly**: 10 collections — `color-primitives`, `color-semantic` (Light/Dark), `colors-brand` (Brand 1/Brand 2), `font-family` (Inter/Geist/Die Grotesk A modes), `space-primitives`, `radius-primitives` (numbered + Full), `font-size`, `font-weight`, `line-height`, `breakpoints`. Semantic paths stay nested (`background/neutral/subtle/hovered`), the six-rung emphasis ladder (`subtlest…boldest`) stays, `/default` leaves stay where the reference has them, and `background/status/*`, `text/static/*`, `text/link/*`, `data-viz/categorical/*`, `effect/shadow/color/*` are kept as-is.
+- **Naming reverts; values do not.** The 21 contrast fixes recorded in `audits/ply-build-report-2026-07-05.md` are kept on the renamed tokens, plus fix #22: `colors-brand/950` follows the Pink ramp's deepest step under Brand 2 instead of inheriting `Blue/950` (reference bug, baseline audit §4.1).
+- **Migration is rename-in-place** in the Ply library (`3QugaiUHLUqTyqHhwCibOR`), keyed by variable ID so every binding, doc-table row, and diff survives. The full mapping is committed as `audits/ply-rename-manifest-*.md` with two hard gates: injectivity (no two variables target one name) and zero DTCG path-prefix collisions — the reference's inconsistent `/default` leaves make collisions possible; if one exists, Ply mints the missing `/default` leaf and records the deviation here.
+- **Ply's 9 pairing tokens** (`text/on-*`, `icon/on-accent`) have no reference equivalent: renamed into a `deprecated/` group, excluded from built output, flagged in the Token Usage table. Never deleted (bindings).
+- **The contrast lint stays CI-blocking.** `pairsWith` pairs are re-derived against reference names (bold fills pair `text/static/white` where the reference uses it implicitly), with a coverage floor of ≥170 checks so a rewrite bug cannot pass by checking nothing.
+- **Mode projection to CSS**: Light → `:root`, Dark → `[data-theme="dark"]`, Brand 2 → `[data-brand="brand-2"]`, non-default fonts → `[data-font="…"]`. The resulting `--ply-*` variable churn is accepted now, while `packages/react` is still empty.
+
+## Alternatives considered
+
+- **Keep the ADR-0005 grammar** — rejected by the maintainer after real use; picker ergonomics and familiarity with the reference structure won.
+- **Hybrid (reference nesting + Ply's `on-*` pairing tokens kept active)** — rejected: a third grammar is worse than either; the pairing *lint* survives without the pairing *tokens*.
+- **Copy only semantic colors, keep the rest** — rejected: partial copies recreate the two-conventions-in-one-library problem the baseline audit flagged (§3.3).
+
+## Consequences
+
+- ADR-0005 is superseded (frontmatter cross-linked both ways); `kb/topics/naming.md` gets a note pointing here.
+- `build-dtcg.mjs`, `lint-tokens.mjs`, `sd.config.mjs`, `diff-tokens.mjs`, and the `/ply-export-tokens`/`/ply-sync-tokens`/`/ply-update-docs` runbooks are rewritten for nested paths, brand/font modes, and the `deprecated/` exclusion.
+- Sticker-sheet name labels and Token Usage table cells are regenerated (rows keyed by variable ID survive).
+- The reference library's known same-value state collisions (baseline audit §4.2) are copied as-is for now — fidelity wins; fixing them is a future, deliberate ADR.

@@ -79,6 +79,8 @@ Two invariants make this safe: **never drop or reorder a segment** in any projec
 
 > **Adopted — ADR-0005 (2026-07-05), which modifies this section.** The accepted grammar departs from the above in three ways, per the advisor evaluation (`kb/comparisons/2026-07-05-token-path-grammar.md`) and maintainer decisions: (1) the `color.` category segment is **dropped everywhere** — properties are top-level (`bg/accent`, `text/on-accent`), with `font/*` permanently reserved for typography; (2) emphasis and state **join the leaf with hyphens** (`bg/accent-hovered`), never as child path levels — invariant: no token path may be a path-prefix of another; (3) status roles keep a sub-namespace (`bg/status/danger-subtle`). The ladder ships as `subtle | default (unsuffixed) | bold`. Example projection: `bg/status/danger-subtle-hovered` → `bg.status.danger-subtle-hovered` → `--ply-bg-status-danger-subtle-hovered`. ADR-0005 is canon wherever this section disagrees.
 
+> **Superseded — ADR-0007 (2026-07-05).** After real use, the maintainer reversed ADR-0005: Ply mirrors the reference library's naming verbatim — nested semantic paths (`background/neutral/subtle/hovered`), six-rung ladder (`subtlest…boldest`), `/default` leaves where the reference has them, and the reference's collection set (incl. `colors-brand` and the 3-mode `font-family` axis). Contrast value fixes were kept; only names reverted. ADR-0007 is canon wherever ADR-0005 or this section disagrees.
+
 ## 5. Sources
 
 - Nathan Curtis, [Naming Tokens in Design Systems](https://medium.com/eightshapes-llc/naming-tokens-in-design-systems-9e86c7444676) — levels framework, ordering observations (retrieved 2026-07-05)
