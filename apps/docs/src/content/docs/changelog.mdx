@@ -6,6 +6,27 @@ description: What changed in Ply, when, and why — appended by /ply-update-docs
 Newest first. Entries are appended by `/ply-update-docs`; each covers the work
 since the previous entry.
 
+## 2026-07-06 — Button rebuilt: one master set, 96 variants
+
+- The three per-size Button sets are gone: [Button](/components/button/) is now
+  one master component set — variant (solid/subtle/ghost) × tone
+  (neutral/accent/danger) × size (sm/md/lg) × state = 96 variants — following
+  the reference design system's file conventions the maintainer pointed to.
+- Every property is bound to the freshly published reference-named tokens
+  (`background/brand/*`, `background/status/danger/*`, `text/static/white`,
+  `text/neutral/inverse`, space + radius primitives): validation found zero
+  unbound fills across all 96 variants.
+- Label pairings follow the new
+  [ADR-0007](/decisions/adr-0007-adopt-reference-naming/) contract: solid
+  neutral uses `text/neutral/inverse`, solid accent/danger use
+  `text/static/white` — the deprecated `on-*` tokens are no longer consumed
+  anywhere.
+- Both Figma files got their Aurora covers
+  ([ADR-0008](/decisions/adr-0008-visual-identity-aurora/)): the components
+  file and the token library, each with the monogram, gradient wordmark, and
+  status footer.
+- The spec frame was updated to record the single-set convention.
+
 ## 2026-07-06 — Aurora lands on the docs
 
 - The docs site now wears the
