@@ -6,6 +6,24 @@ description: What changed in Ply, when, and why — appended by /ply-update-docs
 Newest first. Entries are appended by `/ply-update-docs`; each covers the work
 since the previous entry.
 
+## 2026-07-05 — Styles and the Foundations sticker sheet
+
+- 26 text styles built in the Ply Figma file (heading/1–4, body lg/md/sm/xs ×
+  regular/medium/bold, label, link, mono ramps) — every style binds font
+  family, size, line-height, and weight to tokens. The reference design
+  system's redundant `caption` style was dropped (identical to
+  body/sm/regular).
+- 5 shadow effect styles (shadow/xs–xl) with every layer's color bound to the
+  semantic shadow tokens.
+- The Foundations sticker sheet was built and screenshot-verified: 119
+  primitive swatches in 12 ramps, all 160 semantic tokens as variable-bound
+  rows showing resolved Light/Dark values, spacing bars width-bound to space
+  tokens, radius samples, breakpoints, typography specimens, and shadow cards.
+- Every swatch and bar is bound to its variable — drift between the sheet and
+  the tokens is detectable by the audit tooling.
+- Remaining in Phase 3: the Token Usage documentation table.
+- Details appended to `audits/ply-build-report-2026-07-05.md`.
+
 ## 2026-07-05 — The Ply token library exists in Figma
 
 - The v1 token library was built from scratch in the Ply Figma file under the

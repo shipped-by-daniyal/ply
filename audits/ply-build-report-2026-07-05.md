@@ -42,8 +42,13 @@ Scopes: primitives are hidden from pickers (`scopes: []` — aliasable only); se
 
 - `text/on-accent`, `text/on-neutral-bold`, `text/on-status-{danger,success,warning,info}`, `icon/on-accent` — the ADR-0005 contrast-pairing contract. Warning and info pair **dark** text (yellow/teal fills fail with white). All pairs need the Phase 4 contrast lint to verify programmatically.
 
+## Styles and sticker sheet (added later on 2026-07-05)
+
+- **26 text styles** built, replacing the reference's 27: `heading/1–4`, `body/{lg,md,sm,xs}/{regular,medium,bold}`, `label/{lg,md,sm}`, `link/{lg,md,sm}`, `mono/{lg,md,sm,xs}`. The reference's standalone `caption` was dropped (value-identical to `body/sm/regular`). Every style binds fontFamily, fontSize, lineHeight, AND fontWeight to tokens (zero bind failures).
+- **5 effect styles** (`shadow/xs–xl`) with reference geometry and every layer's color bound to the semantic `shadow/close|middle|diffuse` tokens.
+- **Foundations sticker sheet** built (1488×6653): 12 primitive ramps (119 swatches), 160 semantic rows (each swatch **variable-bound** — the audit's `unbound_swatch` check applies — with resolved Light · Dark values printed), spacing bars with width bound to `space/*` tokens, radius samples corner-bound to `radius/*`, breakpoints, 26 typography specimens on real styles, 5 shadow cards on real effect styles. Screenshot-verified, zero leftover placeholders.
+
 ## Not yet built (next steps in Phase 3)
 
-- Text styles (27 in reference) and effect styles (5) — build after `font/*` semantic typography naming is settled.
-- Sticker sheet (`Foundations` page) and Token Usage table — next session; port `/ply-doc-table` machinery from the reference commands.
+- Token Usage documentation table — port `/ply-doc-table` machinery from the reference commands.
 - The `component` collection intentionally does not exist yet (tier 3 mints on first genuine deviation).
