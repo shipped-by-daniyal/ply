@@ -1,0 +1,46 @@
+---
+title: "ADR-0008: Visual identity — the Aurora gradient system"
+description: "Ply's brand is a subtle violet–pink–cyan aurora: one gradient recipe as the single source of truth for Figma covers, the docs logo/favicon, and the docs site's CSS accents."
+status: accepted
+date: 2026-07-05
+supersedes: null
+superseded_by: null
+tags: [branding, figma, docs]
+---
+
+## Context
+
+Ply had no visual identity: no logo, favicon, custom docs styling, or Figma cover pages. The maintainer asked for a proper branding pass — subtle multi-gradient, in line with the current AI-product aesthetic — reflected in both Figma and the docs. Three cover concepts (Aurora, Spectrum, Dusk) were built on the components file's `Brand / Cover Concepts` page; the maintainer picked **Aurora** (2026-07-05).
+
+## Decision
+
+**The Aurora recipe below is the single source of truth.** The Figma paint styles and the docs CSS custom properties are both transcribed from this table; neither is derived from the other.
+
+| Element | Value |
+|---|---|
+| Anchor: violet | `#8B5CF6` |
+| Anchor: pink | `#EC4899` |
+| Anchor: cyan | `#22D3EE` |
+| Primary gradient | `linear-gradient(90deg, #8B5CF6 0%, #EC4899 55%, #22D3EE 100%)` |
+| Base surface (light) | `#FBFAFF` |
+| Ink (headings on light) | `#17171C` |
+| Muted text | `#595963` |
+| Aurora mesh | 3–4 blurred ellipses (blur 220–240) at 18–35 % opacity in the anchor colors, under a white veil at ~40–45 % |
+| Divider accent | 4–5 px bar filled with the primary gradient |
+
+- **Wordmark**: "Ply" set in Inter Bold with the primary gradient as fill. **Monogram**: three stacked rounded bars (88×16, radius 8, 26 px vertical rhythm, 11 px x-offset per layer) colored violet/pink/cyan top-to-bottom — the plywood-layers metaphor from ADR-0004. The monogram cut is the favicon.
+- **Figma covers**: every Ply file gets a cover instance with the GDS2 anatomy (monogram + owner top, gradient wordmark + version + subtitle center, status footer with gradient divider, STATUS / LAST UPDATED blocks). File status variants: Ready to Use, Work in Progress, Deprecated.
+- **Docs site**: `src/styles/custom.css` declares `--ply-gradient-*` props copied verbatim from this table, then maps them onto Starlight hooks (`--sl-color-accent-*`, hero, subtle card/link accents) for light and dark themes. No hardcoded brand hex anywhere else.
+- **Subtlety rule**: gradients appear as washes, dividers, and text fills — never as full-strength backgrounds behind body text. Body text always sits on base/neutral surfaces (the contrast lint's assumptions hold).
+
+## Alternatives considered
+
+- **Spectrum (blue-anchored)** — tied to the accent Blue tokens, but reads like every other dev tool; the maintainer wanted distinctiveness.
+- **Dusk (warm)** — differentiating but off-mood for a precision tool.
+- **Deriving brand colors from the token palette** — rejected: brand ≠ UI tokens; coupling them would let a token retune silently reskin the brand.
+
+## Consequences
+
+- The winning concept frame (`Concept A — Aurora`) stays on the `Brand / Cover Concepts` page as the master reference; the other two concepts remain for history.
+- Cover components, docs logo/favicon SVGs, and `custom.css` are implemented in later milestones by transcribing this table — any future palette change is a new ADR superseding this one.
+- Dark-theme docs use the same anchors over near-black; the veil flips to a dark scrim. Hero/legibility contrast is checked before shipping.
