@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 68" role="img" aria-label="Ply">
+  <!-- Ply monogram — three stacked plies, ADR-0008 Aurora anchors -->
+  <rect x="0" y="0" width="88" height="16" rx="8" fill="#8B5CF6"/>
+  <rect x="11" y="26" width="88" height="16" rx="8" fill="#EC4899"/>
+  <rect x="22" y="52" width="88" height="16" rx="8" fill="#22D3EE"/>
+</svg>

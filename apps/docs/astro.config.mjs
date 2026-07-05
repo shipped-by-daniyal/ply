@@ -10,6 +10,9 @@ export default defineConfig({
       title: "Ply",
       description:
         "Ply — the agentic design system consumable by AI, designers, and engineers.",
+      logo: { src: "./src/assets/ply-monogram.svg", alt: "Ply" },
+      favicon: "/favicon.svg",
+      customCss: ["./src/styles/custom.css"],
       social: [
         {
           icon: "github",

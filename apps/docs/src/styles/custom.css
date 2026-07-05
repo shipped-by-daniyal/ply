@@ -1,0 +1,51 @@
+/* Ply docs branding — transcribed VERBATIM from the ADR-0008 Aurora recipe table
+   (apps/docs/src/content/docs/decisions/adr-0008-visual-identity-aurora.mdx).
+   That table is the single source of truth shared with the Figma paint styles.
+   No brand hex anywhere else in this stylesheet. */
+:root {
+  --ply-gradient-violet: #8b5cf6;
+  --ply-gradient-pink: #ec4899;
+  --ply-gradient-cyan: #22d3ee;
+  --ply-gradient-primary: linear-gradient(
+    90deg,
+    var(--ply-gradient-violet) 0%,
+    var(--ply-gradient-pink) 55%,
+    var(--ply-gradient-cyan) 100%
+  );
+}
+
+/* ---- Starlight hooks (light) ---- */
+:root {
+  --sl-color-accent-low: color-mix(in srgb, var(--ply-gradient-violet) 14%, white);
+  --sl-color-accent: var(--ply-gradient-violet);
+  --sl-color-accent-high: color-mix(in srgb, var(--ply-gradient-violet) 65%, black);
+}
+
+/* ---- Starlight hooks (dark) ---- */
+:root[data-theme="dark"] {
+  --sl-color-accent-low: color-mix(in srgb, var(--ply-gradient-violet) 30%, black);
+  --sl-color-accent: color-mix(in srgb, var(--ply-gradient-violet) 70%, white);
+  --sl-color-accent-high: color-mix(in srgb, var(--ply-gradient-violet) 25%, white);
+}
+
+/* Gradient hairline under the site header — the cover's footer divider, quoted. */
+.header {
+  border-bottom: 1px solid transparent;
+  border-image: var(--ply-gradient-primary) 1;
+}
+
+/* Splash hero: gradient wordmark treatment (ADR-0008 subtlety rule — gradient as
+   text fill, never as a full-strength backdrop behind body text). */
+[data-has-hero] .hero h1 {
+  background: var(--ply-gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  width: fit-content;
+  margin-inline: auto;
+}
+@media (min-width: 50rem) {
+  [data-has-hero] .hero h1 {
+    margin-inline: 0;
+  }
+}
