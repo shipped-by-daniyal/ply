@@ -1,10 +1,17 @@
 #!/usr/bin/env node
-// Composes the Figma export snapshot into DTCG token files:
-//   packages/tokens/src/primitives.tokens.json         (tier 1 — single-mode)
+// Composes the Figma export snapshot into DTCG token files (ADR-0007 reference naming):
+//   packages/tokens/src/primitives.tokens.json         (tier 1 — single-mode: color ramps + scales)
+//   packages/tokens/src/brand.brand-1.tokens.json      (colors-brand ramp, Brand 1 aliases)
+//   packages/tokens/src/brand.brand-2.tokens.json      (colors-brand ramp, Brand 2 aliases)
+//   packages/tokens/src/font.geist.tokens.json         (font-family Geist mode)
+//   packages/tokens/src/font.die-grotesk-a.tokens.json (font-family Die Grotesk A mode)
 //   packages/tokens/src/semantic.light.tokens.json     (tier 2 — Light values + full metadata)
 //   packages/tokens/src/semantic.dark.tokens.json      (tier 2 — Dark values, lean)
 // Usage: node scripts/build-dtcg.mjs <path-to-ply-export.json>
 // The export snapshot is produced by /ply-export-tokens (chunked Figma MCP reads).
+// Figma names are copied verbatim (ADR-0007); the ONLY code-side projection is that
+// bare scale names gain a group prefix (space/0, radius/Full, breakpoint/xs) so DTCG
+// paths stay collision-free — recorded in $extensions.ply.figma.collection.
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -15,6 +22,9 @@ const exportPath = process.argv[2];
 if (!exportPath) throw new Error("usage: node scripts/build-dtcg.mjs <ply-export.json>");
 const snap = JSON.parse(readFileSync(exportPath, "utf8"));
 
+// deprecated/* tokens exist in Figma for binding stability but never reach code (ADR-0007)
+snap.semantic = snap.semantic.filter(([name]) => !name.startsWith("deprecated/"));
+
 const set = (obj, tokenPath, token) => {
   const parts = tokenPath.split("/");
   let cur = obj;
@@ -24,10 +34,22 @@ const set = (obj, tokenPath, token) => {
   cur[leaf] = token;
 };
 
+// scale collections → DTCG group prefix (code-side projection, see header note)
+const SCALES = [
+  ["space-primitives", "space", "dimension"],
+  ["radius-primitives", "radius", "dimension"],
+  ["font-size", "", "dimension"],
+  ["font-line-height", "", "dimension"],
+  ["breakpoints", "breakpoint", "dimension"],
+  ["font-weight", "", "fontWeight"],
+];
+
 // Invariant: no token path may be a path-prefix of another token path.
 const allPaths = [
   ...snap.colorPrimitives.map((r) => r[0]),
-  ...["space", "radius", "font-size", "font-weight", "line-height", "breakpoint", "font-family"].flatMap((k) => snap[k].map((r) => r[0])),
+  ...SCALES.flatMap(([coll, prefix]) => (snap[coll] ?? []).map((r) => (prefix ? `${prefix}/${r[0]}` : r[0]))),
+  ...(snap["font-family"] ?? []).map((r) => r[0]),
+  ...(snap["colors-brand"] ?? []).map((r) => `colors-brand/${r[0]}`),
   ...snap.semantic.map((r) => r[0]),
 ];
 for (const a of allPaths) {
@@ -36,7 +58,9 @@ for (const a of allPaths) {
   }
 }
 
-// ---- Tier 1: primitives ----
+const toRef = (name) => `{${name.replaceAll("/", ".")}}`;
+
+// ---- Tier 1: primitives (color ramps + scales + default-mode font families) ----
 const primitives = {};
 for (const [name, hex] of snap.colorPrimitives) {
   set(primitives, name, {
@@ -46,70 +70,92 @@ for (const [name, hex] of snap.colorPrimitives) {
     $extensions: { ply: { figma: { collection: "color-primitives" } } },
   });
 }
-const DIM = { space: "space", radius: "radius", "font-size": "font-size", "line-height": "line-height", breakpoint: "breakpoint" };
-for (const [coll, _] of Object.entries(DIM)) {
-  for (const [name, val] of snap[coll]) {
-    set(primitives, name, {
-      $type: "dimension",
-      $value: `${val}px`,
+for (const [coll, prefix, type] of SCALES) {
+  for (const [name, val] of snap[coll] ?? []) {
+    set(primitives, prefix ? `${prefix}/${name}` : name, {
+      $type: type,
+      $value: type === "dimension" ? `${val}px` : val,
       $extensions: { ply: { figma: { collection: coll } } },
     });
   }
 }
-for (const [name, val] of snap["font-weight"]) {
-  set(primitives, name, { $type: "fontWeight", $value: val, $extensions: { ply: { figma: { collection: "font-weight" } } } });
-}
-for (const [name, val] of snap["font-family"]) {
-  set(primitives, name, { $type: "fontFamily", $value: [val], $extensions: { ply: { figma: { collection: "font-family" } } } });
+// font-family: multi-mode — Inter (default) lands in primitives, other modes in their own files
+const fontModes = { Geist: {}, "Die Grotesk A": {} };
+for (const [name, byMode] of snap["font-family"] ?? []) {
+  set(primitives, name, {
+    $type: "fontFamily",
+    $value: [byMode["Inter"]],
+    $extensions: { ply: { figma: { collection: "font-family", mode: "Inter" } } },
+  });
+  for (const mode of ["Geist", "Die Grotesk A"]) {
+    set(fontModes[mode], name, {
+      $type: "fontFamily",
+      $value: [byMode[mode]],
+      $extensions: { ply: { figma: { collection: "font-family", mode } } },
+    });
+  }
 }
 
-// ---- pairsWith rules (the contrast-lint contract, ADR-0005) ----
-// bg token → foreground tokens that are legal on it. on-* pairs are hard 4.5:1; others lint at 4.5:1 too.
+// ---- colors-brand ramp: two mode files (aliases into the primitive ramps) ----
+const brand1 = {};
+const brand2 = {};
+for (const [step, b1, b2] of snap["colors-brand"] ?? []) {
+  const ext = (mode) => ({ ply: { figma: { collection: "colors-brand", mode } } });
+  set(brand1, `colors-brand/${step}`, { $type: "color", $value: toRef(b1), $extensions: ext("Brand 1") });
+  set(brand2, `colors-brand/${step}`, { $type: "color", $value: toRef(b2), $extensions: ext("Brand 2") });
+}
+
+// ---- pairsWith rules (contrast-lint contract rebuilt on reference vocabulary, ADR-0007) ----
+// The deprecated on-* pairing tokens are gone; pairs use only reference-native tokens.
+// Reference-verbatim tokens with no safe cross-mode partner (status solids, boldest rungs,
+// inverse, data-viz) carry NO contract — flagged as known risks in the rename manifest.
 const pairsFor = (name) => {
-  const isState = /-(hovered|pressed)$/.test(name);
-  const base = name.replace(/-(hovered|pressed)$/, "");
-  const isSolid =
-    base === "bg/accent" || base === "bg/accent-bold" || base === "bg/neutral-bold" ||
-    (base.startsWith("bg/status/") && !base.includes("-subtle"));
-  // Transient states of tints/surfaces guarantee only the workhorse text color;
-  // role-colored text is only contracted on resting values.
-  if (isState && !isSolid) {
-    if (base === "bg/accent-subtle" || base === "bg/selected" || base === "bg/neutral-subtle" ||
-        base.startsWith("bg/surface") || (base.startsWith("bg/status/") && base.includes("-subtle")))
-      return ["text/neutral"];
-    return null;
+  const seg = name.split("/");
+  const state = ["hovered", "pressed"].includes(seg[seg.length - 1]) ? seg.pop() : null;
+  if (seg[seg.length - 1] === "default") seg.pop(); // /default leaves share their base's contract
+  const base = seg.join("/");
+  // brand solids (default + bold): white text holds in both modes (dark steps were
+  // deliberately darkened — the kept fixes)
+  if (base === "background/brand" || base === "background/brand/bold")
+    return ["text/static/white"];
+  // brand tints + selected: brand-colored or neutral text when resting; workhorse text in states
+  if (base === "background/brand/subtlest" || base === "background/selected")
+    return state ? ["text/neutral/default"] : ["text/brand/default", "text/brand/bold", "text/neutral/default"];
+  // neutral bold fills: text/neutral/inverse is designed for them and flips with the fill
+  if (base === "background/neutral/bold") return ["text/neutral/inverse"];
+  // neutral subtler overlay (the workhorse tint)
+  if (base === "background/neutral/subtler")
+    return state ? ["text/neutral/default"] : ["text/neutral/default", "text/neutral/subtler"];
+  // surfaces
+  if (/^background\/surface\/(flat|sunken|raised|overlay)$/.test(base))
+    return state ? ["text/neutral/default"] : ["text/neutral/default", "text/neutral/subtler"];
+  // status subtle tints
+  const mStatus = base.match(/^background\/status\/(danger|success|warning|info)\/subtle$/);
+  if (mStatus) {
+    const role = mStatus[1];
+    return state
+      ? ["text/neutral/default"]
+      : [`text/status/${role}/default`, `text/status/${role}/bold`, "text/neutral/default"];
   }
-  if (name.startsWith("bg/status/")) {
-    const role = name.split("/")[2].split("-")[0];
-    if (base.includes("-subtle")) return [`text/status/${role}`, `text/status/${role}-bold`, "text/neutral"];
-    // warning/info solids carry dark text, so their bold fills (dark in light mode) need dedicated on-*-bold pairs
-    if (base.includes("-bold") && (role === "warning" || role === "info")) return [`text/on-status-${role}-bold`];
-    return [`text/on-status-${role}`];
-  }
-  if (base === "bg/accent" || base === "bg/accent-bold") return ["text/on-accent", "icon/on-accent"];
-  if (base === "bg/accent-subtle" || base === "bg/selected") return ["text/accent", "text/accent-bold", "text/neutral"];
-  if (base === "bg/neutral-bold") return ["text/on-neutral-bold"];
-  if (base === "bg/neutral-subtle" || base.startsWith("bg/surface")) return ["text/neutral", "text/neutral-subtle"];
-  if (base === "bg/disabled") return ["text/disabled"];
+  if (base === "background/disabled") return ["text/disabled"]; // informational (WCAG-exempt)
   return null;
 };
 
-// ---- usage seeds: identical templates to the Token Usage table build.
-// Future exports read the table itself (/ply-export-tokens); v1 regenerates because the table was just seeded.
+// ---- usage seeds: state variants get a generic seed; narrative lives in the Token Usage table ----
 const usageFor = (n) => {
-  const st = n.endsWith("-hovered") ? "hovered" : n.endsWith("-pressed") ? "pressed" : null;
-  const base = n.replace(/-(hovered|pressed)$/, "");
-  if (n.startsWith("bg/") && st) return {
+  const seg = n.split("/");
+  const st = ["hovered", "pressed"].includes(seg[seg.length - 1]) ? seg[seg.length - 1] : null;
+  if (!st || !n.startsWith("background/")) return null;
+  const base = seg.slice(0, -1).join("/");
+  return {
     where: `The ${st} state of elements filled with ${base}.`,
     how: `Bind to the ${st} interaction in component variants; never as a resting fill.`,
     do: "Keep state transitions quick (100–150ms) and consistent.",
-    dont: `Don't use as a default fill — resting surfaces use ${base}.`,
+    dont: `Don't use as a default fill — resting surfaces use ${base}/default.`,
   };
-  return null; // narrative detail lives in the Token Usage table; description carries the essentials
 };
 
 // ---- Tier 2: semantic light + dark ----
-const toRef = (primName) => `{${primName.replaceAll("/", ".")}}`;
 const light = {};
 const dark = {};
 for (const [name, l, d, desc] of snap.semantic) {
@@ -130,6 +176,12 @@ for (const [name, l, d, desc] of snap.semantic) {
 mkdirSync(OUT, { recursive: true });
 const write = (file, obj) => writeFileSync(path.join(OUT, file), JSON.stringify(obj, null, 2) + "\n");
 write("primitives.tokens.json", primitives);
+write("brand.brand-1.tokens.json", brand1);
+write("brand.brand-2.tokens.json", brand2);
+write("font.geist.tokens.json", fontModes["Geist"]);
+write("font.die-grotesk-a.tokens.json", fontModes["Die Grotesk A"]);
 write("semantic.light.tokens.json", light);
 write("semantic.dark.tokens.json", dark);
-console.log(`build-dtcg: ${snap.colorPrimitives.length} color primitives, ${snap.semantic.length} semantic tokens → ${OUT}`);
+console.log(
+  `build-dtcg: ${snap.colorPrimitives.length} color primitives, ${snap["colors-brand"]?.length ?? 0} brand steps, ${snap.semantic.length} semantic tokens → ${OUT}`
+);

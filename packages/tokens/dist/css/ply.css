@@ -25,11 +25,19 @@
   --ply-space-1200: 128px;
   --ply-space-1300: 144px;
   --ply-space-1400: 176px;
-  --ply-radius-none: 0px;
-  --ply-radius-small: 4px;
-  --ply-radius-medium: 8px;
-  --ply-radius-large: 16px;
-  --ply-radius-xlarge: 24px;
+  --ply-radius-0: 0px;
+  --ply-radius-50: 2px;
+  --ply-radius-100: 4px;
+  --ply-radius-150: 6px;
+  --ply-radius-200: 8px;
+  --ply-radius-250: 10px;
+  --ply-radius-300: 12px;
+  --ply-radius-400: 16px;
+  --ply-radius-450: 20px;
+  --ply-radius-500: 24px;
+  --ply-radius-600: 32px;
+  --ply-radius-700: 48px;
+  --ply-radius-800: 64px;
   --ply-radius-full: 9999px;
   --ply-font-size-100: 8px;
   --ply-font-size-200: 10px;
@@ -63,177 +71,215 @@
   --ply-breakpoint-md: 1024px;
   --ply-breakpoint-lg: 1280px;
   --ply-breakpoint-xl: 1640px;
-  --ply-font-weight-100: 100;
-  --ply-font-weight-200: 200;
-  --ply-font-weight-300: 300;
-  --ply-font-weight-400: 400;
-  --ply-font-weight-500: 500;
-  --ply-font-weight-600: 600;
-  --ply-font-weight-700: 700;
-  --ply-font-family-sans: Inter;
-  --ply-font-family-mono: "IBM Plex Mono";
-  --ply-bg-surface-sunken: #f3f4f6; /** App canvas behind flat surfaces (page background). */
-  --ply-bg-surface: #ffffff; /** Default surface: cards, panels, page content areas. */
-  --ply-bg-surface-hovered: #00000014; /** Hover overlay on interactive surface rows/cells. */
-  --ply-bg-surface-pressed: #00000029; /** Pressed overlay on interactive surface rows/cells. */
-  --ply-bg-surface-raised: #ffffff; /** Raised surface: sticky bars, popover-adjacent panels. */
-  --ply-bg-surface-raised-hovered: #00000014; /** Hover overlay on raised surface. */
-  --ply-bg-surface-raised-pressed: #00000029; /** Pressed overlay on raised surface. */
-  --ply-bg-surface-overlay: #ffffff; /** Topmost surface: modals, dropdowns, tooltips, toasts. */
-  --ply-bg-surface-overlay-hovered: #00000014; /** Hover overlay on overlay surface items (menu rows). */
-  --ply-bg-surface-overlay-pressed: #00000029; /** Pressed overlay on overlay surface items. */
-  --ply-bg-neutral-hovered: #00000014; /** Ghost interaction: hover fill for transparent-by-default controls. */
-  --ply-bg-neutral-pressed: #00000029; /** Ghost interaction: pressed fill for transparent-by-default controls. */
-  --ply-bg-neutral-subtle: #00000014; /** Quiet neutral fill: secondary buttons, chips, inputs. */
-  --ply-bg-neutral-subtle-hovered: #00000029; /** Hovered quiet neutral fill. */
-  --ply-bg-neutral-subtle-pressed: #00000052; /** Pressed quiet neutral fill. */
-  --ply-bg-neutral-bold: #525457; /** Solid neutral fill: bold chips, tooltips (inverse-style). Pairs with text/on-neutral-bold. */
-  --ply-bg-neutral-bold-hovered: #404449; /** Hovered solid neutral fill. */
-  --ply-bg-neutral-bold-pressed: #292b2d; /** Pressed solid neutral fill. */
-  --ply-bg-accent: #0d61ff; /** Solid brand fill: primary buttons, active states. Pairs with text/on-accent. */
-  --ply-bg-accent-hovered: #004cdb; /** Hovered solid brand fill. */
-  --ply-bg-accent-pressed: #003cad; /** Pressed solid brand fill. */
-  --ply-bg-accent-subtle: #f5f9ff; /** Brand tint: highlighted cards, subtle callouts. */
-  --ply-bg-accent-subtle-hovered: #dde9ff; /** Hovered brand tint. */
-  --ply-bg-accent-subtle-pressed: #adcaff; /** Pressed brand tint. */
-  --ply-bg-accent-bold: #004cdb; /** High-emphasis brand fill. */
-  --ply-bg-accent-bold-hovered: #003cad; /** Hovered high-emphasis brand fill. */
-  --ply-bg-accent-bold-pressed: #002d80; /** Pressed high-emphasis brand fill. */
-  --ply-bg-selected: #f5f9ff; /** Selected row/item background. */
-  --ply-bg-selected-hovered: #dde9ff; /** Hovered selected background. */
-  --ply-bg-selected-pressed: #adcaff; /** Pressed selected background. */
-  --ply-bg-inverse: #00000052; /** Inverse-context background (dark-on-light UI islands). */
-  --ply-bg-inverse-hovered: #0000007a; /** Hovered inverse background. */
-  --ply-bg-inverse-pressed: #000000a3; /** Pressed inverse background. */
-  --ply-bg-disabled: #00000014; /** Disabled control fill. Pairs with text/disabled. */
-  --ply-bg-scrim: #000000a3; /** Dimming layer behind modals and drawers. */
-  --ply-bg-static-white: #f3f4f6; /** Always-light background regardless of theme. */
-  --ply-bg-static-black: #17181a; /** Always-dark background regardless of theme. */
-  --ply-bg-status-danger: #c8293b; /** Solid danger fill: banners, badges, destructive/confirm buttons. Pairs with text/on-status-danger. */
-  --ply-bg-status-danger-hovered: #9f2433; /** Hovered solid danger fill. */
-  --ply-bg-status-danger-pressed: #771e2a; /** Pressed solid danger fill. */
-  --ply-bg-status-danger-subtle: #fde4e6; /** Quiet danger tint: inline alerts, row highlights. */
-  --ply-bg-status-danger-subtle-hovered: #ffbec1; /** Hovered quiet danger tint. */
-  --ply-bg-status-danger-subtle-pressed: #f17f83; /** Pressed quiet danger tint. */
-  --ply-bg-status-danger-bold: #9f2433; /** High-emphasis danger fill. */
-  --ply-bg-status-danger-bold-hovered: #771e2a; /** Hovered high-emphasis danger fill. */
-  --ply-bg-status-danger-bold-pressed: #511820; /** Pressed high-emphasis danger fill. (Dark step fixed from reference collision.) */
-  --ply-bg-status-success: #197f32; /** Solid success fill: banners, badges, destructive/confirm buttons. Pairs with text/on-status-success. */
-  --ply-bg-status-success-hovered: #136427; /** Hovered solid success fill. */
-  --ply-bg-status-success-pressed: #0d4b1c; /** Pressed solid success fill. */
-  --ply-bg-status-success-subtle: #def8e4; /** Quiet success tint: inline alerts, row highlights. */
-  --ply-bg-status-success-subtle-hovered: #82dca6; /** Hovered quiet success tint. */
-  --ply-bg-status-success-subtle-pressed: #2fd455; /** Pressed quiet success tint. */
-  --ply-bg-status-success-bold: #136427; /** High-emphasis success fill. */
-  --ply-bg-status-success-bold-hovered: #0d4b1c; /** Hovered high-emphasis success fill. */
-  --ply-bg-status-success-bold-pressed: #083312; /** Pressed high-emphasis success fill. (Dark step fixed from reference collision.) */
-  --ply-bg-status-warning: #ba9a00; /** Solid warning fill: banners, badges, destructive/confirm buttons. Pairs with text/on-status-warning. */
-  --ply-bg-status-warning-hovered: #e1ba00; /** Hovered solid warning fill. */
-  --ply-bg-status-warning-pressed: #f8da48; /** Pressed solid warning fill. */
-  --ply-bg-status-warning-subtle: #fff5c2; /** Quiet warning tint: inline alerts, row highlights. */
-  --ply-bg-status-warning-subtle-hovered: #ffed97; /** Hovered quiet warning tint. */
-  --ply-bg-status-warning-subtle-pressed: #f8da48; /** Pressed quiet warning tint. */
-  --ply-bg-status-warning-bold: #6f5c00; /** High-emphasis warning fill. */
-  --ply-bg-status-warning-bold-hovered: #4d4000; /** Hovered high-emphasis warning fill. */
-  --ply-bg-status-warning-bold-pressed: #2e2700; /** Pressed high-emphasis warning fill. (Dark step fixed from reference collision.) */
-  --ply-bg-status-info: #02b8b8; /** Solid info fill: banners, badges, destructive/confirm buttons. Pairs with text/on-status-info. */
-  --ply-bg-status-info-hovered: #01d9d9; /** Hovered solid info fill. */
-  --ply-bg-status-info-pressed: #00f2f2; /** Pressed solid info fill. */
-  --ply-bg-status-info-subtle: #c5f5f5; /** Quiet info tint: inline alerts, row highlights. */
-  --ply-bg-status-info-subtle-hovered: #9af1f1; /** Hovered quiet info tint. */
-  --ply-bg-status-info-subtle-pressed: #00f2f2; /** Pressed quiet info tint. */
-  --ply-bg-status-info-bold: #036c6c; /** High-emphasis info fill. */
-  --ply-bg-status-info-bold-hovered: #034949; /** Hovered high-emphasis info fill. */
-  --ply-bg-status-info-bold-pressed: #022929; /** Pressed high-emphasis info fill. (Dark step fixed from reference collision.) */
-  --ply-text-neutral: #17181a; /** Default body and heading text. */
-  --ply-text-neutral-subtle: #525457; /** Secondary text: captions, helper text, metadata. */
-  --ply-text-inverse: #f3f4f6; /** Text on inverse-context backgrounds. */
-  --ply-text-disabled: #0000007a; /** Disabled text and placeholder copy. */
-  --ply-text-selected: #0d61ff; /** Text in selected menu items, tabs, rows. */
-  --ply-text-accent: #0d61ff; /** Brand-colored text for emphasis. */
-  --ply-text-accent-subtle: #adcaff; /** Quiet brand text on brand tints. */
-  --ply-text-accent-bold: #004cdb; /** High-emphasis brand text. */
-  --ply-text-link: #0d61ff; /** Hyperlink text. */
+  --ply-weight-100: 100;
+  --ply-weight-200: 200;
+  --ply-weight-300: 300;
+  --ply-weight-400: 400;
+  --ply-weight-500: 500;
+  --ply-weight-600: 600;
+  --ply-weight-700: 700;
+  --ply-font-sans: Inter;
+  --ply-font-mono: "IBM Plex Mono";
+  --ply-colors-brand-50: #f5f9ff;
+  --ply-colors-brand-100: #dde9ff;
+  --ply-colors-brand-200: #adcaff;
+  --ply-colors-brand-300: #7baaff;
+  --ply-colors-brand-400: #4888ff;
+  --ply-colors-brand-500: #0d61ff;
+  --ply-colors-brand-600: #004cdb;
+  --ply-colors-brand-700: #003cad;
+  --ply-colors-brand-800: #002d80;
+  --ply-colors-brand-900: #001e56;
+  --ply-colors-brand-950: #000f2e;
+  --ply-background-surface-sunken-default: #f3f4f6; /** Sunken surface — page bg, kanban wells, input field bgs. Subtle off-white (Gray/25). */
+  --ply-background-surface-flat-default: #ffffff; /** Default surface — cards, panels, nav, headers. White (Gray/0). */
+  --ply-background-surface-flat-hovered: #00000014; /** Hover overlay on flat surfaces (8% black). */
+  --ply-background-surface-flat-pressed: #00000029; /** Pressed overlay on flat surfaces (16% black). */
+  --ply-background-surface-raised-default: #ffffff; /** Elevated surface for popovers, dropdowns, floating cards. Pair with a shadow at usage. (White in light mode; will diverge in dark mode.) */
+  --ply-background-surface-raised-hovered: #00000014; /** Hover state for raised surfaces (8% black overlay). */
+  --ply-background-surface-raised-pressed: #00000029; /** Pressed state for raised surfaces (16% black overlay). */
+  --ply-background-surface-overlay-default: #ffffff; /** Overlay surface — modal/dialog/full-screen content sitting above raised. Light: white; Dark: Gray/700 (lighter than raised's Gray/800 to reinforce elevation). Pair with shadow/xl. */
+  --ply-background-surface-overlay-hovered: #00000014; /** Hover overlay on overlay surfaces (8% black overlay on light; 8% white on dark). */
+  --ply-background-surface-overlay-pressed: #00000029; /** Pressed overlay on overlay surfaces (16% overlay). */
+  --ply-background-neutral-hovered: #00000014; /** Default-tone neutral overlay (8% black). Hover state for any default-tone surface. */
+  --ply-background-neutral-pressed: #00000029; /** Default-tone neutral overlay (16% black). Pressed state for any default-tone surface. */
+  --ply-background-neutral-subtler-default: #00000014; /** Subtler neutral overlay (8% black). For default-tone pressed states or subtle row highlights. */
+  --ply-background-neutral-subtler-hovered: #00000029; /** Subtler neutral overlay (8% black). For default-tone pressed states or subtle row highlights. Hover variant. */
+  --ply-background-neutral-subtler-pressed: #00000052; /** Subtler neutral overlay (8% black). For default-tone pressed states or subtle row highlights. Pressed variant. */
+  --ply-background-neutral-bold-default: #525457; /** Bold neutral fill — solid Gray/700–900 range. Use sparingly for inverse surfaces or callouts. */
+  --ply-background-neutral-bold-hovered: #404449; /** Bold neutral fill — solid Gray/700–900 range. Use sparingly for inverse surfaces or callouts. Hover variant. */
+  --ply-background-neutral-bold-pressed: #292b2d; /** Bold neutral fill — solid Gray/700–900 range. Use sparingly for inverse surfaces or callouts. Pressed variant. */
+  --ply-background-neutral-subtlest-default: #0000000a; /** Subtlest neutral overlay (4% black). Apply over any surface for the lightest state layer — typical default-tone hover. */
+  --ply-background-neutral-subtlest-hovered: #00000014; /** Subtlest neutral overlay (4% black). Apply over any surface for the lightest state layer — typical default-tone hover. Hover variant. */
+  --ply-background-neutral-subtlest-pressed: #00000029; /** Subtlest neutral overlay (4% black). Apply over any surface for the lightest state layer — typical default-tone hover. Pressed variant. */
+  --ply-background-neutral-subtle-default: #00000029; /** Subtle neutral overlay (16% black). For more emphatic state layering. */
+  --ply-background-neutral-subtle-hovered: #00000052; /** Subtle neutral overlay (16% black). For more emphatic state layering. Hover variant. */
+  --ply-background-neutral-subtle-pressed: #0000007a; /** Subtle neutral overlay (16% black). For more emphatic state layering. Pressed variant. */
+  --ply-background-neutral-boldest-default: #404449; /** Boldest neutral fill — solid Gray/800–1000 range. High-contrast surfaces only. */
+  --ply-background-neutral-boldest-hovered: #404449; /** Boldest neutral fill — solid Gray/800–1000 range. High-contrast surfaces only. Hover variant. */
+  --ply-background-neutral-boldest-pressed: #17181a; /** Boldest neutral fill — solid Gray/800–1000 range. High-contrast surfaces only. Pressed variant. */
+  --ply-background-inverse-default: #00000052; /** Inverted surface — dark on a light theme. */
+  --ply-background-inverse-hovered: #0000007a; /** Inverted surface — dark on a light theme (hovered state). */
+  --ply-background-inverse-pressed: #000000a3; /** Inverted surface — dark on a light theme (pressed state). */
+  --ply-background-disabled: #00000014; /** Disabled surface overlay. Light: 8% black; Dark: 8% white. Applied to disabled inputs, buttons, controls — lighter than other neutral states so it reads as non-editable rather than empty. */
+  --ply-background-scrim: #000000a3; /** Translucent dimming overlay behind modal/sheet surfaces. */
+  --ply-background-static-white-default: #f3f4f6; /** Always-white surface that holds across light + dark modes. Use on brand-fixed elements (logos, illustrations, marketing imagery) that must not invert. */
+  --ply-background-static-black-default: #17181a; /** Always-black surface that holds across light + dark modes. Use on brand-fixed elements (logos, illustrations, marketing imagery) that must not invert. */
+  --ply-background-status-danger-default: #c8293b; /** Canonical danger background. Light: Red/500; Dark: Red/400. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized. */
+  --ply-background-status-danger-hovered: #9f2433; /** Canonical danger background. Light: Red/600; Dark: Red/300. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized. */
+  --ply-background-status-danger-pressed: #771e2a; /** Canonical danger background. Light: Red/700; Dark: Red/200. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized. */
+  --ply-background-status-danger-subtle-default: #fde4e6; /** Faint error / destructive-tinted surface for inline alerts and banners. */
+  --ply-background-status-danger-subtle-hovered: #ffbec1; /** Faint error / destructive-tinted surface for inline alerts and banners (hovered state). */
+  --ply-background-status-danger-subtle-pressed: #f17f83; /** Faint error / destructive-tinted surface for inline alerts and banners (pressed state). */
+  --ply-background-status-danger-bold-default: #9f2433; /** Strong error / destructive surface for high-emphasis messaging. */
+  --ply-background-status-danger-bold-hovered: #771e2a; /** Strong error / destructive surface for high-emphasis messaging (hovered state). */
+  --ply-background-status-danger-bold-pressed: #511820; /** Strong error / destructive surface for high-emphasis messaging (pressed state). */
+  --ply-background-status-success-default: #197f32; /** Canonical success background. Light: Green/500; Dark: Green/400. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized. */
+  --ply-background-status-success-hovered: #136427; /** Canonical success background. Light: Green/600; Dark: Green/300. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized. */
+  --ply-background-status-success-pressed: #0d4b1c; /** Canonical success background. Light: Green/700; Dark: Green/200. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized. */
+  --ply-background-status-success-subtle-default: #def8e4; /** Faint success / confirmation-tinted surface for inline alerts and banners. */
+  --ply-background-status-success-subtle-hovered: #82dca6; /** Faint success / confirmation-tinted surface for inline alerts and banners (hovered state). */
+  --ply-background-status-success-subtle-pressed: #2fd455; /** Faint success / confirmation-tinted surface for inline alerts and banners (pressed state). */
+  --ply-background-status-success-bold-default: #136427; /** Strong success / confirmation surface for high-emphasis messaging. */
+  --ply-background-status-success-bold-hovered: #0d4b1c; /** Strong success / confirmation surface for high-emphasis messaging (hovered state). */
+  --ply-background-status-success-bold-pressed: #083312; /** Strong success / confirmation surface for high-emphasis messaging (pressed state). */
+  --ply-background-status-warning-default: #ba9a00; /** Canonical warning background. Light: Yellow/500; Dark: Yellow/400. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized. */
+  --ply-background-status-warning-hovered: #e1ba00; /** Canonical warning background. Light: Yellow/600; Dark: Yellow/300. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized. */
+  --ply-background-status-warning-pressed: #f8da48; /** Canonical warning background. Light: Yellow/700; Dark: Yellow/200. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized. */
+  --ply-background-status-warning-subtle-default: #fff5c2; /** Faint caution / warning-tinted surface for inline alerts and banners. */
+  --ply-background-status-warning-subtle-hovered: #ffed97; /** Faint caution / warning-tinted surface for inline alerts and banners (hovered state). */
+  --ply-background-status-warning-subtle-pressed: #f8da48; /** Faint caution / warning-tinted surface for inline alerts and banners (pressed state). */
+  --ply-background-status-warning-bold-default: #6f5c00; /** Strong caution / warning surface for high-emphasis messaging. */
+  --ply-background-status-warning-bold-hovered: #4d4000; /** Strong caution / warning surface for high-emphasis messaging (hovered state). */
+  --ply-background-status-warning-bold-pressed: #2e2700; /** Strong caution / warning surface for high-emphasis messaging (pressed state). */
+  --ply-background-status-info-default: #02b8b8; /** Canonical info background. Light: Teal/500; Dark: Teal/400. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized. */
+  --ply-background-status-info-hovered: #01d9d9; /** Canonical info background. Light: Teal/600; Dark: Teal/300. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized. */
+  --ply-background-status-info-pressed: #00f2f2; /** Canonical info background. Light: Teal/700; Dark: Teal/200. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized. */
+  --ply-background-status-info-subtle-default: #c5f5f5; /** Faint informational-tinted surface for inline alerts and banners. */
+  --ply-background-status-info-subtle-hovered: #9af1f1; /** Faint informational-tinted surface for inline alerts and banners (hovered state). */
+  --ply-background-status-info-subtle-pressed: #00f2f2; /** Faint informational-tinted surface for inline alerts and banners (pressed state). */
+  --ply-background-status-info-bold-default: #036c6c; /** Strong informational surface for high-emphasis messaging. */
+  --ply-background-status-info-bold-hovered: #034949; /** Strong informational surface for high-emphasis messaging (hovered state). */
+  --ply-background-status-info-bold-pressed: #022929; /** Strong informational surface for high-emphasis messaging (pressed state). */
+  --ply-text-neutral-default: #17181a; /** Default body and UI text. */
+  --ply-text-neutral-subtler: #525457; /** Tertiary text — helper copy, captions. */
+  --ply-text-neutral-inverse: #f3f4f6; /** Neutral text designed to read on inverted (dark) surfaces — pair with background/inverse. */
+  --ply-text-neutral-subtlest: #727682; /** Least-emphasized text — timestamps, light metadata. */
+  --ply-text-neutral-subtle: #404449; /** Secondary / muted text. */
+  --ply-text-disabled: #0000007a; /** Text on disabled controls. */
+  --ply-text-link-default: #0d61ff; /** Default hyperlink text. */
   --ply-text-link-hovered: #004cdb; /** Hovered hyperlink text. */
-  --ply-text-link-pressed: #003cad; /** Pressed hyperlink text. */
+  --ply-text-link-pressed: #003cad; /** Pressed/active hyperlink text. */
   --ply-text-link-visited: #8627ce; /** Visited hyperlink text. */
-  --ply-text-static-white: #f3f4f6; /** Always-light text regardless of theme. */
-  --ply-text-static-black: #17181a; /** Always-dark text regardless of theme. */
-  --ply-text-status-danger: #c8293b; /** Danger text: errors, destructive labels. (Dark step normalized to match icon ramp.) */
-  --ply-text-status-danger-bold: #771e2a; /** High-emphasis danger text on danger-subtle fills. */
-  --ply-text-status-success: #197f32; /** Success text. */
-  --ply-text-status-success-bold: #0d4b1c; /** High-emphasis success text on success-subtle fills. */
-  --ply-text-status-warning: #6f5c00; /** Warning text. */
-  --ply-text-status-warning-bold: #4d4000; /** High-emphasis warning text on warning-subtle fills. */
-  --ply-text-status-info: #036c6c; /** Info text. */
-  --ply-text-status-info-bold: #034949; /** High-emphasis info text on info-subtle fills. */
-  --ply-text-on-accent: #ffffff; /** Text on bg/accent (solid brand fills). Contrast-lint pair. */
-  --ply-text-on-neutral-bold: #ffffff; /** Text on bg/neutral-bold. Contrast-lint pair. */
-  --ply-text-on-status-danger: #ffffff; /** Text on bg/status/danger. Contrast-lint pair. */
-  --ply-text-on-status-success: #ffffff; /** Text on bg/status/success. Contrast-lint pair. */
-  --ply-text-on-status-warning: #17181a; /** Text on bg/status/warning (yellow needs dark text). Contrast-lint pair. */
-  --ply-text-on-status-info: #17181a; /** Text on bg/status/info (teal needs dark text). Contrast-lint pair. */
-  --ply-text-on-status-warning-bold: #ffffff; /** Text on bg/status/warning-bold. Contrast-lint pair. */
-  --ply-text-on-status-info-bold: #ffffff; /** Text on bg/status/info-bold. Contrast-lint pair. */
-  --ply-icon-neutral: #17181a; /** Default icon color. */
-  --ply-icon-neutral-subtle: #525457; /** Secondary icon color. */
-  --ply-icon-inverse: #f3f4f6; /** Icons on inverse-context backgrounds. */
-  --ply-icon-disabled: #0000007a; /** Disabled icons. */
-  --ply-icon-selected: #0d61ff; /** Icons in selected items. */
-  --ply-icon-accent: #0d61ff; /** Brand-colored icons. */
-  --ply-icon-accent-subtle: #adcaff; /** Quiet brand icons on brand tints. */
-  --ply-icon-accent-bold: #004cdb; /** High-emphasis brand icons. */
-  --ply-icon-static-white: #f3f4f6; /** Always-light icons. */
-  --ply-icon-static-black: #17181a; /** Always-dark icons. */
-  --ply-icon-status-danger: #c8293b; /** Danger icons. */
-  --ply-icon-status-danger-bold: #771e2a; /** High-emphasis danger icons. */
-  --ply-icon-status-success: #197f32; /** Success icons. */
-  --ply-icon-status-success-bold: #0d4b1c; /** High-emphasis success icons. */
-  --ply-icon-status-warning: #6f5c00; /** Warning icons. */
-  --ply-icon-status-warning-bold: #4d4000; /** High-emphasis warning icons. */
-  --ply-icon-status-info: #036c6c; /** Info icons. */
-  --ply-icon-status-info-bold: #034949; /** High-emphasis info icons. */
-  --ply-icon-on-accent: #ffffff; /** Icons on bg/accent. Contrast-lint pair. */
-  --ply-border-neutral: #d2d6dc; /** Default border: inputs, cards, dividers. */
-  --ply-border-neutral-hovered: #b2b5b8; /** Hovered default border. */
-  --ply-border-neutral-pressed: #979a9e; /** Pressed default border. */
-  --ply-border-neutral-subtle: #e2e6ec; /** Hairline border: subtle dividers. */
-  --ply-border-neutral-subtle-hovered: #d2d6dc; /** Hovered hairline border. (Normalized monotonic from reference.) */
-  --ply-border-neutral-subtle-pressed: #b2b5b8; /** Pressed hairline border. (Normalized monotonic from reference.) */
-  --ply-border-neutral-bold: #979a9e; /** Strong border: emphasis outlines. */
-  --ply-border-neutral-bold-hovered: #727682; /** Hovered strong border. (Normalized from reference collision.) */
-  --ply-border-neutral-bold-pressed: #686a6e; /** Pressed strong border. (Normalized from reference collision.) */
-  --ply-border-accent: #4888ff; /** Brand border. */
-  --ply-border-accent-subtle: #dde9ff; /** Quiet brand border. */
-  --ply-border-accent-bold: #4888ff; /** Strong brand border. */
-  --ply-border-focused: #4888ff; /** Focus ring. (Strengthened from reference blue/200 for 3:1 non-text contrast.) */
-  --ply-border-selected: #0d61ff; /** Border on selected items. */
-  --ply-border-disabled: #00000014; /** Disabled control border. */
-  --ply-border-static-white: #f3f4f6; /** Always-light border. */
-  --ply-border-static-black: #17181a; /** Always-dark border. */
-  --ply-border-status-danger: #ffbec1; /** Danger border: error inputs, alert outlines. */
-  --ply-border-status-danger-subtle: #fde4e6; /** Quiet danger border. */
-  --ply-border-status-danger-bold: #fd676d; /** Strong danger border. */
-  --ply-border-status-success: #82dca6; /** Success border. */
-  --ply-border-status-success-subtle: #def8e4; /** Quiet success border. */
-  --ply-border-status-success-bold: #27b749; /** Strong success border. */
-  --ply-border-status-warning: #ffed97; /** Warning border. */
-  --ply-border-status-warning-subtle: #fff5c2; /** Quiet warning border. */
-  --ply-border-status-warning-bold: #e1ba00; /** Strong warning border. */
-  --ply-border-status-info: #9af1f1; /** Info border. */
-  --ply-border-status-info-subtle: #c5f5f5; /** Quiet info border. */
-  --ply-border-status-info-bold: #01d9d9; /** Strong info border. */
-  --ply-data-viz-categorical-1: #0d61ff; /** Categorical chart series 1. Assign in order; never use for UI semantics. */
-  --ply-data-viz-categorical-2: #8627ce; /** Categorical chart series 2. Assign in order; never use for UI semantics. */
-  --ply-data-viz-categorical-3: #02b8b8; /** Categorical chart series 3. Assign in order; never use for UI semantics. */
-  --ply-data-viz-categorical-4: #ff0d81; /** Categorical chart series 4. Assign in order; never use for UI semantics. */
-  --ply-data-viz-categorical-5: #ff9617; /** Categorical chart series 5. Assign in order; never use for UI semantics. */
-  --ply-data-viz-categorical-6: #209a3e; /** Categorical chart series 6. Assign in order; never use for UI semantics. */
-  --ply-data-viz-categorical-7: #f23041; /** Categorical chart series 7. Assign in order; never use for UI semantics. */
-  --ply-data-viz-categorical-8: #ba9a00; /** Categorical chart series 8. Assign in order; never use for UI semantics. */
-  --ply-shadow-close: #00000014; /** Shadow color for tight, close elevation. */
-  --ply-shadow-middle: #0000000f; /** Shadow color for mid elevation. */
-  --ply-shadow-diffuse: #0000000a; /** Shadow color for large, diffuse elevation. */
+  --ply-text-static-white: #f3f4f6; /** Always-white text colour that holds across light + dark modes. Use on brand-fixed elements (logos, illustrations, marketing imagery) that must not invert. */
+  --ply-text-static-black: #17181a; /** Always-black text colour that holds across light + dark modes. Use on brand-fixed elements (logos, illustrations, marketing imagery) that must not invert. */
+  --ply-text-status-danger-default: #c8293b; /** Default danger-flavoured text for danger messaging and validation. */
+  --ply-text-status-danger-bold: #771e2a; /** High-emphasis danger-flavoured text for danger messaging and validation. */
+  --ply-text-status-danger-subtle: #fde4e6; /** Subtle danger-flavoured text for danger messaging and validation. */
+  --ply-text-status-success-default: #197f32; /** Default success-flavoured text for success messaging and validation. */
+  --ply-text-status-success-bold: #0d4b1c; /** High-emphasis success-flavoured text for success messaging and validation. */
+  --ply-text-status-success-subtle: #def8e4; /** Subtle success-flavoured text for success messaging and validation. */
+  --ply-text-status-warning-default: #6f5c00; /** Default warning-flavoured text for warning messaging and validation. */
+  --ply-text-status-warning-bold: #4d4000; /** High-emphasis warning-flavoured text for warning messaging and validation. */
+  --ply-text-status-warning-subtle: #fff5c2; /** Subtle warning-flavoured text for warning messaging and validation. */
+  --ply-text-status-info-default: #036c6c; /** Default info-flavoured text for info messaging and validation. */
+  --ply-text-status-info-bold: #034949; /** High-emphasis info-flavoured text for info messaging and validation. */
+  --ply-text-status-info-subtle: #c5f5f5; /** Subtle info-flavoured text for info messaging and validation. */
+  --ply-icon-neutral-default: #17181a; /** Default icon colour. */
+  --ply-icon-neutral-subtler: #525457; /** Quiet icon for secondary affordances. */
+  --ply-icon-neutral-inverse: #f3f4f6; /** Neutral icon designed to read on inverted (dark) surfaces — pair with background/inverse. */
+  --ply-icon-neutral-subtlest: #727682; /** Faintest icon — most decorative use. */
+  --ply-icon-neutral-subtle: #404449; /** De-emphasized icon. */
+  --ply-icon-disabled: #0000007a; /** Icon on disabled controls. */
+  --ply-icon-static-white: #f3f4f6; /** Always-white icon colour that holds across light + dark modes. Use on brand-fixed elements (logos, illustrations, marketing imagery) that must not invert. */
+  --ply-icon-static-black: #17181a; /** Always-black icon colour that holds across light + dark modes. Use on brand-fixed elements (logos, illustrations, marketing imagery) that must not invert. */
+  --ply-icon-status-danger-default: #c8293b; /** Default danger-flavoured icon for danger messaging and validation. */
+  --ply-icon-status-danger-bold: #771e2a; /** High-emphasis danger-flavoured icon for danger messaging and validation. */
+  --ply-icon-status-danger-subtle: #fde4e6; /** Subtle danger-flavoured icon for danger messaging and validation. */
+  --ply-icon-status-success-default: #197f32; /** Default success-flavoured icon for success messaging and validation. */
+  --ply-icon-status-success-bold: #0d4b1c; /** High-emphasis success-flavoured icon for success messaging and validation. */
+  --ply-icon-status-success-subtle: #def8e4; /** Subtle success-flavoured icon for success messaging and validation. */
+  --ply-icon-status-warning-default: #6f5c00; /** Default warning-flavoured icon for warning messaging and validation. */
+  --ply-icon-status-warning-bold: #4d4000; /** High-emphasis warning-flavoured icon for warning messaging and validation. */
+  --ply-icon-status-warning-subtle: #fff5c2; /** Subtle warning-flavoured icon for warning messaging and validation. */
+  --ply-icon-status-info-default: #036c6c; /** Default info-flavoured icon for info messaging and validation. */
+  --ply-icon-status-info-bold: #034949; /** High-emphasis info-flavoured icon for info messaging and validation. */
+  --ply-icon-status-info-subtle: #c5f5f5; /** Subtle info-flavoured icon for info messaging and validation. */
+  --ply-border-neutral-default: #d2d6dc; /** Default UI border. */
+  --ply-border-neutral-hovered: #b2b5b8; /** Default UI border (hovered state). */
+  --ply-border-neutral-pressed: #979a9e; /** Default UI border (pressed state). */
+  --ply-border-neutral-subtle-default: #e2e6ec; /** Quiet divider / faint border. */
+  --ply-border-neutral-subtle-hovered: #d2d6dc; /** Quiet divider / faint border (hovered state). */
+  --ply-border-neutral-subtle-pressed: #b2b5b8; /** Quiet divider / faint border (pressed state). */
+  --ply-border-neutral-bold-default: #979a9e; /** Strong border for emphasis. */
+  --ply-border-neutral-bold-hovered: #727682; /** Strong border for emphasis (hovered state). */
+  --ply-border-neutral-bold-pressed: #686a6e; /** Strong border for emphasis (pressed state). */
+  --ply-border-disabled: #00000014; /** Disabled border overlay. Light: 8% black; Dark: 8% white. Use on disabled inputs/buttons/controls so the outline reads as non-editable without competing with active states. */
+  --ply-border-static-white: #f3f4f6; /** Always-white border that holds across light + dark modes. Use on brand-fixed elements (logos, illustrations, marketing imagery) that must not invert. */
+  --ply-border-static-black: #17181a; /** Always-black border that holds across light + dark modes. Use on brand-fixed elements (logos, illustrations, marketing imagery) that must not invert. */
+  --ply-border-status-danger-default: #ffbec1; /** Default danger-flavoured border for danger messaging and validation. */
+  --ply-border-status-danger-subtle: #fde4e6; /** Subtle danger-flavoured border for danger messaging and validation. */
+  --ply-border-status-danger-bold: #fd676d; /** High-emphasis danger-flavoured border for danger messaging and validation. */
+  --ply-border-status-success-default: #82dca6; /** Default success-flavoured border for success messaging and validation. */
+  --ply-border-status-success-subtle: #def8e4; /** Subtle success-flavoured border for success messaging and validation. */
+  --ply-border-status-success-bold: #27b749; /** High-emphasis success-flavoured border for success messaging and validation. */
+  --ply-border-status-warning-default: #ffed97; /** Default warning-flavoured border for warning messaging and validation. */
+  --ply-border-status-warning-subtle: #fff5c2; /** Subtle warning-flavoured border for warning messaging and validation. */
+  --ply-border-status-warning-bold: #e1ba00; /** High-emphasis warning-flavoured border for warning messaging and validation. */
+  --ply-border-status-info-default: #9af1f1; /** Default info-flavoured border for info messaging and validation. */
+  --ply-border-status-info-subtle: #c5f5f5; /** Subtle info-flavoured border for info messaging and validation. */
+  --ply-border-status-info-bold: #01d9d9; /** High-emphasis info-flavoured border for info messaging and validation. */
+  --ply-data-viz-categorical-1: #0d61ff; /** Categorical data-viz token 1 — single value used for avatars, stage indicators, chart series. Pair with text/static/white for text overlays. Aliases Blue/500. */
+  --ply-data-viz-categorical-2: #8627ce; /** Categorical data-viz token 2 — single value used for avatars, stage indicators, chart series. Pair with text/static/white for text overlays. Aliases Purple/500. */
+  --ply-data-viz-categorical-3: #02b8b8; /** Categorical data-viz token 3 — single value used for avatars, stage indicators, chart series. Pair with text/static/white for text overlays. Aliases Teal/500. */
+  --ply-data-viz-categorical-4: #ff0d81; /** Categorical data-viz token 4 — single value used for avatars, stage indicators, chart series. Pair with text/static/white for text overlays. Aliases Pink/500. */
+  --ply-data-viz-categorical-5: #ff9617; /** Categorical data-viz token 5 — single value used for avatars, stage indicators, chart series. Pair with text/static/white for text overlays. Aliases Orange/500. */
+  --ply-data-viz-categorical-6: #209a3e; /** Categorical data-viz token 6 — single value used for avatars, stage indicators, chart series. Pair with text/static/white for text overlays. Aliases Green/500. */
+  --ply-data-viz-categorical-7: #f23041; /** Categorical data-viz token 7 — single value used for avatars, stage indicators, chart series. Pair with text/static/white for text overlays. Aliases Red/500. */
+  --ply-data-viz-categorical-8: #ba9a00; /** Categorical data-viz token 8 — single value used for avatars, stage indicators, chart series. Pair with text/static/white for text overlays. Aliases Yellow/500. */
+  --ply-effect-shadow-color-close: #00000014; /** Close-layer shadow tint. Light: 8% black; Dark: 48% black (compensates for dark surfaces). */
+  --ply-effect-shadow-color-middle: #0000000f; /** Middle-layer shadow tint. */
+  --ply-effect-shadow-color-diffuse: #0000000a; /** Diffuse outer-layer shadow tint. */
+  --ply-background-brand-default: var(--ply-colors-brand-500); /** Default brand-coloured surface. */
+  --ply-background-brand-hovered: var(--ply-colors-brand-600); /** Default brand-coloured surface (hovered state). */
+  --ply-background-brand-pressed: var(--ply-colors-brand-700); /** Default brand-coloured surface (pressed state). */
+  --ply-background-brand-subtlest-default: var(--ply-colors-brand-50); /** Most faintly brand-tinted surface. */
+  --ply-background-brand-subtlest-hovered: var(--ply-colors-brand-100); /** Most faintly brand-tinted surface (hovered state). */
+  --ply-background-brand-subtlest-pressed: var(--ply-colors-brand-200); /** Most faintly brand-tinted surface (pressed state). */
+  --ply-background-brand-bold-default: var(--ply-colors-brand-600); /** Strong brand-coloured surface. */
+  --ply-background-brand-bold-hovered: var(--ply-colors-brand-700); /** Strong brand-coloured surface (hovered state). */
+  --ply-background-brand-bold-pressed: var(--ply-colors-brand-800); /** Strong brand-coloured surface (pressed state). */
+  --ply-background-brand-subtler-default: var(--ply-colors-brand-100); /** Very subtle brand-tinted surface. */
+  --ply-background-brand-subtler-hovered: var(--ply-colors-brand-200); /** Very subtle brand-tinted surface (hovered state). */
+  --ply-background-brand-subtler-pressed: var(--ply-colors-brand-300); /** Very subtle brand-tinted surface (pressed state). */
+  --ply-background-brand-subtle-default: var(--ply-colors-brand-200); /** Subtle brand-tinted surface. */
+  --ply-background-brand-subtle-hovered: var(--ply-colors-brand-300); /** Subtle brand-tinted surface (hovered state). */
+  --ply-background-brand-subtle-pressed: var(--ply-colors-brand-400); /** Subtle brand-tinted surface (pressed state). */
+  --ply-background-brand-boldest-default: var(--ply-colors-brand-700); /** Most saturated brand surface. */
+  --ply-background-brand-boldest-hovered: var(--ply-colors-brand-800); /** Most saturated brand surface (hovered state). */
+  --ply-background-brand-boldest-pressed: var(--ply-colors-brand-900); /** Most saturated brand surface (pressed state). */
+  --ply-background-selected-default: var(--ply-colors-brand-50); /** Surface for selected items. */
+  --ply-background-selected-hovered: var(--ply-colors-brand-100); /** Surface for selected items (hovered state). */
+  --ply-background-selected-pressed: var(--ply-colors-brand-200); /** Surface for selected items (pressed state). */
+  --ply-text-selected: var(--ply-colors-brand-500); /** Text on selected items. */
+  --ply-text-brand-default: var(--ply-colors-brand-500); /** Default brand-coloured text — primary brand emphasis on neutral surfaces. */
+  --ply-text-brand-subtle: var(--ply-colors-brand-200); /** Subtle brand-tinted text — secondary brand emphasis on neutral surfaces. */
+  --ply-text-brand-bold: var(--ply-colors-brand-600); /** Strong brand-coloured text — emphasized brand statements. */
+  --ply-text-brand-subtlest: var(--ply-colors-brand-50); /** Faintest brand-tinted text — meta callouts and de-emphasized brand presence. */
+  --ply-text-brand-boldest: var(--ply-colors-brand-700); /** Most-saturated brand text — for the loudest brand moments. */
+  --ply-text-brand-inverse: var(--ply-colors-brand-100); /** Brand-coloured text designed to read on inverse surfaces — pair with background/inverse. */
+  --ply-icon-selected: var(--ply-colors-brand-500); /** Icon for selected items. */
+  --ply-icon-brand-default: var(--ply-colors-brand-500); /** Default brand-coloured icon — primary brand glyph colour. */
+  --ply-icon-brand-subtle: var(--ply-colors-brand-200); /** Subtle brand-tinted icon — secondary brand emphasis. */
+  --ply-icon-brand-bold: var(--ply-colors-brand-600); /** Strong brand-coloured icon — emphasized brand glyphs. */
+  --ply-icon-brand-subtlest: var(--ply-colors-brand-50); /** Faintest brand-tinted icon — meta-icon contexts and de-emphasized brand presence. */
+  --ply-icon-brand-boldest: var(--ply-colors-brand-700); /** Most-saturated brand icon — loudest brand glyph contexts. */
+  --ply-icon-brand-inverse: var(--ply-colors-brand-100); /** Brand-coloured icon designed for inverse surfaces — pair with background/inverse. */
+  --ply-border-brand-default: var(--ply-colors-brand-400); /** Default brand-coloured border — primary brand outline emphasis. */
+  --ply-border-brand-subtle: var(--ply-colors-brand-100); /** Subtle brand-tinted border — for brand-flavoured outlines that should read quietly. */
+  --ply-border-brand-bold: var(--ply-colors-brand-400); /** Strong brand-coloured border — emphasized brand outline. */
+  --ply-border-focused: var(--ply-colors-brand-400); /** Focus-ring border. */
+  --ply-border-selected: var(--ply-colors-brand-500); /** Border on selected items. */
 }
 
 /**
@@ -241,155 +287,155 @@
  */
 
 [data-theme="dark"] {
-  --ply-bg-surface-sunken: #17181a;
-  --ply-bg-surface: #292b2d;
-  --ply-bg-surface-hovered: #ffffff14;
-  --ply-bg-surface-pressed: #ffffff29;
-  --ply-bg-surface-raised: #404449;
-  --ply-bg-surface-raised-hovered: #ffffff14;
-  --ply-bg-surface-raised-pressed: #ffffff29;
-  --ply-bg-surface-overlay: #525457;
-  --ply-bg-surface-overlay-hovered: #ffffff14;
-  --ply-bg-surface-overlay-pressed: #ffffff29;
-  --ply-bg-neutral-hovered: #ffffff14;
-  --ply-bg-neutral-pressed: #ffffff29;
-  --ply-bg-neutral-subtle: #ffffff14;
-  --ply-bg-neutral-subtle-hovered: #ffffff29;
-  --ply-bg-neutral-subtle-pressed: #ffffff52;
-  --ply-bg-neutral-bold: #979a9e;
-  --ply-bg-neutral-bold-hovered: #b2b5b8;
-  --ply-bg-neutral-bold-pressed: #e2e6ec;
-  --ply-bg-accent: #0d61ff;
-  --ply-bg-accent-hovered: #004cdb;
-  --ply-bg-accent-pressed: #003cad;
-  --ply-bg-accent-subtle: #000f2e;
-  --ply-bg-accent-subtle-hovered: #001e56;
-  --ply-bg-accent-subtle-pressed: #002d80;
-  --ply-bg-accent-bold: #004cdb;
-  --ply-bg-accent-bold-hovered: #003cad;
-  --ply-bg-accent-bold-pressed: #002d80;
-  --ply-bg-selected: #000f2e;
-  --ply-bg-selected-hovered: #001e56;
-  --ply-bg-selected-pressed: #002d80;
-  --ply-bg-inverse: #ffffff;
-  --ply-bg-inverse-hovered: #e2e6ec;
-  --ply-bg-inverse-pressed: #d2d6dc;
-  --ply-bg-disabled: #ffffff14;
-  --ply-bg-scrim: #000000a3;
-  --ply-bg-static-white: #ffffff;
-  --ply-bg-static-black: #17181a;
-  --ply-bg-status-danger: #fd676d;
-  --ply-bg-status-danger-hovered: #f17f83;
-  --ply-bg-status-danger-pressed: #ffbec1;
-  --ply-bg-status-danger-subtle: #511820;
-  --ply-bg-status-danger-subtle-hovered: #771e2a;
-  --ply-bg-status-danger-subtle-pressed: #9f2433;
-  --ply-bg-status-danger-bold: #ffbec1;
-  --ply-bg-status-danger-bold-hovered: #fde4e6;
-  --ply-bg-status-danger-bold-pressed: #fef1f2;
-  --ply-bg-status-success: #27b749;
-  --ply-bg-status-success-hovered: #2fd455;
-  --ply-bg-status-success-pressed: #82dca6;
-  --ply-bg-status-success-subtle: #083312;
-  --ply-bg-status-success-subtle-hovered: #0d4b1c;
-  --ply-bg-status-success-subtle-pressed: #136427;
-  --ply-bg-status-success-bold: #82dca6;
-  --ply-bg-status-success-bold-hovered: #def8e4;
-  --ply-bg-status-success-bold-pressed: #eefbf1;
-  --ply-bg-status-warning: #e1ba00;
-  --ply-bg-status-warning-hovered: #f8da48;
-  --ply-bg-status-warning-pressed: #ffed97;
-  --ply-bg-status-warning-subtle: #2e2700;
-  --ply-bg-status-warning-subtle-hovered: #4d4000;
-  --ply-bg-status-warning-subtle-pressed: #6f5c00;
-  --ply-bg-status-warning-bold: #ffed97;
-  --ply-bg-status-warning-bold-hovered: #fff5c2;
-  --ply-bg-status-warning-bold-pressed: #fffbe8;
-  --ply-bg-status-info: #01d9d9;
-  --ply-bg-status-info-hovered: #00f2f2;
-  --ply-bg-status-info-pressed: #9af1f1;
-  --ply-bg-status-info-subtle: #022929;
-  --ply-bg-status-info-subtle-hovered: #034949;
-  --ply-bg-status-info-subtle-pressed: #036c6c;
-  --ply-bg-status-info-bold: #9af1f1;
-  --ply-bg-status-info-bold-hovered: #c5f5f5;
-  --ply-bg-status-info-bold-pressed: #f3fdfd;
-  --ply-text-neutral: #f3f4f6;
-  --ply-text-neutral-subtle: #d2d6dc;
-  --ply-text-inverse: #292b2d;
+  --ply-colors-brand-50: #f5f9ff;
+  --ply-colors-brand-100: #dde9ff;
+  --ply-colors-brand-200: #adcaff;
+  --ply-colors-brand-300: #7baaff;
+  --ply-colors-brand-400: #4888ff;
+  --ply-colors-brand-500: #0d61ff;
+  --ply-colors-brand-600: #004cdb;
+  --ply-colors-brand-700: #003cad;
+  --ply-colors-brand-800: #002d80;
+  --ply-colors-brand-900: #001e56;
+  --ply-colors-brand-950: #000f2e;
+  --ply-background-surface-sunken-default: #17181a;
+  --ply-background-surface-flat-default: #292b2d;
+  --ply-background-surface-flat-hovered: #ffffff14;
+  --ply-background-surface-flat-pressed: #ffffff29;
+  --ply-background-surface-raised-default: #404449;
+  --ply-background-surface-raised-hovered: #ffffff14;
+  --ply-background-surface-raised-pressed: #ffffff29;
+  --ply-background-surface-overlay-default: #525457;
+  --ply-background-surface-overlay-hovered: #ffffff14;
+  --ply-background-surface-overlay-pressed: #ffffff29;
+  --ply-background-neutral-hovered: #ffffff14;
+  --ply-background-neutral-pressed: #ffffff29;
+  --ply-background-neutral-subtler-default: #ffffff14;
+  --ply-background-neutral-subtler-hovered: #ffffff29;
+  --ply-background-neutral-subtler-pressed: #ffffff52;
+  --ply-background-neutral-bold-default: #979a9e;
+  --ply-background-neutral-bold-hovered: #b2b5b8;
+  --ply-background-neutral-bold-pressed: #e2e6ec;
+  --ply-background-neutral-subtlest-default: #ffffff0a;
+  --ply-background-neutral-subtlest-hovered: #ffffff14;
+  --ply-background-neutral-subtlest-pressed: #ffffff29;
+  --ply-background-neutral-subtle-default: #ffffff29;
+  --ply-background-neutral-subtle-hovered: #ffffff52;
+  --ply-background-neutral-subtle-pressed: #ffffff7a;
+  --ply-background-neutral-boldest-default: #b2b5b8;
+  --ply-background-neutral-boldest-hovered: #b2b5b8;
+  --ply-background-neutral-boldest-pressed: #f3f4f6;
+  --ply-background-inverse-default: #ffffff;
+  --ply-background-inverse-hovered: #e2e6ec;
+  --ply-background-inverse-pressed: #d2d6dc;
+  --ply-background-disabled: #ffffff14;
+  --ply-background-scrim: #000000a3;
+  --ply-background-static-white-default: #ffffff;
+  --ply-background-static-black-default: #17181a;
+  --ply-background-status-danger-default: #fd676d;
+  --ply-background-status-danger-hovered: #f17f83;
+  --ply-background-status-danger-pressed: #ffbec1;
+  --ply-background-status-danger-subtle-default: #511820;
+  --ply-background-status-danger-subtle-hovered: #771e2a;
+  --ply-background-status-danger-subtle-pressed: #9f2433;
+  --ply-background-status-danger-bold-default: #ffbec1;
+  --ply-background-status-danger-bold-hovered: #fde4e6;
+  --ply-background-status-danger-bold-pressed: #fef1f2;
+  --ply-background-status-success-default: #27b749;
+  --ply-background-status-success-hovered: #2fd455;
+  --ply-background-status-success-pressed: #82dca6;
+  --ply-background-status-success-subtle-default: #083312;
+  --ply-background-status-success-subtle-hovered: #0d4b1c;
+  --ply-background-status-success-subtle-pressed: #136427;
+  --ply-background-status-success-bold-default: #82dca6;
+  --ply-background-status-success-bold-hovered: #def8e4;
+  --ply-background-status-success-bold-pressed: #eefbf1;
+  --ply-background-status-warning-default: #e1ba00;
+  --ply-background-status-warning-hovered: #f8da48;
+  --ply-background-status-warning-pressed: #ffed97;
+  --ply-background-status-warning-subtle-default: #2e2700;
+  --ply-background-status-warning-subtle-hovered: #4d4000;
+  --ply-background-status-warning-subtle-pressed: #6f5c00;
+  --ply-background-status-warning-bold-default: #ffed97;
+  --ply-background-status-warning-bold-hovered: #fff5c2;
+  --ply-background-status-warning-bold-pressed: #fffbe8;
+  --ply-background-status-info-default: #01d9d9;
+  --ply-background-status-info-hovered: #00f2f2;
+  --ply-background-status-info-pressed: #9af1f1;
+  --ply-background-status-info-subtle-default: #022929;
+  --ply-background-status-info-subtle-hovered: #034949;
+  --ply-background-status-info-subtle-pressed: #036c6c;
+  --ply-background-status-info-bold-default: #9af1f1;
+  --ply-background-status-info-bold-hovered: #c5f5f5;
+  --ply-background-status-info-bold-pressed: #f3fdfd;
+  --ply-text-neutral-default: #f3f4f6;
+  --ply-text-neutral-subtler: #d2d6dc;
+  --ply-text-neutral-inverse: #292b2d;
+  --ply-text-neutral-subtlest: #727682;
+  --ply-text-neutral-subtle: #b2b5b8;
   --ply-text-disabled: #ffffff7a;
-  --ply-text-selected: #4888ff;
-  --ply-text-accent: #4888ff;
-  --ply-text-accent-subtle: #002d80;
-  --ply-text-accent-bold: #7baaff;
-  --ply-text-link: #4888ff;
+  --ply-text-brand-inverse: #292b2d;
+  --ply-text-link-default: #4888ff;
   --ply-text-link-hovered: #7baaff;
   --ply-text-link-pressed: #adcaff;
   --ply-text-link-visited: #a558df;
   --ply-text-static-white: #ffffff;
   --ply-text-static-black: #17181a;
-  --ply-text-status-danger: #f17f83;
+  --ply-text-status-danger-default: #f17f83;
   --ply-text-status-danger-bold: #fde4e6;
-  --ply-text-status-success: #2fd455;
+  --ply-text-status-danger-subtle: #511820;
+  --ply-text-status-success-default: #2fd455;
   --ply-text-status-success-bold: #def8e4;
-  --ply-text-status-warning: #f8da48;
+  --ply-text-status-success-subtle: #083312;
+  --ply-text-status-warning-default: #f8da48;
   --ply-text-status-warning-bold: #fff5c2;
-  --ply-text-status-info: #00f2f2;
+  --ply-text-status-warning-subtle: #2e2700;
+  --ply-text-status-info-default: #00f2f2;
   --ply-text-status-info-bold: #c5f5f5;
-  --ply-text-on-accent: #ffffff;
-  --ply-text-on-neutral-bold: #17181a;
-  --ply-text-on-status-danger: #17181a;
-  --ply-text-on-status-success: #17181a;
-  --ply-text-on-status-warning: #17181a;
-  --ply-text-on-status-info: #17181a;
-  --ply-text-on-status-warning-bold: #17181a;
-  --ply-text-on-status-info-bold: #17181a;
-  --ply-icon-neutral: #f3f4f6;
-  --ply-icon-neutral-subtle: #d2d6dc;
-  --ply-icon-inverse: #292b2d;
+  --ply-text-status-info-subtle: #022929;
+  --ply-icon-neutral-default: #f3f4f6;
+  --ply-icon-neutral-subtler: #d2d6dc;
+  --ply-icon-neutral-inverse: #292b2d;
+  --ply-icon-neutral-subtlest: #727682;
+  --ply-icon-neutral-subtle: #b2b5b8;
   --ply-icon-disabled: #ffffff7a;
-  --ply-icon-selected: #4888ff;
-  --ply-icon-accent: #4888ff;
-  --ply-icon-accent-subtle: #002d80;
-  --ply-icon-accent-bold: #7baaff;
+  --ply-icon-brand-inverse: #292b2d;
   --ply-icon-static-white: #ffffff;
   --ply-icon-static-black: #17181a;
-  --ply-icon-status-danger: #f17f83;
+  --ply-icon-status-danger-default: #f17f83;
   --ply-icon-status-danger-bold: #fde4e6;
-  --ply-icon-status-success: #2fd455;
+  --ply-icon-status-danger-subtle: #511820;
+  --ply-icon-status-success-default: #2fd455;
   --ply-icon-status-success-bold: #def8e4;
-  --ply-icon-status-warning: #f8da48;
+  --ply-icon-status-success-subtle: #083312;
+  --ply-icon-status-warning-default: #f8da48;
   --ply-icon-status-warning-bold: #fff5c2;
-  --ply-icon-status-info: #00f2f2;
+  --ply-icon-status-warning-subtle: #2e2700;
+  --ply-icon-status-info-default: #00f2f2;
   --ply-icon-status-info-bold: #c5f5f5;
-  --ply-icon-on-accent: #ffffff;
-  --ply-border-neutral: #525457;
+  --ply-icon-status-info-subtle: #022929;
+  --ply-border-neutral-default: #525457;
   --ply-border-neutral-hovered: #686a6e;
   --ply-border-neutral-pressed: #727682;
-  --ply-border-neutral-subtle: #404449;
+  --ply-border-neutral-subtle-default: #404449;
   --ply-border-neutral-subtle-hovered: #525457;
   --ply-border-neutral-subtle-pressed: #686a6e;
-  --ply-border-neutral-bold: #727682;
+  --ply-border-neutral-bold-default: #727682;
   --ply-border-neutral-bold-hovered: #979a9e;
   --ply-border-neutral-bold-pressed: #b2b5b8;
-  --ply-border-accent: #002d80;
-  --ply-border-accent-subtle: #001e56;
-  --ply-border-accent-bold: #4888ff;
-  --ply-border-focused: #7baaff;
-  --ply-border-selected: #4888ff;
   --ply-border-disabled: #ffffff14;
   --ply-border-static-white: #ffffff;
   --ply-border-static-black: #17181a;
-  --ply-border-status-danger: #771e2a;
+  --ply-border-status-danger-default: #771e2a;
   --ply-border-status-danger-subtle: #511820;
   --ply-border-status-danger-bold: #fd676d;
-  --ply-border-status-success: #0d4b1c;
+  --ply-border-status-success-default: #0d4b1c;
   --ply-border-status-success-subtle: #083312;
   --ply-border-status-success-bold: #27b749;
-  --ply-border-status-warning: #4d4000;
+  --ply-border-status-warning-default: #4d4000;
   --ply-border-status-warning-subtle: #2e2700;
   --ply-border-status-warning-bold: #e1ba00;
-  --ply-border-status-info: #034949;
+  --ply-border-status-info-default: #034949;
   --ply-border-status-info-subtle: #022929;
   --ply-border-status-info-bold: #01d9d9;
   --ply-data-viz-categorical-1: #4888ff;
@@ -400,7 +446,81 @@
   --ply-data-viz-categorical-6: #27b749;
   --ply-data-viz-categorical-7: #fd676d;
   --ply-data-viz-categorical-8: #e1ba00;
-  --ply-shadow-close: #0000007a;
-  --ply-shadow-middle: #00000052;
-  --ply-shadow-diffuse: #00000029;
+  --ply-effect-shadow-color-close: #0000007a;
+  --ply-effect-shadow-color-middle: #00000052;
+  --ply-effect-shadow-color-diffuse: #00000029;
+  --ply-background-brand-default: var(--ply-colors-brand-500);
+  --ply-background-brand-hovered: var(--ply-colors-brand-600);
+  --ply-background-brand-pressed: var(--ply-colors-brand-700);
+  --ply-background-brand-subtlest-default: var(--ply-colors-brand-950);
+  --ply-background-brand-subtlest-hovered: var(--ply-colors-brand-900);
+  --ply-background-brand-subtlest-pressed: var(--ply-colors-brand-800);
+  --ply-background-brand-bold-default: var(--ply-colors-brand-600);
+  --ply-background-brand-bold-hovered: var(--ply-colors-brand-700);
+  --ply-background-brand-bold-pressed: var(--ply-colors-brand-800);
+  --ply-background-brand-subtler-default: var(--ply-colors-brand-900);
+  --ply-background-brand-subtler-hovered: var(--ply-colors-brand-800);
+  --ply-background-brand-subtler-pressed: var(--ply-colors-brand-700);
+  --ply-background-brand-subtle-default: var(--ply-colors-brand-800);
+  --ply-background-brand-subtle-hovered: var(--ply-colors-brand-700);
+  --ply-background-brand-subtle-pressed: var(--ply-colors-brand-600);
+  --ply-background-brand-boldest-default: var(--ply-colors-brand-200);
+  --ply-background-brand-boldest-hovered: var(--ply-colors-brand-100);
+  --ply-background-brand-boldest-pressed: var(--ply-colors-brand-100);
+  --ply-background-selected-default: var(--ply-colors-brand-950);
+  --ply-background-selected-hovered: var(--ply-colors-brand-900);
+  --ply-background-selected-pressed: var(--ply-colors-brand-800);
+  --ply-text-selected: var(--ply-colors-brand-400);
+  --ply-text-brand-default: var(--ply-colors-brand-400);
+  --ply-text-brand-subtle: var(--ply-colors-brand-800);
+  --ply-text-brand-bold: var(--ply-colors-brand-300);
+  --ply-text-brand-subtlest: var(--ply-colors-brand-950);
+  --ply-text-brand-boldest: var(--ply-colors-brand-200);
+  --ply-icon-selected: var(--ply-colors-brand-400);
+  --ply-icon-brand-default: var(--ply-colors-brand-400);
+  --ply-icon-brand-subtle: var(--ply-colors-brand-800);
+  --ply-icon-brand-bold: var(--ply-colors-brand-300);
+  --ply-icon-brand-subtlest: var(--ply-colors-brand-950);
+  --ply-icon-brand-boldest: var(--ply-colors-brand-200);
+  --ply-border-brand-default: var(--ply-colors-brand-800);
+  --ply-border-brand-subtle: var(--ply-colors-brand-900);
+  --ply-border-brand-bold: var(--ply-colors-brand-400);
+  --ply-border-focused: var(--ply-colors-brand-300);
+  --ply-border-selected: var(--ply-colors-brand-400);
+}
+
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+[data-brand="brand-2"] {
+  --ply-colors-brand-50: #fff5fa;
+  --ply-colors-brand-100: #ffe2f0;
+  --ply-colors-brand-200: #ffbcdd;
+  --ply-colors-brand-300: #ff93c7;
+  --ply-colors-brand-400: #ff64af;
+  --ply-colors-brand-500: #ff0d81;
+  --ply-colors-brand-600: #d20065;
+  --ply-colors-brand-700: #a40050;
+  --ply-colors-brand-800: #78003b;
+  --ply-colors-brand-900: #500027;
+  --ply-colors-brand-950: #500027;
+}
+
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+[data-font="geist"] {
+  --ply-font-sans: Geist;
+  --ply-font-mono: "IBM Plex Mono";
+}
+
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+[data-font="die-grotesk-a"] {
+  --ply-font-sans: "Die Grotesk A";
+  --ply-font-mono: "IBM Plex Mono";
 }

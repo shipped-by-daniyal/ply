@@ -6,6 +6,28 @@ description: What changed in Ply, when, and why — appended by /ply-update-docs
 Newest first. Entries are appended by `/ply-update-docs`; each covers the work
 since the previous entry.
 
+## 2026-07-06 — The token library now mirrors the reference — names, structure, and all
+
+- Executing [ADR-0007](/decisions/adr-0007-adopt-reference-naming/), the Figma
+  library was migrated in place: 138 semantic renames (bindings preserved via
+  variable IDs), 119 primitives case-restored, all scale collections renamed
+  to reference names, 8 radius steps re-added, 36 missing semantic tokens
+  created, and 9 Ply-only pairing tokens moved to a `deprecated/` group.
+- Two theming axes are restored: the colors-brand collection (Brand 1 = Blue,
+  Brand 2 = Pink, with the reference's 950 bug fixed to Pink/900) and
+  font-family modes (Inter / Geist / Die Grotesk A).
+- The full audit trail is committed as
+  `audits/ply-rename-manifest-2026-07-05.md` — every rename keyed by variable
+  ID, gated on injectivity and zero DTCG prefix collisions.
+- The code pipeline was rebuilt for the new naming: `build-dtcg` now emits
+  brand and font mode files, the contrast lint has a coverage floor and passes
+  120 checks with zero failures, and `dist/css/ply.css` gained
+  `[data-brand="brand-2"]` and `[data-font]` blocks with a live `var()` brand
+  axis.
+- The Figma sticker sheet and Token Usage tables were migrated too: 365 labels
+  rewritten, 36 rows added, deprecated rows flagged; doc-table row identity
+  survived via `sharedPluginData`.
+
 ## 2026-07-05 — Ply gets a face: the Aurora identity
 
 - Three gradient cover concepts (Aurora, Spectrum, Dusk) were designed on the

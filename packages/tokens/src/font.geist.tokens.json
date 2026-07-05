@@ -1,0 +1,30 @@
+{
+  "font-sans": {
+    "$type": "fontFamily",
+    "$value": [
+      "Geist"
+    ],
+    "$extensions": {
+      "ply": {
+        "figma": {
+          "collection": "font-family",
+          "mode": "Geist"
+        }
+      }
+    }
+  },
+  "font-mono": {
+    "$type": "fontFamily",
+    "$value": [
+      "IBM Plex Mono"
+    ],
+    "$extensions": {
+      "ply": {
+        "figma": {
+          "collection": "font-family",
+          "mode": "Geist"
+        }
+      }
+    }
+  }
+}

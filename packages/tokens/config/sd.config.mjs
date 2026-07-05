@@ -1,8 +1,12 @@
-// Style Dictionary build for Ply tokens (ADR-0003, ADR-0005).
+// Style Dictionary build for Ply tokens (ADR-0003, ADR-0007).
 // Outputs:
-//   dist/css/ply.css   — :root (light + scales) then [data-theme="dark"] overrides (semantic only)
-//   dist/ts/tokens.ts  — typed path → { cssVar, light, dark } map
-// Color primitives are sources for alias resolution but are NEVER emitted (ADR-0005).
+//   dist/css/ply.css   — :root (light + scales + Brand-1 ramp) · [data-theme="dark"] (semantic dark
+//                        + ramp re-declared so cascade order stays correct) · [data-brand="brand-2"]
+//                        (ramp only — semantic vars reference the ramp via var(), so they follow) ·
+//                        [data-font="…"] font overrides
+//   dist/ts/tokens.ts  — typed path → { cssVar, value } map
+// Color primitives are sources for alias resolution but are NEVER emitted; the colors-brand ramp
+// IS emitted (it is the live brand axis in CSS).
 import StyleDictionary from "style-dictionary";
 import { readFileSync, writeFileSync, rmSync } from "node:fs";
 import path from "node:path";
@@ -14,7 +18,7 @@ const val = (t) => t.$value ?? t.value;
 StyleDictionary.registerTransform({
   name: "name/ply",
   type: "name",
-  transform: (t) => "ply-" + t.path.join("-"),
+  transform: (t) => ("ply-" + t.path.join("-")).toLowerCase(),
 });
 StyleDictionary.registerTransform({
   name: "value/ply-font-family",
@@ -45,58 +49,83 @@ StyleDictionary.registerFormat({
 });
 
 const TRANSFORMS = ["name/ply", "value/ply-font-family"];
+const src = (f) => path.join(PKG, "src", f);
 const isColorPrimitive = (t) => t.filePath.includes("primitives") && (t.$type ?? t.type) === "color";
-const isSemantic = (mode) => (t) => t.filePath.includes(`semantic.${mode}`);
+const isBrand = (t) => t.path[0] === "colors-brand";
+const inFile = (frag) => (t) => t.filePath.includes(frag);
+// semantic vars that alias the brand ramp stay live var() references so the brand axis works in CSS
+const refsBrand = (t) => typeof t.original?.$value === "string" && t.original.$value.startsWith("{colors-brand.");
 
-const light = new StyleDictionary({
-  source: [path.join(PKG, "src/primitives.tokens.json"), path.join(PKG, "src/semantic.light.tokens.json")],
-  platforms: {
+const builds = [
+  {
+    // :root — scales + font defaults + Brand-1 ramp + semantic light
+    source: [src("primitives.tokens.json"), src("brand.brand-1.tokens.json"), src("semantic.light.tokens.json")],
     css: {
-      transforms: TRANSFORMS,
-      buildPath: path.join(PKG, "dist/css/"),
-      files: [{
-        destination: "_light.css",
-        format: "css/variables",
-        filter: (t) => isSemantic("light")(t) || (t.filePath.includes("primitives") && !isColorPrimitive(t)),
-        options: { selector: ":root" },
-      }],
+      destination: "_light.css",
+      filter: (t) => inFile("semantic.light")(t) || isBrand(t) || (inFile("primitives")(t) && !isColorPrimitive(t)),
+      options: { selector: ":root", outputReferences: refsBrand },
     },
     ts: {
-      transforms: TRANSFORMS,
-      buildPath: path.join(PKG, "dist/ts/"),
-      files: [{
-        destination: "tokens.ts",
-        format: "ts/ply",
-        filter: (t) => isSemantic("light")(t) || (t.filePath.includes("primitives") && !isColorPrimitive(t)),
-      }],
+      destination: "tokens.ts",
+      filter: (t) => inFile("semantic.light")(t) || isBrand(t) || (inFile("primitives")(t) && !isColorPrimitive(t)),
     },
   },
-});
-const dark = new StyleDictionary({
-  source: [path.join(PKG, "src/primitives.tokens.json"), path.join(PKG, "src/semantic.dark.tokens.json")],
-  platforms: {
+  {
+    // dark — semantic dark + ramp re-declared (keeps cascade order deterministic for dark+brand-2)
+    source: [src("primitives.tokens.json"), src("brand.brand-1.tokens.json"), src("semantic.dark.tokens.json")],
+    css: {
+      destination: "_dark.css",
+      filter: (t) => inFile("semantic.dark")(t) || isBrand(t),
+      options: { selector: '[data-theme="dark"]', outputReferences: refsBrand },
+    },
+  },
+  {
+    // brand-2 — ramp only; must come AFTER the dark block in the stitched file
+    source: [src("primitives.tokens.json"), src("brand.brand-2.tokens.json")],
+    css: {
+      destination: "_brand2.css",
+      filter: isBrand,
+      options: { selector: '[data-brand="brand-2"]' },
+    },
+  },
+  {
+    source: [src("font.geist.tokens.json")],
+    css: { destination: "_font-geist.css", filter: () => true, options: { selector: '[data-font="geist"]' } },
+  },
+  {
+    source: [src("font.die-grotesk-a.tokens.json")],
+    css: { destination: "_font-dga.css", filter: () => true, options: { selector: '[data-font="die-grotesk-a"]' } },
+  },
+];
+
+const cssParts = [];
+for (const b of builds) {
+  const platforms = {
     css: {
       transforms: TRANSFORMS,
       buildPath: path.join(PKG, "dist/css/"),
-      files: [{
-        destination: "_dark.css",
-        format: "css/variables",
-        filter: isSemantic("dark"),
-        options: { selector: '[data-theme="dark"]' },
-      }],
+      files: [{ format: "css/variables", ...b.css }],
     },
-  },
-});
-await light.buildAllPlatforms();
-await dark.buildAllPlatforms();
+  };
+  if (b.ts) {
+    platforms.ts = {
+      transforms: TRANSFORMS,
+      buildPath: path.join(PKG, "dist/ts/"),
+      files: [{ format: "ts/ply", ...b.ts }],
+    };
+  }
+  const sd = new StyleDictionary({ source: b.source, platforms });
+  await sd.buildAllPlatforms();
+  cssParts.push(b.css.destination);
+}
 
-// Stitch the final stylesheet, then drop the intermediates.
-const lightCss = readFileSync(path.join(PKG, "dist/css/_light.css"), "utf8");
-const darkCss = readFileSync(path.join(PKG, "dist/css/_dark.css"), "utf8");
+// Stitch the final stylesheet in cascade order, then drop the intermediates.
+const stitched = cssParts
+  .map((f) => readFileSync(path.join(PKG, "dist/css", f), "utf8"))
+  .join("\n");
 writeFileSync(
   path.join(PKG, "dist/css/ply.css"),
-  "/* GENERATED by @ply/tokens build — do not hand-edit. Source: src/*.tokens.json */\n" + lightCss + "\n" + darkCss
+  "/* GENERATED by @ply/tokens build — do not hand-edit. Source: src/*.tokens.json */\n" + stitched
 );
-rmSync(path.join(PKG, "dist/css/_light.css"));
-rmSync(path.join(PKG, "dist/css/_dark.css"));
+for (const f of cssParts) rmSync(path.join(PKG, "dist/css", f));
 console.log("sd: dist/css/ply.css + dist/ts/tokens.ts written");

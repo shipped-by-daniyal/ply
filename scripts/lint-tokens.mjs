@@ -1,10 +1,14 @@
 #!/usr/bin/env node
-// Token lint (ADR-0005):
+// Token lint (ADR-0007):
 //  1. Path-prefix invariant (no token path is a group-prefix of another)
 //  2. WCAG contrast over every $extensions.ply.pairsWith pair, light AND dark
 //     - text pairs: 4.5:1 (pairs involving `disabled` are informational — WCAG exempts inactive UI)
 //     - border/focused vs surfaces: 3:1 (non-text)
-// Alpha values are composited over the mode's bg/surface before measuring.
+//  3. Coverage floor: the pair-check count must stay ≥ FLOOR so a pairsFor rewrite
+//     can never silently pass by checking nothing.
+// Brand aliases resolve under Brand 1 (Blue). Brand 2 is deliberately unlinted —
+// the reference ships it without a contrast contract (rename manifest, known risks).
+// Alpha values are composited over the mode's flat surface before measuring.
 // Exit 1 on failures.
 import { readFileSync } from "node:fs";
 import path from "node:path";
@@ -13,8 +17,12 @@ import { fileURLToPath } from "node:url";
 const SRC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../packages/tokens/src");
 const load = (f) => JSON.parse(readFileSync(path.join(SRC, f), "utf8"));
 const primitives = load("primitives.tokens.json");
+const brand1 = load("brand.brand-1.tokens.json");
 const light = load("semantic.light.tokens.json");
 const dark = load("semantic.dark.tokens.json");
+
+const FLOOR = 100; // recalibrate deliberately (with a commit) if the pair contract shrinks
+const SURFACE = "background.surface.flat.default";
 
 const flat = (obj, prefix = []) => {
   const out = {};
@@ -24,7 +32,8 @@ const flat = (obj, prefix = []) => {
   }
   return out;
 };
-const P = flat(primitives), L = flat(light), D = flat(dark);
+const P = { ...flat(primitives), ...flat(brand1) };
+const L = flat(light), D = flat(dark);
 
 // 1 — prefix invariant across all files
 const paths = [...Object.keys(P), ...Object.keys(L)];
@@ -67,7 +76,7 @@ const contrast = (a, b) => {
   return (hi + 0.05) / (lo + 0.05);
 };
 const measure = (modeMap, bgPath, fgPath) => {
-  const surface = hexToRgba(resolveHex(modeMap, "bg.surface"));
+  const surface = hexToRgba(resolveHex(modeMap, SURFACE));
   let bg = hexToRgba(resolveHex(modeMap, bgPath));
   if (bg.a < 1) bg = over(bg, surface);
   let fg = hexToRgba(resolveHex(modeMap, fgPath));
@@ -92,7 +101,7 @@ for (const [bgPath, tok] of Object.entries(L)) {
   }
 }
 // focus ring: 3:1 non-text against default + sunken surfaces
-for (const s of ["bg.surface", "bg.surface-sunken"]) {
+for (const s of [SURFACE, "background.surface.sunken.default"]) {
   for (const [modeName, modeMap] of [["light", L], ["dark", D]]) {
     const ratio = measure(modeMap, s, "border.focused");
     results.push({ bg: s, fg: "border.focused", mode: modeName, ratio: ratio.toFixed(2), need: 3, pass: ratio >= 3, info: false });
@@ -100,11 +109,15 @@ for (const s of ["bg.surface", "bg.surface-sunken"]) {
   }
 }
 
+// 3 — coverage floor
+if (results.length < FLOOR) problems.push(`coverage floor: only ${results.length} pair checks (< ${FLOOR}) — pairsFor is checking too little`);
+
 const fails = results.filter((r) => !r.pass && !r.info);
 const infos = results.filter((r) => !r.pass && r.info);
 console.log(`lint-tokens: ${results.length} pair checks · ${fails.length} failures · ${infos.length} informational (disabled-exempt)`);
 for (const r of fails) console.log(`  FAIL ${r.mode.padEnd(5)} ${r.ratio.padStart(5)} <${r.need}  ${r.fg}  on  ${r.bg}`);
 for (const r of infos) console.log(`  info ${r.mode.padEnd(5)} ${r.ratio.padStart(5)}       ${r.fg}  on  ${r.bg}`);
-if (problems.filter((p) => p.startsWith("prefix")).length) console.log(problems.filter((p) => p.startsWith("prefix")).join("\n"));
-if (fails.length || problems.some((p) => p.startsWith("prefix"))) process.exit(1);
+const structural = problems.filter((p) => p.startsWith("prefix") || p.startsWith("coverage"));
+if (structural.length) console.log(structural.join("\n"));
+if (fails.length || structural.length) process.exit(1);
 console.log("lint-tokens: PASS");

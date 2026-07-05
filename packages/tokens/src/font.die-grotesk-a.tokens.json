@@ -1,0 +1,30 @@
+{
+  "font-sans": {
+    "$type": "fontFamily",
+    "$value": [
+      "Die Grotesk A"
+    ],
+    "$extensions": {
+      "ply": {
+        "figma": {
+          "collection": "font-family",
+          "mode": "Die Grotesk A"
+        }
+      }
+    }
+  },
+  "font-mono": {
+    "$type": "fontFamily",
+    "$value": [
+      "IBM Plex Mono"
+    ],
+    "$extensions": {
+      "ply": {
+        "figma": {
+          "collection": "font-family",
+          "mode": "Die Grotesk A"
+        }
+      }
+    }
+  }
+}

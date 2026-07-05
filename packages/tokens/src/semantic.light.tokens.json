@@ -1,702 +1,1058 @@
 {
-  "bg": {
-    "surface-sunken": {
-      "$type": "color",
-      "$value": "{gray.50}",
-      "$description": "App canvas behind flat surfaces (page background).",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:2"
-          },
-          "pairsWith": [
-            "text.neutral",
-            "text.neutral-subtle"
-          ]
-        }
-      }
-    },
+  "background": {
     "surface": {
-      "$type": "color",
-      "$value": "{gray.0}",
-      "$description": "Default surface: cards, panels, page content areas.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:3"
-          },
-          "pairsWith": [
-            "text.neutral",
-            "text.neutral-subtle"
-          ]
+      "sunken": {
+        "default": {
+          "$type": "color",
+          "$value": "{Gray.50}",
+          "$description": "Sunken surface — page bg, kanban wells, input field bgs. Subtle off-white (Gray/25).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:2"
+              },
+              "pairsWith": [
+                "text.neutral.default",
+                "text.neutral.subtler"
+              ]
+            }
+          }
         }
-      }
-    },
-    "surface-hovered": {
-      "$type": "color",
-      "$value": "{gray.alpha.100}",
-      "$description": "Hover overlay on interactive surface rows/cells.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:4"
-          },
-          "pairsWith": [
-            "text.neutral"
-          ],
-          "usage": {
-            "where": "The hovered state of elements filled with bg/surface.",
-            "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-            "do": "Keep state transitions quick (100–150ms) and consistent.",
-            "dont": "Don't use as a default fill — resting surfaces use bg/surface."
+      },
+      "flat": {
+        "default": {
+          "$type": "color",
+          "$value": "{Gray.0}",
+          "$description": "Default surface — cards, panels, nav, headers. White (Gray/0).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:3"
+              },
+              "pairsWith": [
+                "text.neutral.default",
+                "text.neutral.subtler"
+              ]
+            }
+          }
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "{Gray.Alpha.100}",
+          "$description": "Hover overlay on flat surfaces (8% black).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:4"
+              },
+              "pairsWith": [
+                "text.neutral.default"
+              ],
+              "usage": {
+                "where": "The hovered state of elements filled with background/surface/flat.",
+                "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/surface/flat/default."
+              }
+            }
+          }
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "{Gray.Alpha.200}",
+          "$description": "Pressed overlay on flat surfaces (16% black).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:5"
+              },
+              "pairsWith": [
+                "text.neutral.default"
+              ],
+              "usage": {
+                "where": "The pressed state of elements filled with background/surface/flat.",
+                "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/surface/flat/default."
+              }
+            }
+          }
+        }
+      },
+      "raised": {
+        "default": {
+          "$type": "color",
+          "$value": "{Gray.0}",
+          "$description": "Elevated surface for popovers, dropdowns, floating cards. Pair with a shadow at usage. (White in light mode; will diverge in dark mode.)",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:6"
+              },
+              "pairsWith": [
+                "text.neutral.default",
+                "text.neutral.subtler"
+              ]
+            }
+          }
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "{Gray.Alpha.100}",
+          "$description": "Hover state for raised surfaces (8% black overlay).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:7"
+              },
+              "pairsWith": [
+                "text.neutral.default"
+              ],
+              "usage": {
+                "where": "The hovered state of elements filled with background/surface/raised.",
+                "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/surface/raised/default."
+              }
+            }
+          }
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "{Gray.Alpha.200}",
+          "$description": "Pressed state for raised surfaces (16% black overlay).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:8"
+              },
+              "pairsWith": [
+                "text.neutral.default"
+              ],
+              "usage": {
+                "where": "The pressed state of elements filled with background/surface/raised.",
+                "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/surface/raised/default."
+              }
+            }
+          }
+        }
+      },
+      "overlay": {
+        "default": {
+          "$type": "color",
+          "$value": "{Gray.0}",
+          "$description": "Overlay surface — modal/dialog/full-screen content sitting above raised. Light: white; Dark: Gray/700 (lighter than raised's Gray/800 to reinforce elevation). Pair with shadow/xl.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:9"
+              },
+              "pairsWith": [
+                "text.neutral.default",
+                "text.neutral.subtler"
+              ]
+            }
+          }
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "{Gray.Alpha.100}",
+          "$description": "Hover overlay on overlay surfaces (8% black overlay on light; 8% white on dark).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:10"
+              },
+              "pairsWith": [
+                "text.neutral.default"
+              ],
+              "usage": {
+                "where": "The hovered state of elements filled with background/surface/overlay.",
+                "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/surface/overlay/default."
+              }
+            }
+          }
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "{Gray.Alpha.200}",
+          "$description": "Pressed overlay on overlay surfaces (16% overlay).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:11"
+              },
+              "pairsWith": [
+                "text.neutral.default"
+              ],
+              "usage": {
+                "where": "The pressed state of elements filled with background/surface/overlay.",
+                "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/surface/overlay/default."
+              }
+            }
           }
         }
       }
     },
-    "surface-pressed": {
-      "$type": "color",
-      "$value": "{gray.alpha.200}",
-      "$description": "Pressed overlay on interactive surface rows/cells.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:5"
-          },
-          "pairsWith": [
-            "text.neutral"
-          ],
-          "usage": {
-            "where": "The pressed state of elements filled with bg/surface.",
-            "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-            "do": "Keep state transitions quick (100–150ms) and consistent.",
-            "dont": "Don't use as a default fill — resting surfaces use bg/surface."
+    "neutral": {
+      "hovered": {
+        "$type": "color",
+        "$value": "{Gray.Alpha.100}",
+        "$description": "Default-tone neutral overlay (8% black). Hover state for any default-tone surface.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:12"
+            },
+            "usage": {
+              "where": "The hovered state of elements filled with background/neutral.",
+              "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+              "do": "Keep state transitions quick (100–150ms) and consistent.",
+              "dont": "Don't use as a default fill — resting surfaces use background/neutral/default."
+            }
+          }
+        }
+      },
+      "pressed": {
+        "$type": "color",
+        "$value": "{Gray.Alpha.200}",
+        "$description": "Default-tone neutral overlay (16% black). Pressed state for any default-tone surface.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:13"
+            },
+            "usage": {
+              "where": "The pressed state of elements filled with background/neutral.",
+              "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+              "do": "Keep state transitions quick (100–150ms) and consistent.",
+              "dont": "Don't use as a default fill — resting surfaces use background/neutral/default."
+            }
+          }
+        }
+      },
+      "subtler": {
+        "default": {
+          "$type": "color",
+          "$value": "{Gray.Alpha.100}",
+          "$description": "Subtler neutral overlay (8% black). For default-tone pressed states or subtle row highlights.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:14"
+              },
+              "pairsWith": [
+                "text.neutral.default",
+                "text.neutral.subtler"
+              ]
+            }
+          }
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "{Gray.Alpha.200}",
+          "$description": "Subtler neutral overlay (8% black). For default-tone pressed states or subtle row highlights. Hover variant.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:15"
+              },
+              "pairsWith": [
+                "text.neutral.default"
+              ],
+              "usage": {
+                "where": "The hovered state of elements filled with background/neutral/subtler.",
+                "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/neutral/subtler/default."
+              }
+            }
+          }
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "{Gray.Alpha.300}",
+          "$description": "Subtler neutral overlay (8% black). For default-tone pressed states or subtle row highlights. Pressed variant.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:16"
+              },
+              "pairsWith": [
+                "text.neutral.default"
+              ],
+              "usage": {
+                "where": "The pressed state of elements filled with background/neutral/subtler.",
+                "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/neutral/subtler/default."
+              }
+            }
+          }
+        }
+      },
+      "bold": {
+        "default": {
+          "$type": "color",
+          "$value": "{Gray.700}",
+          "$description": "Bold neutral fill — solid Gray/700–900 range. Use sparingly for inverse surfaces or callouts.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:17"
+              },
+              "pairsWith": [
+                "text.neutral.inverse"
+              ]
+            }
+          }
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "{Gray.800}",
+          "$description": "Bold neutral fill — solid Gray/700–900 range. Use sparingly for inverse surfaces or callouts. Hover variant.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:18"
+              },
+              "pairsWith": [
+                "text.neutral.inverse"
+              ],
+              "usage": {
+                "where": "The hovered state of elements filled with background/neutral/bold.",
+                "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/neutral/bold/default."
+              }
+            }
+          }
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "{Gray.900}",
+          "$description": "Bold neutral fill — solid Gray/700–900 range. Use sparingly for inverse surfaces or callouts. Pressed variant.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:19"
+              },
+              "pairsWith": [
+                "text.neutral.inverse"
+              ],
+              "usage": {
+                "where": "The pressed state of elements filled with background/neutral/bold.",
+                "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/neutral/bold/default."
+              }
+            }
+          }
+        }
+      },
+      "subtlest": {
+        "default": {
+          "$type": "color",
+          "$value": "{Gray.Alpha.050}",
+          "$description": "Subtlest neutral overlay (4% black). Apply over any surface for the lightest state layer — typical default-tone hover.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:2"
+              }
+            }
+          }
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "{Gray.Alpha.100}",
+          "$description": "Subtlest neutral overlay (4% black). Apply over any surface for the lightest state layer — typical default-tone hover. Hover variant.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:6"
+              },
+              "usage": {
+                "where": "The hovered state of elements filled with background/neutral/subtlest.",
+                "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/neutral/subtlest/default."
+              }
+            }
+          }
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "{Gray.Alpha.200}",
+          "$description": "Subtlest neutral overlay (4% black). Apply over any surface for the lightest state layer — typical default-tone hover. Pressed variant.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:7"
+              },
+              "usage": {
+                "where": "The pressed state of elements filled with background/neutral/subtlest.",
+                "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/neutral/subtlest/default."
+              }
+            }
+          }
+        }
+      },
+      "subtle": {
+        "default": {
+          "$type": "color",
+          "$value": "{Gray.Alpha.200}",
+          "$description": "Subtle neutral overlay (16% black). For more emphatic state layering.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:3"
+              }
+            }
+          }
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "{Gray.Alpha.300}",
+          "$description": "Subtle neutral overlay (16% black). For more emphatic state layering. Hover variant.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:4"
+              },
+              "usage": {
+                "where": "The hovered state of elements filled with background/neutral/subtle.",
+                "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/neutral/subtle/default."
+              }
+            }
+          }
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "{Gray.Alpha.400}",
+          "$description": "Subtle neutral overlay (16% black). For more emphatic state layering. Pressed variant.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:5"
+              },
+              "usage": {
+                "where": "The pressed state of elements filled with background/neutral/subtle.",
+                "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/neutral/subtle/default."
+              }
+            }
+          }
+        }
+      },
+      "boldest": {
+        "default": {
+          "$type": "color",
+          "$value": "{Gray.800}",
+          "$description": "Boldest neutral fill — solid Gray/800–1000 range. High-contrast surfaces only.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:8"
+              }
+            }
+          }
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "{Gray.800}",
+          "$description": "Boldest neutral fill — solid Gray/800–1000 range. High-contrast surfaces only. Hover variant.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:9"
+              },
+              "usage": {
+                "where": "The hovered state of elements filled with background/neutral/boldest.",
+                "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/neutral/boldest/default."
+              }
+            }
+          }
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "{Gray.1000}",
+          "$description": "Boldest neutral fill — solid Gray/800–1000 range. High-contrast surfaces only. Pressed variant.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:10"
+              },
+              "usage": {
+                "where": "The pressed state of elements filled with background/neutral/boldest.",
+                "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/neutral/boldest/default."
+              }
+            }
           }
         }
       }
     },
-    "surface-raised": {
-      "$type": "color",
-      "$value": "{gray.0}",
-      "$description": "Raised surface: sticky bars, popover-adjacent panels.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:6"
-          },
-          "pairsWith": [
-            "text.neutral",
-            "text.neutral-subtle"
-          ]
-        }
-      }
-    },
-    "surface-raised-hovered": {
-      "$type": "color",
-      "$value": "{gray.alpha.100}",
-      "$description": "Hover overlay on raised surface.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:7"
-          },
-          "pairsWith": [
-            "text.neutral"
-          ],
-          "usage": {
-            "where": "The hovered state of elements filled with bg/surface-raised.",
-            "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-            "do": "Keep state transitions quick (100–150ms) and consistent.",
-            "dont": "Don't use as a default fill — resting surfaces use bg/surface-raised."
+    "brand": {
+      "default": {
+        "$type": "color",
+        "$value": "{colors-brand.500}",
+        "$description": "Default brand-coloured surface.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:20"
+            },
+            "pairsWith": [
+              "text.static.white"
+            ]
           }
         }
-      }
-    },
-    "surface-raised-pressed": {
-      "$type": "color",
-      "$value": "{gray.alpha.200}",
-      "$description": "Pressed overlay on raised surface.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:8"
-          },
-          "pairsWith": [
-            "text.neutral"
-          ],
-          "usage": {
-            "where": "The pressed state of elements filled with bg/surface-raised.",
-            "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-            "do": "Keep state transitions quick (100–150ms) and consistent.",
-            "dont": "Don't use as a default fill — resting surfaces use bg/surface-raised."
+      },
+      "hovered": {
+        "$type": "color",
+        "$value": "{colors-brand.600}",
+        "$description": "Default brand-coloured surface (hovered state).",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:21"
+            },
+            "pairsWith": [
+              "text.static.white"
+            ],
+            "usage": {
+              "where": "The hovered state of elements filled with background/brand.",
+              "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+              "do": "Keep state transitions quick (100–150ms) and consistent.",
+              "dont": "Don't use as a default fill — resting surfaces use background/brand/default."
+            }
           }
         }
-      }
-    },
-    "surface-overlay": {
-      "$type": "color",
-      "$value": "{gray.0}",
-      "$description": "Topmost surface: modals, dropdowns, tooltips, toasts.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:9"
-          },
-          "pairsWith": [
-            "text.neutral",
-            "text.neutral-subtle"
-          ]
-        }
-      }
-    },
-    "surface-overlay-hovered": {
-      "$type": "color",
-      "$value": "{gray.alpha.100}",
-      "$description": "Hover overlay on overlay surface items (menu rows).",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:10"
-          },
-          "pairsWith": [
-            "text.neutral"
-          ],
-          "usage": {
-            "where": "The hovered state of elements filled with bg/surface-overlay.",
-            "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-            "do": "Keep state transitions quick (100–150ms) and consistent.",
-            "dont": "Don't use as a default fill — resting surfaces use bg/surface-overlay."
+      },
+      "pressed": {
+        "$type": "color",
+        "$value": "{colors-brand.700}",
+        "$description": "Default brand-coloured surface (pressed state).",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:22"
+            },
+            "pairsWith": [
+              "text.static.white"
+            ],
+            "usage": {
+              "where": "The pressed state of elements filled with background/brand.",
+              "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+              "do": "Keep state transitions quick (100–150ms) and consistent.",
+              "dont": "Don't use as a default fill — resting surfaces use background/brand/default."
+            }
           }
         }
-      }
-    },
-    "surface-overlay-pressed": {
-      "$type": "color",
-      "$value": "{gray.alpha.200}",
-      "$description": "Pressed overlay on overlay surface items.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:11"
-          },
-          "pairsWith": [
-            "text.neutral"
-          ],
-          "usage": {
-            "where": "The pressed state of elements filled with bg/surface-overlay.",
-            "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-            "do": "Keep state transitions quick (100–150ms) and consistent.",
-            "dont": "Don't use as a default fill — resting surfaces use bg/surface-overlay."
+      },
+      "subtlest": {
+        "default": {
+          "$type": "color",
+          "$value": "{colors-brand.50}",
+          "$description": "Most faintly brand-tinted surface.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:23"
+              },
+              "pairsWith": [
+                "text.brand.default",
+                "text.brand.bold",
+                "text.neutral.default"
+              ]
+            }
+          }
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "{colors-brand.100}",
+          "$description": "Most faintly brand-tinted surface (hovered state).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:24"
+              },
+              "pairsWith": [
+                "text.neutral.default"
+              ],
+              "usage": {
+                "where": "The hovered state of elements filled with background/brand/subtlest.",
+                "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/brand/subtlest/default."
+              }
+            }
+          }
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "{colors-brand.200}",
+          "$description": "Most faintly brand-tinted surface (pressed state).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:25"
+              },
+              "pairsWith": [
+                "text.neutral.default"
+              ],
+              "usage": {
+                "where": "The pressed state of elements filled with background/brand/subtlest.",
+                "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/brand/subtlest/default."
+              }
+            }
           }
         }
-      }
-    },
-    "neutral-hovered": {
-      "$type": "color",
-      "$value": "{gray.alpha.100}",
-      "$description": "Ghost interaction: hover fill for transparent-by-default controls.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:12"
-          },
-          "usage": {
-            "where": "The hovered state of elements filled with bg/neutral.",
-            "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-            "do": "Keep state transitions quick (100–150ms) and consistent.",
-            "dont": "Don't use as a default fill — resting surfaces use bg/neutral."
+      },
+      "bold": {
+        "default": {
+          "$type": "color",
+          "$value": "{colors-brand.600}",
+          "$description": "Strong brand-coloured surface.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:26"
+              },
+              "pairsWith": [
+                "text.static.white"
+              ]
+            }
+          }
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "{colors-brand.700}",
+          "$description": "Strong brand-coloured surface (hovered state).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:27"
+              },
+              "pairsWith": [
+                "text.static.white"
+              ],
+              "usage": {
+                "where": "The hovered state of elements filled with background/brand/bold.",
+                "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/brand/bold/default."
+              }
+            }
+          }
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "{colors-brand.800}",
+          "$description": "Strong brand-coloured surface (pressed state).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:28"
+              },
+              "pairsWith": [
+                "text.static.white"
+              ],
+              "usage": {
+                "where": "The pressed state of elements filled with background/brand/bold.",
+                "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/brand/bold/default."
+              }
+            }
           }
         }
-      }
-    },
-    "neutral-pressed": {
-      "$type": "color",
-      "$value": "{gray.alpha.200}",
-      "$description": "Ghost interaction: pressed fill for transparent-by-default controls.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:13"
-          },
-          "usage": {
-            "where": "The pressed state of elements filled with bg/neutral.",
-            "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-            "do": "Keep state transitions quick (100–150ms) and consistent.",
-            "dont": "Don't use as a default fill — resting surfaces use bg/neutral."
+      },
+      "subtler": {
+        "default": {
+          "$type": "color",
+          "$value": "{colors-brand.100}",
+          "$description": "Very subtle brand-tinted surface.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:11"
+              }
+            }
+          }
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "{colors-brand.200}",
+          "$description": "Very subtle brand-tinted surface (hovered state).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:12"
+              },
+              "usage": {
+                "where": "The hovered state of elements filled with background/brand/subtler.",
+                "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/brand/subtler/default."
+              }
+            }
+          }
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "{colors-brand.300}",
+          "$description": "Very subtle brand-tinted surface (pressed state).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:13"
+              },
+              "usage": {
+                "where": "The pressed state of elements filled with background/brand/subtler.",
+                "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/brand/subtler/default."
+              }
+            }
           }
         }
-      }
-    },
-    "neutral-subtle": {
-      "$type": "color",
-      "$value": "{gray.alpha.100}",
-      "$description": "Quiet neutral fill: secondary buttons, chips, inputs.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:14"
-          },
-          "pairsWith": [
-            "text.neutral",
-            "text.neutral-subtle"
-          ]
-        }
-      }
-    },
-    "neutral-subtle-hovered": {
-      "$type": "color",
-      "$value": "{gray.alpha.200}",
-      "$description": "Hovered quiet neutral fill.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:15"
-          },
-          "pairsWith": [
-            "text.neutral"
-          ],
-          "usage": {
-            "where": "The hovered state of elements filled with bg/neutral-subtle.",
-            "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-            "do": "Keep state transitions quick (100–150ms) and consistent.",
-            "dont": "Don't use as a default fill — resting surfaces use bg/neutral-subtle."
+      },
+      "subtle": {
+        "default": {
+          "$type": "color",
+          "$value": "{colors-brand.200}",
+          "$description": "Subtle brand-tinted surface.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:14"
+              }
+            }
+          }
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "{colors-brand.300}",
+          "$description": "Subtle brand-tinted surface (hovered state).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:15"
+              },
+              "usage": {
+                "where": "The hovered state of elements filled with background/brand/subtle.",
+                "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/brand/subtle/default."
+              }
+            }
+          }
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "{colors-brand.400}",
+          "$description": "Subtle brand-tinted surface (pressed state).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:16"
+              },
+              "usage": {
+                "where": "The pressed state of elements filled with background/brand/subtle.",
+                "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/brand/subtle/default."
+              }
+            }
           }
         }
-      }
-    },
-    "neutral-subtle-pressed": {
-      "$type": "color",
-      "$value": "{gray.alpha.300}",
-      "$description": "Pressed quiet neutral fill.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:16"
-          },
-          "pairsWith": [
-            "text.neutral"
-          ],
-          "usage": {
-            "where": "The pressed state of elements filled with bg/neutral-subtle.",
-            "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-            "do": "Keep state transitions quick (100–150ms) and consistent.",
-            "dont": "Don't use as a default fill — resting surfaces use bg/neutral-subtle."
+      },
+      "boldest": {
+        "default": {
+          "$type": "color",
+          "$value": "{colors-brand.700}",
+          "$description": "Most saturated brand surface.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:17"
+              }
+            }
           }
-        }
-      }
-    },
-    "neutral-bold": {
-      "$type": "color",
-      "$value": "{gray.700}",
-      "$description": "Solid neutral fill: bold chips, tooltips (inverse-style). Pairs with text/on-neutral-bold.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:17"
-          },
-          "pairsWith": [
-            "text.on-neutral-bold"
-          ]
-        }
-      }
-    },
-    "neutral-bold-hovered": {
-      "$type": "color",
-      "$value": "{gray.800}",
-      "$description": "Hovered solid neutral fill.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:18"
-          },
-          "pairsWith": [
-            "text.on-neutral-bold"
-          ],
-          "usage": {
-            "where": "The hovered state of elements filled with bg/neutral-bold.",
-            "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-            "do": "Keep state transitions quick (100–150ms) and consistent.",
-            "dont": "Don't use as a default fill — resting surfaces use bg/neutral-bold."
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "{colors-brand.800}",
+          "$description": "Most saturated brand surface (hovered state).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:18"
+              },
+              "usage": {
+                "where": "The hovered state of elements filled with background/brand/boldest.",
+                "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/brand/boldest/default."
+              }
+            }
           }
-        }
-      }
-    },
-    "neutral-bold-pressed": {
-      "$type": "color",
-      "$value": "{gray.900}",
-      "$description": "Pressed solid neutral fill.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:19"
-          },
-          "pairsWith": [
-            "text.on-neutral-bold"
-          ],
-          "usage": {
-            "where": "The pressed state of elements filled with bg/neutral-bold.",
-            "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-            "do": "Keep state transitions quick (100–150ms) and consistent.",
-            "dont": "Don't use as a default fill — resting surfaces use bg/neutral-bold."
-          }
-        }
-      }
-    },
-    "accent": {
-      "$type": "color",
-      "$value": "{blue.500}",
-      "$description": "Solid brand fill: primary buttons, active states. Pairs with text/on-accent.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:20"
-          },
-          "pairsWith": [
-            "text.on-accent",
-            "icon.on-accent"
-          ]
-        }
-      }
-    },
-    "accent-hovered": {
-      "$type": "color",
-      "$value": "{blue.600}",
-      "$description": "Hovered solid brand fill.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:21"
-          },
-          "pairsWith": [
-            "text.on-accent",
-            "icon.on-accent"
-          ],
-          "usage": {
-            "where": "The hovered state of elements filled with bg/accent.",
-            "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-            "do": "Keep state transitions quick (100–150ms) and consistent.",
-            "dont": "Don't use as a default fill — resting surfaces use bg/accent."
-          }
-        }
-      }
-    },
-    "accent-pressed": {
-      "$type": "color",
-      "$value": "{blue.700}",
-      "$description": "Pressed solid brand fill.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:22"
-          },
-          "pairsWith": [
-            "text.on-accent",
-            "icon.on-accent"
-          ],
-          "usage": {
-            "where": "The pressed state of elements filled with bg/accent.",
-            "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-            "do": "Keep state transitions quick (100–150ms) and consistent.",
-            "dont": "Don't use as a default fill — resting surfaces use bg/accent."
-          }
-        }
-      }
-    },
-    "accent-subtle": {
-      "$type": "color",
-      "$value": "{blue.50}",
-      "$description": "Brand tint: highlighted cards, subtle callouts.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:23"
-          },
-          "pairsWith": [
-            "text.accent",
-            "text.accent-bold",
-            "text.neutral"
-          ]
-        }
-      }
-    },
-    "accent-subtle-hovered": {
-      "$type": "color",
-      "$value": "{blue.100}",
-      "$description": "Hovered brand tint.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:24"
-          },
-          "pairsWith": [
-            "text.neutral"
-          ],
-          "usage": {
-            "where": "The hovered state of elements filled with bg/accent-subtle.",
-            "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-            "do": "Keep state transitions quick (100–150ms) and consistent.",
-            "dont": "Don't use as a default fill — resting surfaces use bg/accent-subtle."
-          }
-        }
-      }
-    },
-    "accent-subtle-pressed": {
-      "$type": "color",
-      "$value": "{blue.200}",
-      "$description": "Pressed brand tint.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:25"
-          },
-          "pairsWith": [
-            "text.neutral"
-          ],
-          "usage": {
-            "where": "The pressed state of elements filled with bg/accent-subtle.",
-            "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-            "do": "Keep state transitions quick (100–150ms) and consistent.",
-            "dont": "Don't use as a default fill — resting surfaces use bg/accent-subtle."
-          }
-        }
-      }
-    },
-    "accent-bold": {
-      "$type": "color",
-      "$value": "{blue.600}",
-      "$description": "High-emphasis brand fill.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:26"
-          },
-          "pairsWith": [
-            "text.on-accent",
-            "icon.on-accent"
-          ]
-        }
-      }
-    },
-    "accent-bold-hovered": {
-      "$type": "color",
-      "$value": "{blue.700}",
-      "$description": "Hovered high-emphasis brand fill.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:27"
-          },
-          "pairsWith": [
-            "text.on-accent",
-            "icon.on-accent"
-          ],
-          "usage": {
-            "where": "The hovered state of elements filled with bg/accent-bold.",
-            "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-            "do": "Keep state transitions quick (100–150ms) and consistent.",
-            "dont": "Don't use as a default fill — resting surfaces use bg/accent-bold."
-          }
-        }
-      }
-    },
-    "accent-bold-pressed": {
-      "$type": "color",
-      "$value": "{blue.800}",
-      "$description": "Pressed high-emphasis brand fill.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:28"
-          },
-          "pairsWith": [
-            "text.on-accent",
-            "icon.on-accent"
-          ],
-          "usage": {
-            "where": "The pressed state of elements filled with bg/accent-bold.",
-            "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-            "do": "Keep state transitions quick (100–150ms) and consistent.",
-            "dont": "Don't use as a default fill — resting surfaces use bg/accent-bold."
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "{colors-brand.900}",
+          "$description": "Most saturated brand surface (pressed state).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:19"
+              },
+              "usage": {
+                "where": "The pressed state of elements filled with background/brand/boldest.",
+                "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/brand/boldest/default."
+              }
+            }
           }
         }
       }
     },
     "selected": {
-      "$type": "color",
-      "$value": "{blue.50}",
-      "$description": "Selected row/item background.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:29"
-          },
-          "pairsWith": [
-            "text.accent",
-            "text.accent-bold",
-            "text.neutral"
-          ]
-        }
-      }
-    },
-    "selected-hovered": {
-      "$type": "color",
-      "$value": "{blue.100}",
-      "$description": "Hovered selected background.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:30"
-          },
-          "pairsWith": [
-            "text.neutral"
-          ],
-          "usage": {
-            "where": "The hovered state of elements filled with bg/selected.",
-            "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-            "do": "Keep state transitions quick (100–150ms) and consistent.",
-            "dont": "Don't use as a default fill — resting surfaces use bg/selected."
+      "default": {
+        "$type": "color",
+        "$value": "{colors-brand.50}",
+        "$description": "Surface for selected items.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:29"
+            },
+            "pairsWith": [
+              "text.brand.default",
+              "text.brand.bold",
+              "text.neutral.default"
+            ]
           }
         }
-      }
-    },
-    "selected-pressed": {
-      "$type": "color",
-      "$value": "{blue.200}",
-      "$description": "Pressed selected background.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:31"
-          },
-          "pairsWith": [
-            "text.neutral"
-          ],
-          "usage": {
-            "where": "The pressed state of elements filled with bg/selected.",
-            "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-            "do": "Keep state transitions quick (100–150ms) and consistent.",
-            "dont": "Don't use as a default fill — resting surfaces use bg/selected."
+      },
+      "hovered": {
+        "$type": "color",
+        "$value": "{colors-brand.100}",
+        "$description": "Surface for selected items (hovered state).",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:30"
+            },
+            "pairsWith": [
+              "text.neutral.default"
+            ],
+            "usage": {
+              "where": "The hovered state of elements filled with background/selected.",
+              "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+              "do": "Keep state transitions quick (100–150ms) and consistent.",
+              "dont": "Don't use as a default fill — resting surfaces use background/selected/default."
+            }
+          }
+        }
+      },
+      "pressed": {
+        "$type": "color",
+        "$value": "{colors-brand.200}",
+        "$description": "Surface for selected items (pressed state).",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:31"
+            },
+            "pairsWith": [
+              "text.neutral.default"
+            ],
+            "usage": {
+              "where": "The pressed state of elements filled with background/selected.",
+              "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+              "do": "Keep state transitions quick (100–150ms) and consistent.",
+              "dont": "Don't use as a default fill — resting surfaces use background/selected/default."
+            }
           }
         }
       }
     },
     "inverse": {
-      "$type": "color",
-      "$value": "{gray.alpha.300}",
-      "$description": "Inverse-context background (dark-on-light UI islands).",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:32"
+      "default": {
+        "$type": "color",
+        "$value": "{Gray.Alpha.300}",
+        "$description": "Inverted surface — dark on a light theme.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:32"
+            }
           }
         }
-      }
-    },
-    "inverse-hovered": {
-      "$type": "color",
-      "$value": "{gray.alpha.400}",
-      "$description": "Hovered inverse background.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:33"
-          },
-          "usage": {
-            "where": "The hovered state of elements filled with bg/inverse.",
-            "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-            "do": "Keep state transitions quick (100–150ms) and consistent.",
-            "dont": "Don't use as a default fill — resting surfaces use bg/inverse."
+      },
+      "hovered": {
+        "$type": "color",
+        "$value": "{Gray.Alpha.400}",
+        "$description": "Inverted surface — dark on a light theme (hovered state).",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:33"
+            },
+            "usage": {
+              "where": "The hovered state of elements filled with background/inverse.",
+              "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+              "do": "Keep state transitions quick (100–150ms) and consistent.",
+              "dont": "Don't use as a default fill — resting surfaces use background/inverse/default."
+            }
           }
         }
-      }
-    },
-    "inverse-pressed": {
-      "$type": "color",
-      "$value": "{gray.alpha.500}",
-      "$description": "Pressed inverse background.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:34"
-          },
-          "usage": {
-            "where": "The pressed state of elements filled with bg/inverse.",
-            "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-            "do": "Keep state transitions quick (100–150ms) and consistent.",
-            "dont": "Don't use as a default fill — resting surfaces use bg/inverse."
+      },
+      "pressed": {
+        "$type": "color",
+        "$value": "{Gray.Alpha.500}",
+        "$description": "Inverted surface — dark on a light theme (pressed state).",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:34"
+            },
+            "usage": {
+              "where": "The pressed state of elements filled with background/inverse.",
+              "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+              "do": "Keep state transitions quick (100–150ms) and consistent.",
+              "dont": "Don't use as a default fill — resting surfaces use background/inverse/default."
+            }
           }
         }
       }
     },
     "disabled": {
       "$type": "color",
-      "$value": "{gray.alpha.100}",
-      "$description": "Disabled control fill. Pairs with text/disabled.",
+      "$value": "{Gray.Alpha.100}",
+      "$description": "Disabled surface overlay. Light: 8% black; Dark: 8% white. Applied to disabled inputs, buttons, controls — lighter than other neutral states so it reads as non-editable rather than empty.",
       "$extensions": {
         "ply": {
           "figma": {
@@ -712,8 +1068,8 @@
     },
     "scrim": {
       "$type": "color",
-      "$value": "{gray.alpha.500}",
-      "$description": "Dimming layer behind modals and drawers.",
+      "$value": "{Gray.Alpha.500}",
+      "$description": "Translucent dimming overlay behind modal/sheet surfaces.",
       "$extensions": {
         "ply": {
           "figma": {
@@ -724,795 +1080,753 @@
         }
       }
     },
-    "static-white": {
-      "$type": "color",
-      "$value": "{gray.50}",
-      "$description": "Always-light background regardless of theme.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:37"
+    "static": {
+      "white": {
+        "default": {
+          "$type": "color",
+          "$value": "{Gray.50}",
+          "$description": "Always-white surface that holds across light + dark modes. Use on brand-fixed elements (logos, illustrations, marketing imagery) that must not invert.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:37"
+              }
+            }
           }
         }
-      }
-    },
-    "static-black": {
-      "$type": "color",
-      "$value": "{gray.1000}",
-      "$description": "Always-dark background regardless of theme.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:38"
+      },
+      "black": {
+        "default": {
+          "$type": "color",
+          "$value": "{Gray.1000}",
+          "$description": "Always-black surface that holds across light + dark modes. Use on brand-fixed elements (logos, illustrations, marketing imagery) that must not invert.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:38"
+              }
+            }
           }
         }
       }
     },
     "status": {
       "danger": {
-        "$type": "color",
-        "$value": "{red.600}",
-        "$description": "Solid danger fill: banners, badges, destructive/confirm buttons. Pairs with text/on-status-danger.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:39"
-            },
-            "pairsWith": [
-              "text.on-status-danger"
-            ]
-          }
-        }
-      },
-      "danger-hovered": {
-        "$type": "color",
-        "$value": "{red.700}",
-        "$description": "Hovered solid danger fill.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:40"
-            },
-            "pairsWith": [
-              "text.on-status-danger"
-            ],
-            "usage": {
-              "where": "The hovered state of elements filled with bg/status/danger.",
-              "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/danger."
+        "default": {
+          "$type": "color",
+          "$value": "{Red.600}",
+          "$description": "Canonical danger background. Light: Red/500; Dark: Red/400. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:39"
+              }
             }
           }
-        }
-      },
-      "danger-pressed": {
-        "$type": "color",
-        "$value": "{red.800}",
-        "$description": "Pressed solid danger fill.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:41"
-            },
-            "pairsWith": [
-              "text.on-status-danger"
-            ],
-            "usage": {
-              "where": "The pressed state of elements filled with bg/status/danger.",
-              "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/danger."
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "{Red.700}",
+          "$description": "Canonical danger background. Light: Red/600; Dark: Red/300. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:40"
+              },
+              "usage": {
+                "where": "The hovered state of elements filled with background/status/danger.",
+                "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/status/danger/default."
+              }
             }
           }
-        }
-      },
-      "danger-subtle": {
-        "$type": "color",
-        "$value": "{red.100}",
-        "$description": "Quiet danger tint: inline alerts, row highlights.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:42"
-            },
-            "pairsWith": [
-              "text.status.danger",
-              "text.status.danger-bold",
-              "text.neutral"
-            ]
-          }
-        }
-      },
-      "danger-subtle-hovered": {
-        "$type": "color",
-        "$value": "{red.200}",
-        "$description": "Hovered quiet danger tint.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:43"
-            },
-            "pairsWith": [
-              "text.neutral"
-            ],
-            "usage": {
-              "where": "The hovered state of elements filled with bg/status/danger-subtle.",
-              "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/danger-subtle."
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "{Red.800}",
+          "$description": "Canonical danger background. Light: Red/700; Dark: Red/200. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:41"
+              },
+              "usage": {
+                "where": "The pressed state of elements filled with background/status/danger.",
+                "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/status/danger/default."
+              }
             }
           }
-        }
-      },
-      "danger-subtle-pressed": {
-        "$type": "color",
-        "$value": "{red.300}",
-        "$description": "Pressed quiet danger tint.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:44"
-            },
-            "pairsWith": [
-              "text.neutral"
-            ],
-            "usage": {
-              "where": "The pressed state of elements filled with bg/status/danger-subtle.",
-              "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/danger-subtle."
+        },
+        "subtle": {
+          "default": {
+            "$type": "color",
+            "$value": "{Red.100}",
+            "$description": "Faint error / destructive-tinted surface for inline alerts and banners.",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:42"
+                },
+                "pairsWith": [
+                  "text.status.danger.default",
+                  "text.status.danger.bold",
+                  "text.neutral.default"
+                ]
+              }
+            }
+          },
+          "hovered": {
+            "$type": "color",
+            "$value": "{Red.200}",
+            "$description": "Faint error / destructive-tinted surface for inline alerts and banners (hovered state).",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:43"
+                },
+                "pairsWith": [
+                  "text.neutral.default"
+                ],
+                "usage": {
+                  "where": "The hovered state of elements filled with background/status/danger/subtle.",
+                  "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                  "do": "Keep state transitions quick (100–150ms) and consistent.",
+                  "dont": "Don't use as a default fill — resting surfaces use background/status/danger/subtle/default."
+                }
+              }
+            }
+          },
+          "pressed": {
+            "$type": "color",
+            "$value": "{Red.300}",
+            "$description": "Faint error / destructive-tinted surface for inline alerts and banners (pressed state).",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:44"
+                },
+                "pairsWith": [
+                  "text.neutral.default"
+                ],
+                "usage": {
+                  "where": "The pressed state of elements filled with background/status/danger/subtle.",
+                  "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                  "do": "Keep state transitions quick (100–150ms) and consistent.",
+                  "dont": "Don't use as a default fill — resting surfaces use background/status/danger/subtle/default."
+                }
+              }
             }
           }
-        }
-      },
-      "danger-bold": {
-        "$type": "color",
-        "$value": "{red.700}",
-        "$description": "High-emphasis danger fill.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:45"
-            },
-            "pairsWith": [
-              "text.on-status-danger"
-            ]
-          }
-        }
-      },
-      "danger-bold-hovered": {
-        "$type": "color",
-        "$value": "{red.800}",
-        "$description": "Hovered high-emphasis danger fill.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:46"
-            },
-            "pairsWith": [
-              "text.on-status-danger"
-            ],
-            "usage": {
-              "where": "The hovered state of elements filled with bg/status/danger-bold.",
-              "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/danger-bold."
+        },
+        "bold": {
+          "default": {
+            "$type": "color",
+            "$value": "{Red.700}",
+            "$description": "Strong error / destructive surface for high-emphasis messaging.",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:45"
+                }
+              }
             }
-          }
-        }
-      },
-      "danger-bold-pressed": {
-        "$type": "color",
-        "$value": "{red.900}",
-        "$description": "Pressed high-emphasis danger fill. (Dark step fixed from reference collision.)",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:47"
-            },
-            "pairsWith": [
-              "text.on-status-danger"
-            ],
-            "usage": {
-              "where": "The pressed state of elements filled with bg/status/danger-bold.",
-              "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/danger-bold."
+          },
+          "hovered": {
+            "$type": "color",
+            "$value": "{Red.800}",
+            "$description": "Strong error / destructive surface for high-emphasis messaging (hovered state).",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:46"
+                },
+                "usage": {
+                  "where": "The hovered state of elements filled with background/status/danger/bold.",
+                  "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                  "do": "Keep state transitions quick (100–150ms) and consistent.",
+                  "dont": "Don't use as a default fill — resting surfaces use background/status/danger/bold/default."
+                }
+              }
+            }
+          },
+          "pressed": {
+            "$type": "color",
+            "$value": "{Red.900}",
+            "$description": "Strong error / destructive surface for high-emphasis messaging (pressed state).",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:47"
+                },
+                "usage": {
+                  "where": "The pressed state of elements filled with background/status/danger/bold.",
+                  "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                  "do": "Keep state transitions quick (100–150ms) and consistent.",
+                  "dont": "Don't use as a default fill — resting surfaces use background/status/danger/bold/default."
+                }
+              }
             }
           }
         }
       },
       "success": {
-        "$type": "color",
-        "$value": "{green.600}",
-        "$description": "Solid success fill: banners, badges, destructive/confirm buttons. Pairs with text/on-status-success.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:48"
-            },
-            "pairsWith": [
-              "text.on-status-success"
-            ]
-          }
-        }
-      },
-      "success-hovered": {
-        "$type": "color",
-        "$value": "{green.700}",
-        "$description": "Hovered solid success fill.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:49"
-            },
-            "pairsWith": [
-              "text.on-status-success"
-            ],
-            "usage": {
-              "where": "The hovered state of elements filled with bg/status/success.",
-              "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/success."
+        "default": {
+          "$type": "color",
+          "$value": "{Green.600}",
+          "$description": "Canonical success background. Light: Green/500; Dark: Green/400. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:48"
+              }
             }
           }
-        }
-      },
-      "success-pressed": {
-        "$type": "color",
-        "$value": "{green.800}",
-        "$description": "Pressed solid success fill.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:50"
-            },
-            "pairsWith": [
-              "text.on-status-success"
-            ],
-            "usage": {
-              "where": "The pressed state of elements filled with bg/status/success.",
-              "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/success."
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "{Green.700}",
+          "$description": "Canonical success background. Light: Green/600; Dark: Green/300. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:49"
+              },
+              "usage": {
+                "where": "The hovered state of elements filled with background/status/success.",
+                "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/status/success/default."
+              }
             }
           }
-        }
-      },
-      "success-subtle": {
-        "$type": "color",
-        "$value": "{green.100}",
-        "$description": "Quiet success tint: inline alerts, row highlights.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:51"
-            },
-            "pairsWith": [
-              "text.status.success",
-              "text.status.success-bold",
-              "text.neutral"
-            ]
-          }
-        }
-      },
-      "success-subtle-hovered": {
-        "$type": "color",
-        "$value": "{green.200}",
-        "$description": "Hovered quiet success tint.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:52"
-            },
-            "pairsWith": [
-              "text.neutral"
-            ],
-            "usage": {
-              "where": "The hovered state of elements filled with bg/status/success-subtle.",
-              "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/success-subtle."
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "{Green.800}",
+          "$description": "Canonical success background. Light: Green/700; Dark: Green/200. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:50"
+              },
+              "usage": {
+                "where": "The pressed state of elements filled with background/status/success.",
+                "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/status/success/default."
+              }
             }
           }
-        }
-      },
-      "success-subtle-pressed": {
-        "$type": "color",
-        "$value": "{green.300}",
-        "$description": "Pressed quiet success tint.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:53"
-            },
-            "pairsWith": [
-              "text.neutral"
-            ],
-            "usage": {
-              "where": "The pressed state of elements filled with bg/status/success-subtle.",
-              "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/success-subtle."
+        },
+        "subtle": {
+          "default": {
+            "$type": "color",
+            "$value": "{Green.100}",
+            "$description": "Faint success / confirmation-tinted surface for inline alerts and banners.",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:51"
+                },
+                "pairsWith": [
+                  "text.status.success.default",
+                  "text.status.success.bold",
+                  "text.neutral.default"
+                ]
+              }
+            }
+          },
+          "hovered": {
+            "$type": "color",
+            "$value": "{Green.200}",
+            "$description": "Faint success / confirmation-tinted surface for inline alerts and banners (hovered state).",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:52"
+                },
+                "pairsWith": [
+                  "text.neutral.default"
+                ],
+                "usage": {
+                  "where": "The hovered state of elements filled with background/status/success/subtle.",
+                  "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                  "do": "Keep state transitions quick (100–150ms) and consistent.",
+                  "dont": "Don't use as a default fill — resting surfaces use background/status/success/subtle/default."
+                }
+              }
+            }
+          },
+          "pressed": {
+            "$type": "color",
+            "$value": "{Green.300}",
+            "$description": "Faint success / confirmation-tinted surface for inline alerts and banners (pressed state).",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:53"
+                },
+                "pairsWith": [
+                  "text.neutral.default"
+                ],
+                "usage": {
+                  "where": "The pressed state of elements filled with background/status/success/subtle.",
+                  "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                  "do": "Keep state transitions quick (100–150ms) and consistent.",
+                  "dont": "Don't use as a default fill — resting surfaces use background/status/success/subtle/default."
+                }
+              }
             }
           }
-        }
-      },
-      "success-bold": {
-        "$type": "color",
-        "$value": "{green.700}",
-        "$description": "High-emphasis success fill.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:54"
-            },
-            "pairsWith": [
-              "text.on-status-success"
-            ]
-          }
-        }
-      },
-      "success-bold-hovered": {
-        "$type": "color",
-        "$value": "{green.800}",
-        "$description": "Hovered high-emphasis success fill.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:55"
-            },
-            "pairsWith": [
-              "text.on-status-success"
-            ],
-            "usage": {
-              "where": "The hovered state of elements filled with bg/status/success-bold.",
-              "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/success-bold."
+        },
+        "bold": {
+          "default": {
+            "$type": "color",
+            "$value": "{Green.700}",
+            "$description": "Strong success / confirmation surface for high-emphasis messaging.",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:54"
+                }
+              }
             }
-          }
-        }
-      },
-      "success-bold-pressed": {
-        "$type": "color",
-        "$value": "{green.900}",
-        "$description": "Pressed high-emphasis success fill. (Dark step fixed from reference collision.)",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:56"
-            },
-            "pairsWith": [
-              "text.on-status-success"
-            ],
-            "usage": {
-              "where": "The pressed state of elements filled with bg/status/success-bold.",
-              "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/success-bold."
+          },
+          "hovered": {
+            "$type": "color",
+            "$value": "{Green.800}",
+            "$description": "Strong success / confirmation surface for high-emphasis messaging (hovered state).",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:55"
+                },
+                "usage": {
+                  "where": "The hovered state of elements filled with background/status/success/bold.",
+                  "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                  "do": "Keep state transitions quick (100–150ms) and consistent.",
+                  "dont": "Don't use as a default fill — resting surfaces use background/status/success/bold/default."
+                }
+              }
+            }
+          },
+          "pressed": {
+            "$type": "color",
+            "$value": "{Green.900}",
+            "$description": "Strong success / confirmation surface for high-emphasis messaging (pressed state).",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:56"
+                },
+                "usage": {
+                  "where": "The pressed state of elements filled with background/status/success/bold.",
+                  "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                  "do": "Keep state transitions quick (100–150ms) and consistent.",
+                  "dont": "Don't use as a default fill — resting surfaces use background/status/success/bold/default."
+                }
+              }
             }
           }
         }
       },
       "warning": {
-        "$type": "color",
-        "$value": "{yellow.500}",
-        "$description": "Solid warning fill: banners, badges, destructive/confirm buttons. Pairs with text/on-status-warning.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:57"
-            },
-            "pairsWith": [
-              "text.on-status-warning"
-            ]
-          }
-        }
-      },
-      "warning-hovered": {
-        "$type": "color",
-        "$value": "{yellow.400}",
-        "$description": "Hovered solid warning fill.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:58"
-            },
-            "pairsWith": [
-              "text.on-status-warning"
-            ],
-            "usage": {
-              "where": "The hovered state of elements filled with bg/status/warning.",
-              "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/warning."
+        "default": {
+          "$type": "color",
+          "$value": "{Yellow.500}",
+          "$description": "Canonical warning background. Light: Yellow/500; Dark: Yellow/400. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:57"
+              }
             }
           }
-        }
-      },
-      "warning-pressed": {
-        "$type": "color",
-        "$value": "{yellow.300}",
-        "$description": "Pressed solid warning fill.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:59"
-            },
-            "pairsWith": [
-              "text.on-status-warning"
-            ],
-            "usage": {
-              "where": "The pressed state of elements filled with bg/status/warning.",
-              "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/warning."
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "{Yellow.400}",
+          "$description": "Canonical warning background. Light: Yellow/600; Dark: Yellow/300. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:58"
+              },
+              "usage": {
+                "where": "The hovered state of elements filled with background/status/warning.",
+                "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/status/warning/default."
+              }
             }
           }
-        }
-      },
-      "warning-subtle": {
-        "$type": "color",
-        "$value": "{yellow.100}",
-        "$description": "Quiet warning tint: inline alerts, row highlights.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:60"
-            },
-            "pairsWith": [
-              "text.status.warning",
-              "text.status.warning-bold",
-              "text.neutral"
-            ]
-          }
-        }
-      },
-      "warning-subtle-hovered": {
-        "$type": "color",
-        "$value": "{yellow.200}",
-        "$description": "Hovered quiet warning tint.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:61"
-            },
-            "pairsWith": [
-              "text.neutral"
-            ],
-            "usage": {
-              "where": "The hovered state of elements filled with bg/status/warning-subtle.",
-              "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/warning-subtle."
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "{Yellow.300}",
+          "$description": "Canonical warning background. Light: Yellow/700; Dark: Yellow/200. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:59"
+              },
+              "usage": {
+                "where": "The pressed state of elements filled with background/status/warning.",
+                "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/status/warning/default."
+              }
             }
           }
-        }
-      },
-      "warning-subtle-pressed": {
-        "$type": "color",
-        "$value": "{yellow.300}",
-        "$description": "Pressed quiet warning tint.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:62"
-            },
-            "pairsWith": [
-              "text.neutral"
-            ],
-            "usage": {
-              "where": "The pressed state of elements filled with bg/status/warning-subtle.",
-              "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/warning-subtle."
+        },
+        "subtle": {
+          "default": {
+            "$type": "color",
+            "$value": "{Yellow.100}",
+            "$description": "Faint caution / warning-tinted surface for inline alerts and banners.",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:60"
+                },
+                "pairsWith": [
+                  "text.status.warning.default",
+                  "text.status.warning.bold",
+                  "text.neutral.default"
+                ]
+              }
+            }
+          },
+          "hovered": {
+            "$type": "color",
+            "$value": "{Yellow.200}",
+            "$description": "Faint caution / warning-tinted surface for inline alerts and banners (hovered state).",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:61"
+                },
+                "pairsWith": [
+                  "text.neutral.default"
+                ],
+                "usage": {
+                  "where": "The hovered state of elements filled with background/status/warning/subtle.",
+                  "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                  "do": "Keep state transitions quick (100–150ms) and consistent.",
+                  "dont": "Don't use as a default fill — resting surfaces use background/status/warning/subtle/default."
+                }
+              }
+            }
+          },
+          "pressed": {
+            "$type": "color",
+            "$value": "{Yellow.300}",
+            "$description": "Faint caution / warning-tinted surface for inline alerts and banners (pressed state).",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:62"
+                },
+                "pairsWith": [
+                  "text.neutral.default"
+                ],
+                "usage": {
+                  "where": "The pressed state of elements filled with background/status/warning/subtle.",
+                  "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                  "do": "Keep state transitions quick (100–150ms) and consistent.",
+                  "dont": "Don't use as a default fill — resting surfaces use background/status/warning/subtle/default."
+                }
+              }
             }
           }
-        }
-      },
-      "warning-bold": {
-        "$type": "color",
-        "$value": "{yellow.700}",
-        "$description": "High-emphasis warning fill.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:63"
-            },
-            "pairsWith": [
-              "text.on-status-warning-bold"
-            ]
-          }
-        }
-      },
-      "warning-bold-hovered": {
-        "$type": "color",
-        "$value": "{yellow.800}",
-        "$description": "Hovered high-emphasis warning fill.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:64"
-            },
-            "pairsWith": [
-              "text.on-status-warning-bold"
-            ],
-            "usage": {
-              "where": "The hovered state of elements filled with bg/status/warning-bold.",
-              "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/warning-bold."
+        },
+        "bold": {
+          "default": {
+            "$type": "color",
+            "$value": "{Yellow.700}",
+            "$description": "Strong caution / warning surface for high-emphasis messaging.",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:63"
+                }
+              }
             }
-          }
-        }
-      },
-      "warning-bold-pressed": {
-        "$type": "color",
-        "$value": "{yellow.900}",
-        "$description": "Pressed high-emphasis warning fill. (Dark step fixed from reference collision.)",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:65"
-            },
-            "pairsWith": [
-              "text.on-status-warning-bold"
-            ],
-            "usage": {
-              "where": "The pressed state of elements filled with bg/status/warning-bold.",
-              "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/warning-bold."
+          },
+          "hovered": {
+            "$type": "color",
+            "$value": "{Yellow.800}",
+            "$description": "Strong caution / warning surface for high-emphasis messaging (hovered state).",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:64"
+                },
+                "usage": {
+                  "where": "The hovered state of elements filled with background/status/warning/bold.",
+                  "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                  "do": "Keep state transitions quick (100–150ms) and consistent.",
+                  "dont": "Don't use as a default fill — resting surfaces use background/status/warning/bold/default."
+                }
+              }
+            }
+          },
+          "pressed": {
+            "$type": "color",
+            "$value": "{Yellow.900}",
+            "$description": "Strong caution / warning surface for high-emphasis messaging (pressed state).",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:65"
+                },
+                "usage": {
+                  "where": "The pressed state of elements filled with background/status/warning/bold.",
+                  "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                  "do": "Keep state transitions quick (100–150ms) and consistent.",
+                  "dont": "Don't use as a default fill — resting surfaces use background/status/warning/bold/default."
+                }
+              }
             }
           }
         }
       },
       "info": {
-        "$type": "color",
-        "$value": "{teal.500}",
-        "$description": "Solid info fill: banners, badges, destructive/confirm buttons. Pairs with text/on-status-info.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:66"
-            },
-            "pairsWith": [
-              "text.on-status-info"
-            ]
-          }
-        }
-      },
-      "info-hovered": {
-        "$type": "color",
-        "$value": "{teal.400}",
-        "$description": "Hovered solid info fill.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:67"
-            },
-            "pairsWith": [
-              "text.on-status-info"
-            ],
-            "usage": {
-              "where": "The hovered state of elements filled with bg/status/info.",
-              "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/info."
+        "default": {
+          "$type": "color",
+          "$value": "{Teal.500}",
+          "$description": "Canonical info background. Light: Teal/500; Dark: Teal/400. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:66"
+              }
             }
           }
-        }
-      },
-      "info-pressed": {
-        "$type": "color",
-        "$value": "{teal.300}",
-        "$description": "Pressed solid info fill.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:68"
-            },
-            "pairsWith": [
-              "text.on-status-info"
-            ],
-            "usage": {
-              "where": "The pressed state of elements filled with bg/status/info.",
-              "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/info."
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "{Teal.400}",
+          "$description": "Canonical info background. Light: Teal/600; Dark: Teal/300. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:67"
+              },
+              "usage": {
+                "where": "The hovered state of elements filled with background/status/info.",
+                "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/status/info/default."
+              }
             }
           }
-        }
-      },
-      "info-subtle": {
-        "$type": "color",
-        "$value": "{teal.100}",
-        "$description": "Quiet info tint: inline alerts, row highlights.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:69"
-            },
-            "pairsWith": [
-              "text.status.info",
-              "text.status.info-bold",
-              "text.neutral"
-            ]
-          }
-        }
-      },
-      "info-subtle-hovered": {
-        "$type": "color",
-        "$value": "{teal.200}",
-        "$description": "Hovered quiet info tint.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:70"
-            },
-            "pairsWith": [
-              "text.neutral"
-            ],
-            "usage": {
-              "where": "The hovered state of elements filled with bg/status/info-subtle.",
-              "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/info-subtle."
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "{Teal.300}",
+          "$description": "Canonical info background. Light: Teal/700; Dark: Teal/200. Use as the saturated solid; subtle/* tones are for subtle tints, bold/* for emphasized.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:68"
+              },
+              "usage": {
+                "where": "The pressed state of elements filled with background/status/info.",
+                "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                "do": "Keep state transitions quick (100–150ms) and consistent.",
+                "dont": "Don't use as a default fill — resting surfaces use background/status/info/default."
+              }
             }
           }
-        }
-      },
-      "info-subtle-pressed": {
-        "$type": "color",
-        "$value": "{teal.300}",
-        "$description": "Pressed quiet info tint.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:71"
-            },
-            "pairsWith": [
-              "text.neutral"
-            ],
-            "usage": {
-              "where": "The pressed state of elements filled with bg/status/info-subtle.",
-              "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/info-subtle."
+        },
+        "subtle": {
+          "default": {
+            "$type": "color",
+            "$value": "{Teal.100}",
+            "$description": "Faint informational-tinted surface for inline alerts and banners.",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:69"
+                },
+                "pairsWith": [
+                  "text.status.info.default",
+                  "text.status.info.bold",
+                  "text.neutral.default"
+                ]
+              }
+            }
+          },
+          "hovered": {
+            "$type": "color",
+            "$value": "{Teal.200}",
+            "$description": "Faint informational-tinted surface for inline alerts and banners (hovered state).",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:70"
+                },
+                "pairsWith": [
+                  "text.neutral.default"
+                ],
+                "usage": {
+                  "where": "The hovered state of elements filled with background/status/info/subtle.",
+                  "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                  "do": "Keep state transitions quick (100–150ms) and consistent.",
+                  "dont": "Don't use as a default fill — resting surfaces use background/status/info/subtle/default."
+                }
+              }
+            }
+          },
+          "pressed": {
+            "$type": "color",
+            "$value": "{Teal.300}",
+            "$description": "Faint informational-tinted surface for inline alerts and banners (pressed state).",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:71"
+                },
+                "pairsWith": [
+                  "text.neutral.default"
+                ],
+                "usage": {
+                  "where": "The pressed state of elements filled with background/status/info/subtle.",
+                  "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                  "do": "Keep state transitions quick (100–150ms) and consistent.",
+                  "dont": "Don't use as a default fill — resting surfaces use background/status/info/subtle/default."
+                }
+              }
             }
           }
-        }
-      },
-      "info-bold": {
-        "$type": "color",
-        "$value": "{teal.700}",
-        "$description": "High-emphasis info fill.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:72"
-            },
-            "pairsWith": [
-              "text.on-status-info-bold"
-            ]
-          }
-        }
-      },
-      "info-bold-hovered": {
-        "$type": "color",
-        "$value": "{teal.800}",
-        "$description": "Hovered high-emphasis info fill.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:73"
-            },
-            "pairsWith": [
-              "text.on-status-info-bold"
-            ],
-            "usage": {
-              "where": "The hovered state of elements filled with bg/status/info-bold.",
-              "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/info-bold."
+        },
+        "bold": {
+          "default": {
+            "$type": "color",
+            "$value": "{Teal.700}",
+            "$description": "Strong informational surface for high-emphasis messaging.",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:72"
+                }
+              }
             }
-          }
-        }
-      },
-      "info-bold-pressed": {
-        "$type": "color",
-        "$value": "{teal.900}",
-        "$description": "Pressed high-emphasis info fill. (Dark step fixed from reference collision.)",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:74"
-            },
-            "pairsWith": [
-              "text.on-status-info-bold"
-            ],
-            "usage": {
-              "where": "The pressed state of elements filled with bg/status/info-bold.",
-              "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
-              "do": "Keep state transitions quick (100–150ms) and consistent.",
-              "dont": "Don't use as a default fill — resting surfaces use bg/status/info-bold."
+          },
+          "hovered": {
+            "$type": "color",
+            "$value": "{Teal.800}",
+            "$description": "Strong informational surface for high-emphasis messaging (hovered state).",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:73"
+                },
+                "usage": {
+                  "where": "The hovered state of elements filled with background/status/info/bold.",
+                  "how": "Bind to the hovered interaction in component variants; never as a resting fill.",
+                  "do": "Keep state transitions quick (100–150ms) and consistent.",
+                  "dont": "Don't use as a default fill — resting surfaces use background/status/info/bold/default."
+                }
+              }
+            }
+          },
+          "pressed": {
+            "$type": "color",
+            "$value": "{Teal.900}",
+            "$description": "Strong informational surface for high-emphasis messaging (pressed state).",
+            "$extensions": {
+              "ply": {
+                "figma": {
+                  "collection": "color-semantic",
+                  "mode": "Light",
+                  "variableId": "VariableID:13:74"
+                },
+                "usage": {
+                  "where": "The pressed state of elements filled with background/status/info/bold.",
+                  "how": "Bind to the pressed interaction in component variants; never as a resting fill.",
+                  "do": "Keep state transitions quick (100–150ms) and consistent.",
+                  "dont": "Don't use as a default fill — resting surfaces use background/status/info/bold/default."
+                }
+              }
             }
           }
         }
@@ -1521,51 +1835,81 @@
   },
   "text": {
     "neutral": {
-      "$type": "color",
-      "$value": "{gray.1000}",
-      "$description": "Default body and heading text.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:75"
+      "default": {
+        "$type": "color",
+        "$value": "{Gray.1000}",
+        "$description": "Default body and UI text.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:75"
+            }
           }
         }
-      }
-    },
-    "neutral-subtle": {
-      "$type": "color",
-      "$value": "{gray.700}",
-      "$description": "Secondary text: captions, helper text, metadata.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:76"
+      },
+      "subtler": {
+        "$type": "color",
+        "$value": "{Gray.700}",
+        "$description": "Tertiary text — helper copy, captions.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:76"
+            }
           }
         }
-      }
-    },
-    "inverse": {
-      "$type": "color",
-      "$value": "{gray.50}",
-      "$description": "Text on inverse-context backgrounds.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:77"
+      },
+      "inverse": {
+        "$type": "color",
+        "$value": "{Gray.50}",
+        "$description": "Neutral text designed to read on inverted (dark) surfaces — pair with background/inverse.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:77"
+            }
+          }
+        }
+      },
+      "subtlest": {
+        "$type": "color",
+        "$value": "{Gray.500}",
+        "$description": "Least-emphasized text — timestamps, light metadata.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:39:20"
+            }
+          }
+        }
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{Gray.800}",
+        "$description": "Secondary / muted text.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:39:21"
+            }
           }
         }
       }
     },
     "disabled": {
       "$type": "color",
-      "$value": "{gray.alpha.400}",
-      "$description": "Disabled text and placeholder copy.",
+      "$value": "{Gray.Alpha.400}",
+      "$description": "Text on disabled controls.",
       "$extensions": {
         "ply": {
           "figma": {
@@ -1578,8 +1922,8 @@
     },
     "selected": {
       "$type": "color",
-      "$value": "{blue.500}",
-      "$description": "Text in selected menu items, tabs, rows.",
+      "$value": "{colors-brand.500}",
+      "$description": "Text on selected items.",
       "$extensions": {
         "ply": {
           "figma": {
@@ -1590,354 +1934,354 @@
         }
       }
     },
-    "accent": {
-      "$type": "color",
-      "$value": "{blue.500}",
-      "$description": "Brand-colored text for emphasis.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:80"
+    "brand": {
+      "default": {
+        "$type": "color",
+        "$value": "{colors-brand.500}",
+        "$description": "Default brand-coloured text — primary brand emphasis on neutral surfaces.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:80"
+            }
           }
         }
-      }
-    },
-    "accent-subtle": {
-      "$type": "color",
-      "$value": "{blue.200}",
-      "$description": "Quiet brand text on brand tints.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:81"
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{colors-brand.200}",
+        "$description": "Subtle brand-tinted text — secondary brand emphasis on neutral surfaces.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:81"
+            }
           }
         }
-      }
-    },
-    "accent-bold": {
-      "$type": "color",
-      "$value": "{blue.600}",
-      "$description": "High-emphasis brand text.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:82"
+      },
+      "bold": {
+        "$type": "color",
+        "$value": "{colors-brand.600}",
+        "$description": "Strong brand-coloured text — emphasized brand statements.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:82"
+            }
+          }
+        }
+      },
+      "subtlest": {
+        "$type": "color",
+        "$value": "{colors-brand.50}",
+        "$description": "Faintest brand-tinted text — meta callouts and de-emphasized brand presence.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:39:22"
+            }
+          }
+        }
+      },
+      "boldest": {
+        "$type": "color",
+        "$value": "{colors-brand.700}",
+        "$description": "Most-saturated brand text — for the loudest brand moments.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:39:23"
+            }
+          }
+        }
+      },
+      "inverse": {
+        "$type": "color",
+        "$value": "{colors-brand.100}",
+        "$description": "Brand-coloured text designed to read on inverse surfaces — pair with background/inverse.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:39:24"
+            }
           }
         }
       }
     },
     "link": {
-      "$type": "color",
-      "$value": "{blue.500}",
-      "$description": "Hyperlink text.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:83"
+      "default": {
+        "$type": "color",
+        "$value": "{Blue.500}",
+        "$description": "Default hyperlink text.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:83"
+            }
+          }
+        }
+      },
+      "hovered": {
+        "$type": "color",
+        "$value": "{Blue.600}",
+        "$description": "Hovered hyperlink text.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:84"
+            }
+          }
+        }
+      },
+      "pressed": {
+        "$type": "color",
+        "$value": "{Blue.700}",
+        "$description": "Pressed/active hyperlink text.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:85"
+            }
+          }
+        }
+      },
+      "visited": {
+        "$type": "color",
+        "$value": "{Purple.500}",
+        "$description": "Visited hyperlink text.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:86"
+            }
           }
         }
       }
     },
-    "link-hovered": {
-      "$type": "color",
-      "$value": "{blue.600}",
-      "$description": "Hovered hyperlink text.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:84"
+    "static": {
+      "white": {
+        "$type": "color",
+        "$value": "{Gray.50}",
+        "$description": "Always-white text colour that holds across light + dark modes. Use on brand-fixed elements (logos, illustrations, marketing imagery) that must not invert.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:87"
+            }
           }
         }
-      }
-    },
-    "link-pressed": {
-      "$type": "color",
-      "$value": "{blue.700}",
-      "$description": "Pressed hyperlink text.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:85"
-          }
-        }
-      }
-    },
-    "link-visited": {
-      "$type": "color",
-      "$value": "{purple.500}",
-      "$description": "Visited hyperlink text.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:86"
-          }
-        }
-      }
-    },
-    "static-white": {
-      "$type": "color",
-      "$value": "{gray.50}",
-      "$description": "Always-light text regardless of theme.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:87"
-          }
-        }
-      }
-    },
-    "static-black": {
-      "$type": "color",
-      "$value": "{gray.1000}",
-      "$description": "Always-dark text regardless of theme.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:88"
+      },
+      "black": {
+        "$type": "color",
+        "$value": "{Gray.1000}",
+        "$description": "Always-black text colour that holds across light + dark modes. Use on brand-fixed elements (logos, illustrations, marketing imagery) that must not invert.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:88"
+            }
           }
         }
       }
     },
     "status": {
       "danger": {
-        "$type": "color",
-        "$value": "{red.600}",
-        "$description": "Danger text: errors, destructive labels. (Dark step normalized to match icon ramp.)",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:89"
+        "default": {
+          "$type": "color",
+          "$value": "{Red.600}",
+          "$description": "Default danger-flavoured text for danger messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:89"
+              }
             }
           }
-        }
-      },
-      "danger-bold": {
-        "$type": "color",
-        "$value": "{red.800}",
-        "$description": "High-emphasis danger text on danger-subtle fills.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:90"
+        },
+        "bold": {
+          "$type": "color",
+          "$value": "{Red.800}",
+          "$description": "High-emphasis danger-flavoured text for danger messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:90"
+              }
+            }
+          }
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{Red.100}",
+          "$description": "Subtle danger-flavoured text for danger messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:28"
+              }
             }
           }
         }
       },
       "success": {
-        "$type": "color",
-        "$value": "{green.600}",
-        "$description": "Success text.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:91"
+        "default": {
+          "$type": "color",
+          "$value": "{Green.600}",
+          "$description": "Default success-flavoured text for success messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:91"
+              }
             }
           }
-        }
-      },
-      "success-bold": {
-        "$type": "color",
-        "$value": "{green.800}",
-        "$description": "High-emphasis success text on success-subtle fills.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:92"
+        },
+        "bold": {
+          "$type": "color",
+          "$value": "{Green.800}",
+          "$description": "High-emphasis success-flavoured text for success messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:92"
+              }
+            }
+          }
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{Green.100}",
+          "$description": "Subtle success-flavoured text for success messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:26"
+              }
             }
           }
         }
       },
       "warning": {
-        "$type": "color",
-        "$value": "{yellow.700}",
-        "$description": "Warning text.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:93"
+        "default": {
+          "$type": "color",
+          "$value": "{Yellow.700}",
+          "$description": "Default warning-flavoured text for warning messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:93"
+              }
             }
           }
-        }
-      },
-      "warning-bold": {
-        "$type": "color",
-        "$value": "{yellow.800}",
-        "$description": "High-emphasis warning text on warning-subtle fills.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:94"
+        },
+        "bold": {
+          "$type": "color",
+          "$value": "{Yellow.800}",
+          "$description": "High-emphasis warning-flavoured text for warning messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:94"
+              }
+            }
+          }
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{Yellow.100}",
+          "$description": "Subtle warning-flavoured text for warning messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:27"
+              }
             }
           }
         }
       },
       "info": {
-        "$type": "color",
-        "$value": "{teal.700}",
-        "$description": "Info text.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:95"
+        "default": {
+          "$type": "color",
+          "$value": "{Teal.700}",
+          "$description": "Default info-flavoured text for info messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:95"
+              }
             }
           }
-        }
-      },
-      "info-bold": {
-        "$type": "color",
-        "$value": "{teal.800}",
-        "$description": "High-emphasis info text on info-subtle fills.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:96"
+        },
+        "bold": {
+          "$type": "color",
+          "$value": "{Teal.800}",
+          "$description": "High-emphasis info-flavoured text for info messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:96"
+              }
             }
           }
-        }
-      }
-    },
-    "on-accent": {
-      "$type": "color",
-      "$value": "{gray.0}",
-      "$description": "Text on bg/accent (solid brand fills). Contrast-lint pair.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:97"
-          }
-        }
-      }
-    },
-    "on-neutral-bold": {
-      "$type": "color",
-      "$value": "{gray.0}",
-      "$description": "Text on bg/neutral-bold. Contrast-lint pair.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:98"
-          }
-        }
-      }
-    },
-    "on-status-danger": {
-      "$type": "color",
-      "$value": "{gray.0}",
-      "$description": "Text on bg/status/danger. Contrast-lint pair.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:99"
-          }
-        }
-      }
-    },
-    "on-status-success": {
-      "$type": "color",
-      "$value": "{gray.0}",
-      "$description": "Text on bg/status/success. Contrast-lint pair.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:100"
-          }
-        }
-      }
-    },
-    "on-status-warning": {
-      "$type": "color",
-      "$value": "{gray.1000}",
-      "$description": "Text on bg/status/warning (yellow needs dark text). Contrast-lint pair.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:101"
-          }
-        }
-      }
-    },
-    "on-status-info": {
-      "$type": "color",
-      "$value": "{gray.1000}",
-      "$description": "Text on bg/status/info (teal needs dark text). Contrast-lint pair.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:102"
-          }
-        }
-      }
-    },
-    "on-status-warning-bold": {
-      "$type": "color",
-      "$value": "{gray.0}",
-      "$description": "Text on bg/status/warning-bold. Contrast-lint pair.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:26:2"
-          }
-        }
-      }
-    },
-    "on-status-info-bold": {
-      "$type": "color",
-      "$value": "{gray.0}",
-      "$description": "Text on bg/status/info-bold. Contrast-lint pair.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:26:3"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{Teal.100}",
+          "$description": "Subtle info-flavoured text for info messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:25"
+              }
+            }
           }
         }
       }
@@ -1945,51 +2289,81 @@
   },
   "icon": {
     "neutral": {
-      "$type": "color",
-      "$value": "{gray.1000}",
-      "$description": "Default icon color.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:103"
+      "default": {
+        "$type": "color",
+        "$value": "{Gray.1000}",
+        "$description": "Default icon colour.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:103"
+            }
           }
         }
-      }
-    },
-    "neutral-subtle": {
-      "$type": "color",
-      "$value": "{gray.700}",
-      "$description": "Secondary icon color.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:104"
+      },
+      "subtler": {
+        "$type": "color",
+        "$value": "{Gray.700}",
+        "$description": "Quiet icon for secondary affordances.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:104"
+            }
           }
         }
-      }
-    },
-    "inverse": {
-      "$type": "color",
-      "$value": "{gray.50}",
-      "$description": "Icons on inverse-context backgrounds.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:105"
+      },
+      "inverse": {
+        "$type": "color",
+        "$value": "{Gray.50}",
+        "$description": "Neutral icon designed to read on inverted (dark) surfaces — pair with background/inverse.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:105"
+            }
+          }
+        }
+      },
+      "subtlest": {
+        "$type": "color",
+        "$value": "{Gray.500}",
+        "$description": "Faintest icon — most decorative use.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:39:29"
+            }
+          }
+        }
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{Gray.800}",
+        "$description": "De-emphasized icon.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:39:30"
+            }
           }
         }
       }
     },
     "disabled": {
       "$type": "color",
-      "$value": "{gray.alpha.400}",
-      "$description": "Disabled icons.",
+      "$value": "{Gray.Alpha.400}",
+      "$description": "Icon on disabled controls.",
       "$extensions": {
         "ply": {
           "figma": {
@@ -2002,8 +2376,8 @@
     },
     "selected": {
       "$type": "color",
-      "$value": "{blue.500}",
-      "$description": "Icons in selected items.",
+      "$value": "{colors-brand.500}",
+      "$description": "Icon for selected items.",
       "$extensions": {
         "ply": {
           "figma": {
@@ -2014,200 +2388,296 @@
         }
       }
     },
-    "accent": {
-      "$type": "color",
-      "$value": "{blue.500}",
-      "$description": "Brand-colored icons.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:108"
+    "brand": {
+      "default": {
+        "$type": "color",
+        "$value": "{colors-brand.500}",
+        "$description": "Default brand-coloured icon — primary brand glyph colour.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:108"
+            }
+          }
+        }
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{colors-brand.200}",
+        "$description": "Subtle brand-tinted icon — secondary brand emphasis.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:109"
+            }
+          }
+        }
+      },
+      "bold": {
+        "$type": "color",
+        "$value": "{colors-brand.600}",
+        "$description": "Strong brand-coloured icon — emphasized brand glyphs.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:110"
+            }
+          }
+        }
+      },
+      "subtlest": {
+        "$type": "color",
+        "$value": "{colors-brand.50}",
+        "$description": "Faintest brand-tinted icon — meta-icon contexts and de-emphasized brand presence.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:39:31"
+            }
+          }
+        }
+      },
+      "boldest": {
+        "$type": "color",
+        "$value": "{colors-brand.700}",
+        "$description": "Most-saturated brand icon — loudest brand glyph contexts.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:39:32"
+            }
+          }
+        }
+      },
+      "inverse": {
+        "$type": "color",
+        "$value": "{colors-brand.100}",
+        "$description": "Brand-coloured icon designed for inverse surfaces — pair with background/inverse.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:39:33"
+            }
           }
         }
       }
     },
-    "accent-subtle": {
-      "$type": "color",
-      "$value": "{blue.200}",
-      "$description": "Quiet brand icons on brand tints.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:109"
+    "static": {
+      "white": {
+        "$type": "color",
+        "$value": "{Gray.50}",
+        "$description": "Always-white icon colour that holds across light + dark modes. Use on brand-fixed elements (logos, illustrations, marketing imagery) that must not invert.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:111"
+            }
           }
         }
-      }
-    },
-    "accent-bold": {
-      "$type": "color",
-      "$value": "{blue.600}",
-      "$description": "High-emphasis brand icons.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:110"
-          }
-        }
-      }
-    },
-    "static-white": {
-      "$type": "color",
-      "$value": "{gray.50}",
-      "$description": "Always-light icons.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:111"
-          }
-        }
-      }
-    },
-    "static-black": {
-      "$type": "color",
-      "$value": "{gray.1000}",
-      "$description": "Always-dark icons.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:112"
+      },
+      "black": {
+        "$type": "color",
+        "$value": "{Gray.1000}",
+        "$description": "Always-black icon colour that holds across light + dark modes. Use on brand-fixed elements (logos, illustrations, marketing imagery) that must not invert.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:112"
+            }
           }
         }
       }
     },
     "status": {
       "danger": {
-        "$type": "color",
-        "$value": "{red.600}",
-        "$description": "Danger icons.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:113"
+        "default": {
+          "$type": "color",
+          "$value": "{Red.600}",
+          "$description": "Default danger-flavoured icon for danger messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:113"
+              }
             }
           }
-        }
-      },
-      "danger-bold": {
-        "$type": "color",
-        "$value": "{red.800}",
-        "$description": "High-emphasis danger icons.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:114"
+        },
+        "bold": {
+          "$type": "color",
+          "$value": "{Red.800}",
+          "$description": "High-emphasis danger-flavoured icon for danger messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:114"
+              }
+            }
+          }
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{Red.100}",
+          "$description": "Subtle danger-flavoured icon for danger messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:37"
+              }
             }
           }
         }
       },
       "success": {
-        "$type": "color",
-        "$value": "{green.600}",
-        "$description": "Success icons.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:115"
+        "default": {
+          "$type": "color",
+          "$value": "{Green.600}",
+          "$description": "Default success-flavoured icon for success messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:115"
+              }
             }
           }
-        }
-      },
-      "success-bold": {
-        "$type": "color",
-        "$value": "{green.800}",
-        "$description": "High-emphasis success icons.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:116"
+        },
+        "bold": {
+          "$type": "color",
+          "$value": "{Green.800}",
+          "$description": "High-emphasis success-flavoured icon for success messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:116"
+              }
+            }
+          }
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{Green.100}",
+          "$description": "Subtle success-flavoured icon for success messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:35"
+              }
             }
           }
         }
       },
       "warning": {
-        "$type": "color",
-        "$value": "{yellow.700}",
-        "$description": "Warning icons.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:117"
+        "default": {
+          "$type": "color",
+          "$value": "{Yellow.700}",
+          "$description": "Default warning-flavoured icon for warning messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:117"
+              }
             }
           }
-        }
-      },
-      "warning-bold": {
-        "$type": "color",
-        "$value": "{yellow.800}",
-        "$description": "High-emphasis warning icons.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:118"
+        },
+        "bold": {
+          "$type": "color",
+          "$value": "{Yellow.800}",
+          "$description": "High-emphasis warning-flavoured icon for warning messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:118"
+              }
+            }
+          }
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{Yellow.100}",
+          "$description": "Subtle warning-flavoured icon for warning messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:36"
+              }
             }
           }
         }
       },
       "info": {
-        "$type": "color",
-        "$value": "{teal.700}",
-        "$description": "Info icons.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:119"
+        "default": {
+          "$type": "color",
+          "$value": "{Teal.700}",
+          "$description": "Default info-flavoured icon for info messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:119"
+              }
             }
           }
-        }
-      },
-      "info-bold": {
-        "$type": "color",
-        "$value": "{teal.800}",
-        "$description": "High-emphasis info icons.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:120"
+        },
+        "bold": {
+          "$type": "color",
+          "$value": "{Teal.800}",
+          "$description": "High-emphasis info-flavoured icon for info messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:120"
+              }
             }
           }
-        }
-      }
-    },
-    "on-accent": {
-      "$type": "color",
-      "$value": "{gray.0}",
-      "$description": "Icons on bg/accent. Contrast-lint pair.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:121"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{Teal.100}",
+          "$description": "Subtle info-flavoured icon for info messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:39:34"
+              }
+            }
           }
         }
       }
@@ -2215,177 +2685,185 @@
   },
   "border": {
     "neutral": {
-      "$type": "color",
-      "$value": "{gray.200}",
-      "$description": "Default border: inputs, cards, dividers.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:122"
+      "default": {
+        "$type": "color",
+        "$value": "{Gray.200}",
+        "$description": "Default UI border.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:122"
+            }
+          }
+        }
+      },
+      "hovered": {
+        "$type": "color",
+        "$value": "{Gray.300}",
+        "$description": "Default UI border (hovered state).",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:123"
+            }
+          }
+        }
+      },
+      "pressed": {
+        "$type": "color",
+        "$value": "{Gray.400}",
+        "$description": "Default UI border (pressed state).",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:124"
+            }
+          }
+        }
+      },
+      "subtle": {
+        "default": {
+          "$type": "color",
+          "$value": "{Gray.100}",
+          "$description": "Quiet divider / faint border.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:125"
+              }
+            }
+          }
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "{Gray.200}",
+          "$description": "Quiet divider / faint border (hovered state).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:126"
+              }
+            }
+          }
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "{Gray.300}",
+          "$description": "Quiet divider / faint border (pressed state).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:127"
+              }
+            }
+          }
+        }
+      },
+      "bold": {
+        "default": {
+          "$type": "color",
+          "$value": "{Gray.400}",
+          "$description": "Strong border for emphasis.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:128"
+              }
+            }
+          }
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "{Gray.500}",
+          "$description": "Strong border for emphasis (hovered state).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:129"
+              }
+            }
+          }
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "{Gray.600}",
+          "$description": "Strong border for emphasis (pressed state).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:130"
+              }
+            }
           }
         }
       }
     },
-    "neutral-hovered": {
-      "$type": "color",
-      "$value": "{gray.300}",
-      "$description": "Hovered default border.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:123"
+    "brand": {
+      "default": {
+        "$type": "color",
+        "$value": "{colors-brand.400}",
+        "$description": "Default brand-coloured border — primary brand outline emphasis.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:131"
+            }
           }
         }
-      }
-    },
-    "neutral-pressed": {
-      "$type": "color",
-      "$value": "{gray.400}",
-      "$description": "Pressed default border.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:124"
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{colors-brand.100}",
+        "$description": "Subtle brand-tinted border — for brand-flavoured outlines that should read quietly.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:132"
+            }
           }
         }
-      }
-    },
-    "neutral-subtle": {
-      "$type": "color",
-      "$value": "{gray.100}",
-      "$description": "Hairline border: subtle dividers.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:125"
-          }
-        }
-      }
-    },
-    "neutral-subtle-hovered": {
-      "$type": "color",
-      "$value": "{gray.200}",
-      "$description": "Hovered hairline border. (Normalized monotonic from reference.)",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:126"
-          }
-        }
-      }
-    },
-    "neutral-subtle-pressed": {
-      "$type": "color",
-      "$value": "{gray.300}",
-      "$description": "Pressed hairline border. (Normalized monotonic from reference.)",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:127"
-          }
-        }
-      }
-    },
-    "neutral-bold": {
-      "$type": "color",
-      "$value": "{gray.400}",
-      "$description": "Strong border: emphasis outlines.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:128"
-          }
-        }
-      }
-    },
-    "neutral-bold-hovered": {
-      "$type": "color",
-      "$value": "{gray.500}",
-      "$description": "Hovered strong border. (Normalized from reference collision.)",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:129"
-          }
-        }
-      }
-    },
-    "neutral-bold-pressed": {
-      "$type": "color",
-      "$value": "{gray.600}",
-      "$description": "Pressed strong border. (Normalized from reference collision.)",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:130"
-          }
-        }
-      }
-    },
-    "accent": {
-      "$type": "color",
-      "$value": "{blue.400}",
-      "$description": "Brand border.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:131"
-          }
-        }
-      }
-    },
-    "accent-subtle": {
-      "$type": "color",
-      "$value": "{blue.100}",
-      "$description": "Quiet brand border.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:132"
-          }
-        }
-      }
-    },
-    "accent-bold": {
-      "$type": "color",
-      "$value": "{blue.400}",
-      "$description": "Strong brand border.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:133"
+      },
+      "bold": {
+        "$type": "color",
+        "$value": "{colors-brand.400}",
+        "$description": "Strong brand-coloured border — emphasized brand outline.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:133"
+            }
           }
         }
       }
     },
     "focused": {
       "$type": "color",
-      "$value": "{blue.400}",
-      "$description": "Focus ring. (Strengthened from reference blue/200 for 3:1 non-text contrast.)",
+      "$value": "{colors-brand.400}",
+      "$description": "Focus-ring border.",
       "$extensions": {
         "ply": {
           "figma": {
@@ -2398,7 +2876,7 @@
     },
     "selected": {
       "$type": "color",
-      "$value": "{blue.500}",
+      "$value": "{colors-brand.500}",
       "$description": "Border on selected items.",
       "$extensions": {
         "ply": {
@@ -2412,8 +2890,8 @@
     },
     "disabled": {
       "$type": "color",
-      "$value": "{gray.alpha.100}",
-      "$description": "Disabled control border.",
+      "$value": "{Gray.Alpha.100}",
+      "$description": "Disabled border overlay. Light: 8% black; Dark: 8% white. Use on disabled inputs/buttons/controls so the outline reads as non-editable without competing with active states.",
       "$extensions": {
         "ply": {
           "figma": {
@@ -2424,199 +2902,209 @@
         }
       }
     },
-    "static-white": {
-      "$type": "color",
-      "$value": "{gray.50}",
-      "$description": "Always-light border.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:137"
+    "static": {
+      "white": {
+        "$type": "color",
+        "$value": "{Gray.50}",
+        "$description": "Always-white border that holds across light + dark modes. Use on brand-fixed elements (logos, illustrations, marketing imagery) that must not invert.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:137"
+            }
           }
         }
-      }
-    },
-    "static-black": {
-      "$type": "color",
-      "$value": "{gray.1000}",
-      "$description": "Always-dark border.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:138"
+      },
+      "black": {
+        "$type": "color",
+        "$value": "{Gray.1000}",
+        "$description": "Always-black border that holds across light + dark modes. Use on brand-fixed elements (logos, illustrations, marketing imagery) that must not invert.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-semantic",
+              "mode": "Light",
+              "variableId": "VariableID:13:138"
+            }
           }
         }
       }
     },
     "status": {
       "danger": {
-        "$type": "color",
-        "$value": "{red.200}",
-        "$description": "Danger border: error inputs, alert outlines.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:139"
+        "default": {
+          "$type": "color",
+          "$value": "{Red.200}",
+          "$description": "Default danger-flavoured border for danger messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:139"
+              }
             }
           }
-        }
-      },
-      "danger-subtle": {
-        "$type": "color",
-        "$value": "{red.100}",
-        "$description": "Quiet danger border.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:140"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{Red.100}",
+          "$description": "Subtle danger-flavoured border for danger messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:140"
+              }
             }
           }
-        }
-      },
-      "danger-bold": {
-        "$type": "color",
-        "$value": "{red.400}",
-        "$description": "Strong danger border.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:141"
+        },
+        "bold": {
+          "$type": "color",
+          "$value": "{Red.400}",
+          "$description": "High-emphasis danger-flavoured border for danger messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:141"
+              }
             }
           }
         }
       },
       "success": {
-        "$type": "color",
-        "$value": "{green.200}",
-        "$description": "Success border.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:142"
+        "default": {
+          "$type": "color",
+          "$value": "{Green.200}",
+          "$description": "Default success-flavoured border for success messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:142"
+              }
             }
           }
-        }
-      },
-      "success-subtle": {
-        "$type": "color",
-        "$value": "{green.100}",
-        "$description": "Quiet success border.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:143"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{Green.100}",
+          "$description": "Subtle success-flavoured border for success messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:143"
+              }
             }
           }
-        }
-      },
-      "success-bold": {
-        "$type": "color",
-        "$value": "{green.400}",
-        "$description": "Strong success border.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:144"
+        },
+        "bold": {
+          "$type": "color",
+          "$value": "{Green.400}",
+          "$description": "High-emphasis success-flavoured border for success messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:144"
+              }
             }
           }
         }
       },
       "warning": {
-        "$type": "color",
-        "$value": "{yellow.200}",
-        "$description": "Warning border.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:145"
+        "default": {
+          "$type": "color",
+          "$value": "{Yellow.200}",
+          "$description": "Default warning-flavoured border for warning messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:145"
+              }
             }
           }
-        }
-      },
-      "warning-subtle": {
-        "$type": "color",
-        "$value": "{yellow.100}",
-        "$description": "Quiet warning border.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:146"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{Yellow.100}",
+          "$description": "Subtle warning-flavoured border for warning messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:146"
+              }
             }
           }
-        }
-      },
-      "warning-bold": {
-        "$type": "color",
-        "$value": "{yellow.400}",
-        "$description": "Strong warning border.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:147"
+        },
+        "bold": {
+          "$type": "color",
+          "$value": "{Yellow.400}",
+          "$description": "High-emphasis warning-flavoured border for warning messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:147"
+              }
             }
           }
         }
       },
       "info": {
-        "$type": "color",
-        "$value": "{teal.200}",
-        "$description": "Info border.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:148"
+        "default": {
+          "$type": "color",
+          "$value": "{Teal.200}",
+          "$description": "Default info-flavoured border for info messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:148"
+              }
             }
           }
-        }
-      },
-      "info-subtle": {
-        "$type": "color",
-        "$value": "{teal.100}",
-        "$description": "Quiet info border.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:149"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{Teal.100}",
+          "$description": "Subtle info-flavoured border for info messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:149"
+              }
             }
           }
-        }
-      },
-      "info-bold": {
-        "$type": "color",
-        "$value": "{teal.400}",
-        "$description": "Strong info border.",
-        "$extensions": {
-          "ply": {
-            "figma": {
-              "collection": "color-semantic",
-              "mode": "Light",
-              "variableId": "VariableID:13:150"
+        },
+        "bold": {
+          "$type": "color",
+          "$value": "{Teal.400}",
+          "$description": "High-emphasis info-flavoured border for info messaging and validation.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:150"
+              }
             }
           }
         }
@@ -2627,8 +3115,8 @@
     "categorical": {
       "1": {
         "$type": "color",
-        "$value": "{blue.500}",
-        "$description": "Categorical chart series 1. Assign in order; never use for UI semantics.",
+        "$value": "{Blue.500}",
+        "$description": "Categorical data-viz token 1 — single value used for avatars, stage indicators, chart series. Pair with text/static/white for text overlays. Aliases Blue/500.",
         "$extensions": {
           "ply": {
             "figma": {
@@ -2641,8 +3129,8 @@
       },
       "2": {
         "$type": "color",
-        "$value": "{purple.500}",
-        "$description": "Categorical chart series 2. Assign in order; never use for UI semantics.",
+        "$value": "{Purple.500}",
+        "$description": "Categorical data-viz token 2 — single value used for avatars, stage indicators, chart series. Pair with text/static/white for text overlays. Aliases Purple/500.",
         "$extensions": {
           "ply": {
             "figma": {
@@ -2655,8 +3143,8 @@
       },
       "3": {
         "$type": "color",
-        "$value": "{teal.500}",
-        "$description": "Categorical chart series 3. Assign in order; never use for UI semantics.",
+        "$value": "{Teal.500}",
+        "$description": "Categorical data-viz token 3 — single value used for avatars, stage indicators, chart series. Pair with text/static/white for text overlays. Aliases Teal/500.",
         "$extensions": {
           "ply": {
             "figma": {
@@ -2669,8 +3157,8 @@
       },
       "4": {
         "$type": "color",
-        "$value": "{pink.500}",
-        "$description": "Categorical chart series 4. Assign in order; never use for UI semantics.",
+        "$value": "{Pink.500}",
+        "$description": "Categorical data-viz token 4 — single value used for avatars, stage indicators, chart series. Pair with text/static/white for text overlays. Aliases Pink/500.",
         "$extensions": {
           "ply": {
             "figma": {
@@ -2683,8 +3171,8 @@
       },
       "5": {
         "$type": "color",
-        "$value": "{orange.500}",
-        "$description": "Categorical chart series 5. Assign in order; never use for UI semantics.",
+        "$value": "{Orange.500}",
+        "$description": "Categorical data-viz token 5 — single value used for avatars, stage indicators, chart series. Pair with text/static/white for text overlays. Aliases Orange/500.",
         "$extensions": {
           "ply": {
             "figma": {
@@ -2697,8 +3185,8 @@
       },
       "6": {
         "$type": "color",
-        "$value": "{green.500}",
-        "$description": "Categorical chart series 6. Assign in order; never use for UI semantics.",
+        "$value": "{Green.500}",
+        "$description": "Categorical data-viz token 6 — single value used for avatars, stage indicators, chart series. Pair with text/static/white for text overlays. Aliases Green/500.",
         "$extensions": {
           "ply": {
             "figma": {
@@ -2711,8 +3199,8 @@
       },
       "7": {
         "$type": "color",
-        "$value": "{red.500}",
-        "$description": "Categorical chart series 7. Assign in order; never use for UI semantics.",
+        "$value": "{Red.500}",
+        "$description": "Categorical data-viz token 7 — single value used for avatars, stage indicators, chart series. Pair with text/static/white for text overlays. Aliases Red/500.",
         "$extensions": {
           "ply": {
             "figma": {
@@ -2725,8 +3213,8 @@
       },
       "8": {
         "$type": "color",
-        "$value": "{yellow.500}",
-        "$description": "Categorical chart series 8. Assign in order; never use for UI semantics.",
+        "$value": "{Yellow.500}",
+        "$description": "Categorical data-viz token 8 — single value used for avatars, stage indicators, chart series. Pair with text/static/white for text overlays. Aliases Yellow/500.",
         "$extensions": {
           "ply": {
             "figma": {
@@ -2739,45 +3227,49 @@
       }
     }
   },
-  "shadow": {
-    "close": {
-      "$type": "color",
-      "$value": "{gray.alpha.100}",
-      "$description": "Shadow color for tight, close elevation.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:159"
+  "effect": {
+    "shadow": {
+      "color": {
+        "close": {
+          "$type": "color",
+          "$value": "{Gray.Alpha.100}",
+          "$description": "Close-layer shadow tint. Light: 8% black; Dark: 48% black (compensates for dark surfaces).",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:159"
+              }
+            }
           }
-        }
-      }
-    },
-    "middle": {
-      "$type": "color",
-      "$value": "{gray.alpha.075}",
-      "$description": "Shadow color for mid elevation.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:160"
+        },
+        "middle": {
+          "$type": "color",
+          "$value": "{Gray.Alpha.075}",
+          "$description": "Middle-layer shadow tint.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:160"
+              }
+            }
           }
-        }
-      }
-    },
-    "diffuse": {
-      "$type": "color",
-      "$value": "{gray.alpha.050}",
-      "$description": "Shadow color for large, diffuse elevation.",
-      "$extensions": {
-        "ply": {
-          "figma": {
-            "collection": "color-semantic",
-            "mode": "Light",
-            "variableId": "VariableID:13:161"
+        },
+        "diffuse": {
+          "$type": "color",
+          "$value": "{Gray.Alpha.050}",
+          "$description": "Diffuse outer-layer shadow tint.",
+          "$extensions": {
+            "ply": {
+              "figma": {
+                "collection": "color-semantic",
+                "mode": "Light",
+                "variableId": "VariableID:13:161"
+              }
+            }
           }
         }
       }

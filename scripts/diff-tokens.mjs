@@ -10,7 +10,20 @@ import path from "node:path";
 const [oldDir, newDir] = process.argv.slice(2);
 if (!oldDir || !newDir) throw new Error("usage: diff-tokens.mjs <oldDir> <newDir>");
 
-const FILES = ["primitives.tokens.json", "semantic.light.tokens.json", "semantic.dark.tokens.json"];
+const FILES = [
+  "primitives.tokens.json",
+  "brand.brand-1.tokens.json",
+  "brand.brand-2.tokens.json",
+  "font.geist.tokens.json",
+  "font.die-grotesk-a.tokens.json",
+  "semantic.light.tokens.json",
+  "semantic.dark.tokens.json",
+];
+const modeOf = (f) =>
+  f.includes("semantic") ? (f.includes("dark") ? "dark" : "light")
+  : f.includes("brand-") ? f.match(/brand-(\d)/)[0]
+  : f.startsWith("font.") ? f.replace(/^font\.|\.tokens\.json$/g, "")
+  : "value";
 const flat = (obj, prefix = []) => {
   const out = {};
   for (const [k, v] of Object.entries(obj)) {
@@ -24,10 +37,10 @@ const loadSet = (dir) => {
   for (const f of FILES) {
     let doc;
     try { doc = JSON.parse(readFileSync(path.join(dir, f), "utf8")); } catch { continue; }
-    const mode = f.includes("dark") ? "dark" : "light";
+    const mode = modeOf(f);
     for (const [p, t] of Object.entries(flat(doc))) {
       tokens[p] ??= { modes: {} };
-      tokens[p].modes[f.includes("semantic") ? mode : "value"] = t.$value;
+      tokens[p].modes[mode] = t.$value;
       if (t.$description) tokens[p].description = t.$description;
       const vid = t.$extensions?.ply?.figma?.variableId;
       if (vid) tokens[p].variableId = vid;

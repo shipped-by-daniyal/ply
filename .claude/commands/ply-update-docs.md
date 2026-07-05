@@ -34,8 +34,8 @@ If both are empty **and** the working tree has no changes beyond docs state: rep
 
 Bucket changed paths: `packages/tokens/**` (tokens) · `packages/react/src/**` (components) · `apps/docs/src/content/docs/decisions/**` (decisions) · `audits/**` (audits) · `kb/**` (knowledge base) · `.claude/**` + `scripts/**` (automation) · everything else (infra).
 
-### 2 — Token delta (only if `packages/tokens/src/ply.tokens.json` changed)
-Run `node scripts/diff-tokens.mjs` old-vs-new (old side via `git show <lastSyncedSha>:packages/tokens/src/ply.tokens.json`). If the script doesn't exist yet (pre-Phase 4), summarize from `git diff` instead.
+### 2 — Token delta (only if any `packages/tokens/src/*.tokens.json` changed)
+Run `node scripts/diff-tokens.mjs <oldDir> packages/tokens/src` — build `<oldDir>` in the scratchpad via `git show <lastSyncedSha>:packages/tokens/src/<file>` for each of the seven token files (primitives, brand.brand-1/2, font.geist, font.die-grotesk-a, semantic.light/dark; missing-at-old-SHA files are simply skipped by the script).
 
 ### 3 — Regenerate generated sections
 ```bash
@@ -58,6 +58,6 @@ pnpm --filter docs build
 ```
 Must pass. Then write `.ds/docs-state.json`:
 ```json
-{ "lastSyncedSha": "<current HEAD sha>", "tokensHash": "<sha256 of ply.tokens.json or null>", "lastRun": "<ISO date>" }
+{ "lastSyncedSha": "<current HEAD sha>", "tokensHash": "<sha256 over the concatenated src/*.tokens.json, or null>", "lastRun": "<ISO date>" }
 ```
 Print a summary of what changed and remind the user to review `git diff` and commit.

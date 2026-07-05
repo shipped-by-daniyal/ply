@@ -1,0 +1,136 @@
+{
+  "colors-brand": {
+    "50": {
+      "$type": "color",
+      "$value": "{Pink.50}",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "colors-brand",
+            "mode": "Brand 2"
+          }
+        }
+      }
+    },
+    "100": {
+      "$type": "color",
+      "$value": "{Pink.100}",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "colors-brand",
+            "mode": "Brand 2"
+          }
+        }
+      }
+    },
+    "200": {
+      "$type": "color",
+      "$value": "{Pink.200}",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "colors-brand",
+            "mode": "Brand 2"
+          }
+        }
+      }
+    },
+    "300": {
+      "$type": "color",
+      "$value": "{Pink.300}",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "colors-brand",
+            "mode": "Brand 2"
+          }
+        }
+      }
+    },
+    "400": {
+      "$type": "color",
+      "$value": "{Pink.400}",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "colors-brand",
+            "mode": "Brand 2"
+          }
+        }
+      }
+    },
+    "500": {
+      "$type": "color",
+      "$value": "{Pink.500}",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "colors-brand",
+            "mode": "Brand 2"
+          }
+        }
+      }
+    },
+    "600": {
+      "$type": "color",
+      "$value": "{Pink.600}",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "colors-brand",
+            "mode": "Brand 2"
+          }
+        }
+      }
+    },
+    "700": {
+      "$type": "color",
+      "$value": "{Pink.700}",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "colors-brand",
+            "mode": "Brand 2"
+          }
+        }
+      }
+    },
+    "800": {
+      "$type": "color",
+      "$value": "{Pink.800}",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "colors-brand",
+            "mode": "Brand 2"
+          }
+        }
+      }
+    },
+    "900": {
+      "$type": "color",
+      "$value": "{Pink.900}",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "colors-brand",
+            "mode": "Brand 2"
+          }
+        }
+      }
+    },
+    "950": {
+      "$type": "color",
+      "$value": "{Pink.900}",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "colors-brand",
+            "mode": "Brand 2"
+          }
+        }
+      }
+    }
+  }
+}
