@@ -6,6 +6,29 @@ description: What changed in Ply, when, and why — appended by /ply-update-docs
 Newest first. Entries are appended by `/ply-update-docs`; each covers the work
 since the previous entry.
 
+## 2026-07-05 — Phase 5 begins: Button sets the pattern
+
+- The token library is now a published Figma team library, and the new Core
+  Components file consumes it via cross-file variable/style imports — every
+  component binding goes through the published tokens.
+- [ADR-0006](/decisions/adr-0006-component-anatomy-api/) locked component
+  conventions: the variant/tone/size prop trio with closed shared
+  vocabularies, exact 1:1 lowercase Figma-property↔code-prop naming (state is
+  the documented Figma-only exception), dot-notation composition, and a
+  spec-frame template with an accessibility panel.
+- Button is designed: three component sets (Button/sm, md, lg) of 32 variants
+  each — variant (solid/subtle/ghost) × tone (neutral/accent/danger) × state
+  (default/hovered/pressed/disabled). Sizes are split into separate sets to
+  stay under Figma's variant-explosion threshold; the size axis maps back to
+  one `size` prop in code.
+- Every visual property is token-bound: validation found zero unbound fills,
+  and heights, paddings, gaps, and radii all bind space/radius tokens. The
+  focus ring is documented in the spec frame (2px border/focused outside)
+  rather than multiplied through variants — code gets it from React Aria's
+  `data-focus-visible`.
+- Icons will come from the Phosphor library (enabled in the file), starting
+  with IconButton.
+
 ## 2026-07-05 — Phase 4: tokens flow from Figma to code — and the contrast lint passes
 
 - The DTCG pipeline is live: the Figma library exports to
