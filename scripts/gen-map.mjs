@@ -12,7 +12,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const MAP = path.join(ROOT, "apps/docs/src/content/docs/map.mdx");
 const ADR_DIR = path.join(ROOT, "apps/docs/src/content/docs/decisions");
 const ADR_INDEX = path.join(ADR_DIR, "index.mdx");
-const TOKENS = path.join(ROOT, "packages/tokens/src/ply.tokens.json");
+const TOKENS_DIR = path.join(ROOT, "packages/tokens/src");
 const COMMANDS_DIR = path.join(ROOT, ".claude/commands");
 const AGENTS_DIR = path.join(ROOT, ".claude/agents");
 const REACT_SRC = path.join(ROOT, "packages/react/src");
@@ -46,10 +46,9 @@ function listDir(dir, filter) {
 
 // --- Token counts (available from Phase 4 on) ---
 let tokenLine = "- **Tokens:** — _(pipeline lands in Phase 4)_";
-if (existsSync(TOKENS)) {
-  const dtcg = JSON.parse(readFileSync(TOKENS, "utf8"));
+const countFile = (file) => {
   let count = 0;
-  const collections = [];
+  const groups = [];
   const walk = (node) => {
     for (const [key, val] of Object.entries(node)) {
       if (key.startsWith("$") || typeof val !== "object" || val === null) continue;
@@ -57,12 +56,18 @@ if (existsSync(TOKENS)) {
       else walk(val);
     }
   };
+  const dtcg = JSON.parse(readFileSync(path.join(TOKENS_DIR, file), "utf8"));
   for (const [name, group] of Object.entries(dtcg)) {
     if (name.startsWith("$") || typeof group !== "object") continue;
-    collections.push(name);
+    groups.push(name);
     walk(group);
   }
-  tokenLine = `- **Tokens:** ${count} across ${collections.length} collections (${collections.join(", ")})`;
+  return { count, groups };
+};
+if (existsSync(path.join(TOKENS_DIR, "primitives.tokens.json"))) {
+  const prim = countFile("primitives.tokens.json");
+  const sem = countFile("semantic.light.tokens.json");
+  tokenLine = `- **Tokens:** ${prim.count} primitives + ${sem.count} semantic (Light+Dark), groups: ${sem.groups.join(", ")}`;
 }
 
 // --- Components ---

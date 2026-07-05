@@ -1,0 +1,18 @@
+{
+  "name": "@ply/tokens",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Ply design tokens — DTCG source exported from Figma, built to CSS custom properties and TypeScript.",
+  "exports": {
+    ".": "./dist/ts/tokens.ts",
+    "./css": "./dist/css/ply.css"
+  },
+  "scripts": {
+    "lint": "node ../../scripts/lint-tokens.mjs",
+    "build": "node ../../scripts/lint-tokens.mjs && node config/sd.config.mjs"
+  },
+  "devDependencies": {
+    "style-dictionary": "^5.5.0"
+  }
+}

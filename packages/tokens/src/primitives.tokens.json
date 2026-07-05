@@ -1,0 +1,2222 @@
+{
+  "gray": {
+    "0": {
+      "$type": "color",
+      "$value": "#ffffff",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "25": {
+      "$type": "color",
+      "$value": "#fafafb",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "50": {
+      "$type": "color",
+      "$value": "#f3f4f6",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "75": {
+      "$type": "color",
+      "$value": "#edeef0",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "100": {
+      "$type": "color",
+      "$value": "#e2e6ec",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "200": {
+      "$type": "color",
+      "$value": "#d2d6dc",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "300": {
+      "$type": "color",
+      "$value": "#b2b5b8",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "400": {
+      "$type": "color",
+      "$value": "#979a9e",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "500": {
+      "$type": "color",
+      "$value": "#727682",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "600": {
+      "$type": "color",
+      "$value": "#686a6e",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "700": {
+      "$type": "color",
+      "$value": "#525457",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "800": {
+      "$type": "color",
+      "$value": "#404449",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "900": {
+      "$type": "color",
+      "$value": "#292b2d",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "1000": {
+      "$type": "color",
+      "$value": "#17181a",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "alpha": {
+      "100": {
+        "$type": "color",
+        "$value": "#00000014",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#00000029",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#00000052",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#0000007a",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#000000a3",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#000000cc",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      },
+      "025": {
+        "$type": "color",
+        "$value": "#00000005",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      },
+      "050": {
+        "$type": "color",
+        "$value": "#0000000a",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      },
+      "075": {
+        "$type": "color",
+        "$value": "#0000000f",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      }
+    }
+  },
+  "white": {
+    "alpha": {
+      "100": {
+        "$type": "color",
+        "$value": "#ffffff14",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#ffffff29",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#ffffff52",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#ffffff7a",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#ffffffa3",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#ffffffcc",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      },
+      "025": {
+        "$type": "color",
+        "$value": "#ffffff05",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      },
+      "050": {
+        "$type": "color",
+        "$value": "#ffffff0a",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      },
+      "075": {
+        "$type": "color",
+        "$value": "#ffffff0f",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      }
+    }
+  },
+  "blue": {
+    "50": {
+      "$type": "color",
+      "$value": "#f5f9ff",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "100": {
+      "$type": "color",
+      "$value": "#dde9ff",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "200": {
+      "$type": "color",
+      "$value": "#adcaff",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "300": {
+      "$type": "color",
+      "$value": "#7baaff",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "400": {
+      "$type": "color",
+      "$value": "#4888ff",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "500": {
+      "$type": "color",
+      "$value": "#0d61ff",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "600": {
+      "$type": "color",
+      "$value": "#004cdb",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "700": {
+      "$type": "color",
+      "$value": "#003cad",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "800": {
+      "$type": "color",
+      "$value": "#002d80",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "900": {
+      "$type": "color",
+      "$value": "#001e56",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "950": {
+      "$type": "color",
+      "$value": "#000f2e",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "alpha": {
+      "100": {
+        "$type": "color",
+        "$value": "#0d61ff14",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#0d61ff29",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#0d61ff52",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#0d61ff7a",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#0d61ffa3",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#0d61ffcc",
+        "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+        "$extensions": {
+          "ply": {
+            "figma": {
+              "collection": "color-primitives"
+            }
+          }
+        }
+      }
+    }
+  },
+  "purple": {
+    "50": {
+      "$type": "color",
+      "$value": "#f8f2fc",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "100": {
+      "$type": "color",
+      "$value": "#ecdbf8",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "200": {
+      "$type": "color",
+      "$value": "#d5b0f0",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "300": {
+      "$type": "color",
+      "$value": "#be84e7",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "400": {
+      "$type": "color",
+      "$value": "#a558df",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "500": {
+      "$type": "color",
+      "$value": "#8627ce",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "600": {
+      "$type": "color",
+      "$value": "#7121ae",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "700": {
+      "$type": "color",
+      "$value": "#5d1b8e",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "800": {
+      "$type": "color",
+      "$value": "#49156f",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "900": {
+      "$type": "color",
+      "$value": "#361052",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    }
+  },
+  "pink": {
+    "50": {
+      "$type": "color",
+      "$value": "#fff5fa",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "100": {
+      "$type": "color",
+      "$value": "#ffe2f0",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "200": {
+      "$type": "color",
+      "$value": "#ffbcdd",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "300": {
+      "$type": "color",
+      "$value": "#ff93c7",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "400": {
+      "$type": "color",
+      "$value": "#ff64af",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "500": {
+      "$type": "color",
+      "$value": "#ff0d81",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "600": {
+      "$type": "color",
+      "$value": "#d20065",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "700": {
+      "$type": "color",
+      "$value": "#a40050",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "800": {
+      "$type": "color",
+      "$value": "#78003b",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "900": {
+      "$type": "color",
+      "$value": "#500027",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    }
+  },
+  "red": {
+    "50": {
+      "$type": "color",
+      "$value": "#fef1f2",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "100": {
+      "$type": "color",
+      "$value": "#fde4e6",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "200": {
+      "$type": "color",
+      "$value": "#ffbec1",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "300": {
+      "$type": "color",
+      "$value": "#f17f83",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "400": {
+      "$type": "color",
+      "$value": "#fd676d",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "500": {
+      "$type": "color",
+      "$value": "#f23041",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "600": {
+      "$type": "color",
+      "$value": "#c8293b",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "700": {
+      "$type": "color",
+      "$value": "#9f2433",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "800": {
+      "$type": "color",
+      "$value": "#771e2a",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "900": {
+      "$type": "color",
+      "$value": "#511820",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    }
+  },
+  "yellow": {
+    "50": {
+      "$type": "color",
+      "$value": "#fffbe8",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "100": {
+      "$type": "color",
+      "$value": "#fff5c2",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "200": {
+      "$type": "color",
+      "$value": "#ffed97",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "300": {
+      "$type": "color",
+      "$value": "#f8da48",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "400": {
+      "$type": "color",
+      "$value": "#e1ba00",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "500": {
+      "$type": "color",
+      "$value": "#ba9a00",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "600": {
+      "$type": "color",
+      "$value": "#937a00",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "700": {
+      "$type": "color",
+      "$value": "#6f5c00",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "800": {
+      "$type": "color",
+      "$value": "#4d4000",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "900": {
+      "$type": "color",
+      "$value": "#2e2700",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    }
+  },
+  "green": {
+    "50": {
+      "$type": "color",
+      "$value": "#eefbf1",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "100": {
+      "$type": "color",
+      "$value": "#def8e4",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "200": {
+      "$type": "color",
+      "$value": "#82dca6",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "300": {
+      "$type": "color",
+      "$value": "#2fd455",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "400": {
+      "$type": "color",
+      "$value": "#27b749",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "500": {
+      "$type": "color",
+      "$value": "#209a3e",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "600": {
+      "$type": "color",
+      "$value": "#197f32",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "700": {
+      "$type": "color",
+      "$value": "#136427",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "800": {
+      "$type": "color",
+      "$value": "#0d4b1c",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "900": {
+      "$type": "color",
+      "$value": "#083312",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    }
+  },
+  "teal": {
+    "50": {
+      "$type": "color",
+      "$value": "#f3fdfd",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "100": {
+      "$type": "color",
+      "$value": "#c5f5f5",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "200": {
+      "$type": "color",
+      "$value": "#9af1f1",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "300": {
+      "$type": "color",
+      "$value": "#00f2f2",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "400": {
+      "$type": "color",
+      "$value": "#01d9d9",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "500": {
+      "$type": "color",
+      "$value": "#02b8b8",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "600": {
+      "$type": "color",
+      "$value": "#039292",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "700": {
+      "$type": "color",
+      "$value": "#036c6c",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "800": {
+      "$type": "color",
+      "$value": "#034949",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "900": {
+      "$type": "color",
+      "$value": "#022929",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    }
+  },
+  "orange": {
+    "50": {
+      "$type": "color",
+      "$value": "#fff8ef",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "100": {
+      "$type": "color",
+      "$value": "#ffecd5",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "200": {
+      "$type": "color",
+      "$value": "#ffd6a4",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "300": {
+      "$type": "color",
+      "$value": "#ffc277",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "400": {
+      "$type": "color",
+      "$value": "#fdab48",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "500": {
+      "$type": "color",
+      "$value": "#ff9617",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "600": {
+      "$type": "color",
+      "$value": "#eb8100",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "700": {
+      "$type": "color",
+      "$value": "#c86f03",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "800": {
+      "$type": "color",
+      "$value": "#965200",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    },
+    "900": {
+      "$type": "color",
+      "$value": "#573001",
+      "$description": "Tier-1 primitive. Never use directly — consume via a semantic token.",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "color-primitives"
+          }
+        }
+      }
+    }
+  },
+  "space": {
+    "0": {
+      "$type": "dimension",
+      "$value": "0px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "space"
+          }
+        }
+      }
+    },
+    "25": {
+      "$type": "dimension",
+      "$value": "2px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "space"
+          }
+        }
+      }
+    },
+    "50": {
+      "$type": "dimension",
+      "$value": "4px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "space"
+          }
+        }
+      }
+    },
+    "75": {
+      "$type": "dimension",
+      "$value": "6px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "space"
+          }
+        }
+      }
+    },
+    "100": {
+      "$type": "dimension",
+      "$value": "8px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "space"
+          }
+        }
+      }
+    },
+    "150": {
+      "$type": "dimension",
+      "$value": "12px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "space"
+          }
+        }
+      }
+    },
+    "200": {
+      "$type": "dimension",
+      "$value": "16px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "space"
+          }
+        }
+      }
+    },
+    "250": {
+      "$type": "dimension",
+      "$value": "20px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "space"
+          }
+        }
+      }
+    },
+    "300": {
+      "$type": "dimension",
+      "$value": "24px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "space"
+          }
+        }
+      }
+    },
+    "350": {
+      "$type": "dimension",
+      "$value": "28px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "space"
+          }
+        }
+      }
+    },
+    "400": {
+      "$type": "dimension",
+      "$value": "32px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "space"
+          }
+        }
+      }
+    },
+    "500": {
+      "$type": "dimension",
+      "$value": "40px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "space"
+          }
+        }
+      }
+    },
+    "600": {
+      "$type": "dimension",
+      "$value": "48px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "space"
+          }
+        }
+      }
+    },
+    "700": {
+      "$type": "dimension",
+      "$value": "56px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "space"
+          }
+        }
+      }
+    },
+    "800": {
+      "$type": "dimension",
+      "$value": "64px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "space"
+          }
+        }
+      }
+    },
+    "900": {
+      "$type": "dimension",
+      "$value": "72px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "space"
+          }
+        }
+      }
+    },
+    "1000": {
+      "$type": "dimension",
+      "$value": "80px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "space"
+          }
+        }
+      }
+    },
+    "1100": {
+      "$type": "dimension",
+      "$value": "96px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "space"
+          }
+        }
+      }
+    },
+    "1200": {
+      "$type": "dimension",
+      "$value": "128px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "space"
+          }
+        }
+      }
+    },
+    "1300": {
+      "$type": "dimension",
+      "$value": "144px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "space"
+          }
+        }
+      }
+    },
+    "1400": {
+      "$type": "dimension",
+      "$value": "176px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "space"
+          }
+        }
+      }
+    }
+  },
+  "radius": {
+    "none": {
+      "$type": "dimension",
+      "$value": "0px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "radius"
+          }
+        }
+      }
+    },
+    "small": {
+      "$type": "dimension",
+      "$value": "4px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "radius"
+          }
+        }
+      }
+    },
+    "medium": {
+      "$type": "dimension",
+      "$value": "8px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "radius"
+          }
+        }
+      }
+    },
+    "large": {
+      "$type": "dimension",
+      "$value": "16px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "radius"
+          }
+        }
+      }
+    },
+    "xlarge": {
+      "$type": "dimension",
+      "$value": "24px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "radius"
+          }
+        }
+      }
+    },
+    "full": {
+      "$type": "dimension",
+      "$value": "9999px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "radius"
+          }
+        }
+      }
+    }
+  },
+  "font-size": {
+    "100": {
+      "$type": "dimension",
+      "$value": "8px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "font-size"
+          }
+        }
+      }
+    },
+    "200": {
+      "$type": "dimension",
+      "$value": "10px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "font-size"
+          }
+        }
+      }
+    },
+    "300": {
+      "$type": "dimension",
+      "$value": "12px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "font-size"
+          }
+        }
+      }
+    },
+    "400": {
+      "$type": "dimension",
+      "$value": "14px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "font-size"
+          }
+        }
+      }
+    },
+    "500": {
+      "$type": "dimension",
+      "$value": "16px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "font-size"
+          }
+        }
+      }
+    },
+    "600": {
+      "$type": "dimension",
+      "$value": "18px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "font-size"
+          }
+        }
+      }
+    },
+    "700": {
+      "$type": "dimension",
+      "$value": "20px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "font-size"
+          }
+        }
+      }
+    },
+    "800": {
+      "$type": "dimension",
+      "$value": "22px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "font-size"
+          }
+        }
+      }
+    },
+    "900": {
+      "$type": "dimension",
+      "$value": "24px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "font-size"
+          }
+        }
+      }
+    },
+    "1000": {
+      "$type": "dimension",
+      "$value": "28px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "font-size"
+          }
+        }
+      }
+    },
+    "1100": {
+      "$type": "dimension",
+      "$value": "32px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "font-size"
+          }
+        }
+      }
+    },
+    "1200": {
+      "$type": "dimension",
+      "$value": "36px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "font-size"
+          }
+        }
+      }
+    }
+  },
+  "line-height": {
+    "100": {
+      "$type": "dimension",
+      "$value": "11px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "line-height"
+          }
+        }
+      }
+    },
+    "200": {
+      "$type": "dimension",
+      "$value": "12px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "line-height"
+          }
+        }
+      }
+    },
+    "300": {
+      "$type": "dimension",
+      "$value": "14px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "line-height"
+          }
+        }
+      }
+    },
+    "400": {
+      "$type": "dimension",
+      "$value": "16px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "line-height"
+          }
+        }
+      }
+    },
+    "500": {
+      "$type": "dimension",
+      "$value": "19px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "line-height"
+          }
+        }
+      }
+    },
+    "550": {
+      "$type": "dimension",
+      "$value": "20px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "line-height"
+          }
+        }
+      }
+    },
+    "600": {
+      "$type": "dimension",
+      "$value": "22px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "line-height"
+          }
+        }
+      }
+    },
+    "650": {
+      "$type": "dimension",
+      "$value": "24px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "line-height"
+          }
+        }
+      }
+    },
+    "700": {
+      "$type": "dimension",
+      "$value": "25px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "line-height"
+          }
+        }
+      }
+    },
+    "800": {
+      "$type": "dimension",
+      "$value": "27px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "line-height"
+          }
+        }
+      }
+    },
+    "900": {
+      "$type": "dimension",
+      "$value": "30px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "line-height"
+          }
+        }
+      }
+    },
+    "1000": {
+      "$type": "dimension",
+      "$value": "33px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "line-height"
+          }
+        }
+      }
+    },
+    "1100": {
+      "$type": "dimension",
+      "$value": "38px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "line-height"
+          }
+        }
+      }
+    },
+    "1200": {
+      "$type": "dimension",
+      "$value": "44px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "line-height"
+          }
+        }
+      }
+    },
+    "1300": {
+      "$type": "dimension",
+      "$value": "49px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "line-height"
+          }
+        }
+      }
+    }
+  },
+  "breakpoint": {
+    "xs": {
+      "$type": "dimension",
+      "$value": "360px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "breakpoint"
+          }
+        }
+      }
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": "768px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "breakpoint"
+          }
+        }
+      }
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "1024px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "breakpoint"
+          }
+        }
+      }
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "1280px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "breakpoint"
+          }
+        }
+      }
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": "1640px",
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "breakpoint"
+          }
+        }
+      }
+    }
+  },
+  "font-weight": {
+    "100": {
+      "$type": "fontWeight",
+      "$value": 100,
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "font-weight"
+          }
+        }
+      }
+    },
+    "200": {
+      "$type": "fontWeight",
+      "$value": 200,
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "font-weight"
+          }
+        }
+      }
+    },
+    "300": {
+      "$type": "fontWeight",
+      "$value": 300,
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "font-weight"
+          }
+        }
+      }
+    },
+    "400": {
+      "$type": "fontWeight",
+      "$value": 400,
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "font-weight"
+          }
+        }
+      }
+    },
+    "500": {
+      "$type": "fontWeight",
+      "$value": 500,
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "font-weight"
+          }
+        }
+      }
+    },
+    "600": {
+      "$type": "fontWeight",
+      "$value": 600,
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "font-weight"
+          }
+        }
+      }
+    },
+    "700": {
+      "$type": "fontWeight",
+      "$value": 700,
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "font-weight"
+          }
+        }
+      }
+    }
+  },
+  "font-family": {
+    "sans": {
+      "$type": "fontFamily",
+      "$value": [
+        "Inter"
+      ],
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "font-family"
+          }
+        }
+      }
+    },
+    "mono": {
+      "$type": "fontFamily",
+      "$value": [
+        "IBM Plex Mono"
+      ],
+      "$extensions": {
+        "ply": {
+          "figma": {
+            "collection": "font-family"
+          }
+        }
+      }
+    }
+  }
+}

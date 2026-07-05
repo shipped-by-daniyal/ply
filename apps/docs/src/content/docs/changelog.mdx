@@ -6,6 +6,32 @@ description: What changed in Ply, when, and why — appended by /ply-update-docs
 Newest first. Entries are appended by `/ply-update-docs`; each covers the work
 since the previous entry.
 
+## 2026-07-05 — Phase 4: tokens flow from Figma to code — and the contrast lint passes
+
+- The DTCG pipeline is live: the Figma library exports to
+  `packages/tokens/src` (primitives plus semantic light/dark files) with
+  descriptions, Figma variable IDs, and contrast pairings carried in
+  `$extensions.ply`; Style Dictionary builds `dist/css/ply.css` (`:root` +
+  `[data-theme="dark"]`, 390 CSS custom properties) and a typed
+  `dist/ts/tokens.ts`.
+- The contrast lint (`scripts/lint-tokens.mjs`) verifies every declared
+  foreground/background pairing against WCAG in both modes, with alpha
+  compositing — 180 pair checks now pass.
+- The lint's first run found 62 failures and drove real fixes: 21 token values
+  changed in Figma (status solids darkened one step in light mode,
+  warning/info interactive states now step lighter, dark-mode accent states
+  darkened so white text holds, dark secondary text brightened), and two new
+  tokens were minted — `text/on-status-warning-bold` and
+  `text/on-status-info-bold` — because bold warning/info fills flip light/dark
+  across modes. The library is now 349 variables / 162 semantic tokens.
+- New machinery: `/ply-export-tokens` (read-only Figma → DTCG → build),
+  `/ply-sync-tokens` (drift detection with gated pull/push per the
+  [ADR-0005](/decisions/adr-0005-token-taxonomy/) policy),
+  `scripts/diff-tokens.mjs` (rename-aware via variable IDs), and a CI workflow
+  that builds tokens + docs and fails if the committed dist drifts from src.
+- The sticker sheet and the Token Usage table were updated in the same pass
+  (labels refreshed, 2 rows added).
+
 ## 2026-07-05 — Phase 3 complete: the Token Usage table
 
 - The Token Usage documentation table was built in the Ply Figma file: 160
