@@ -6,6 +6,22 @@ description: What changed in Ply, when, and why — appended by /ply-update-docs
 Newest first. Entries are appended by `/ply-update-docs`; each covers the work
 since the previous entry.
 
+## 2026-07-05 — Phase 1: Docs site, the name Ply, and the auto-update loop
+
+- The system is named **Ply**
+  ([ADR-0004](/decisions/adr-0004-name-the-system-ply/)): `/ply-*` commands,
+  `@ply/*` packages, `--ply-*` CSS custom properties.
+- This docs site launched — Astro Starlight with the [system map](/map/), this
+  changelog, and all ADRs rendering — and is deployed to GitHub Pages at
+  [shipped-by-daniyal.github.io/ply](https://shipped-by-daniyal.github.io/ply/)
+  (the repo is now public).
+- The docs auto-update loop is live: `scripts/gen-map.mjs` regenerates the map
+  inventory and ADR index from repo state; `/ply-update-docs` orchestrates
+  delta collection, regeneration, changelog entries, and state tracking in
+  `.ds/docs-state.json`.
+- New automation: `/ply-adr` and `/ply-update-docs` commands, and the
+  docs-writer agent.
+
 ## 2026-07-05 — Phase 0: Foundation
 
 - Repo + private GitHub (`shipped-by-daniyal/ply`), pnpm monorepo, Node 22.
