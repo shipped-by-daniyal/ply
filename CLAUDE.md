@@ -36,9 +36,9 @@ A design system consumable by AI, designers, and engineers. Pipeline: Figma vari
 
 ## Token rules
 
-- Three tiers: primitives → semantic → component. Path grammar to be fixed in ADR-0004 (Phase 3) — until then, don't invent names.
+- Three tiers: primitives → semantic → component. Path grammar to be fixed by the token-taxonomy ADR (Phase 3) — until then, don't invent names.
 - **No hardcoded values in components — tokens only.** In Figma: every fill/radius/spacing/text bound to a variable or style. In code: CSS consumes `var(--ply-*)` custom properties only.
-- Sync policy (ADR-0005, Phase 4): token **values** — Figma wins; **usage documentation** — the Token Usage table wins.
+- Sync policy (its own ADR, Phase 4): token **values** — Figma wins; **usage documentation** — the Token Usage table wins.
 - Start any token-touching session with `/ply-sync-tokens` (once it exists) to surface drift first.
 
 ## Docs rules
