@@ -6,6 +6,24 @@ description: What changed in Ply, when, and why — appended by /ply-update-docs
 Newest first. Entries are appended by `/ply-update-docs`; each covers the work
 since the previous entry.
 
+## 2026-07-05 — Phase 3 complete: the Token Usage table
+
+- The Token Usage documentation table was built in the Ply Figma file: 160
+  rows across 6 tables (Background, Status backgrounds, Text, Icon, Border,
+  Data-viz & shadow), each row with a variable-bound sample swatch, the
+  token's description, and seeded Where-to-apply / How-to-use / Do / Don't
+  guidance.
+- Every row carries its variable ID as shared plugin data — rename detection
+  and audits key on identity, never on names. Verified: exactly one row per
+  semantic token, zero duplicates.
+- The `/ply-doc-table` command was added to keep the table in sync:
+  idempotent, rename-aware, deprecation-not-deletion, bidirectional
+  description sync (table wins usage text per
+  [ADR-0005](/decisions/adr-0005-token-taxonomy/)), preview-then-apply.
+- This completes Phase 3 (vision step 4): token audit, taxonomy, the rebuilt
+  library, styles, sticker sheet, and documentation table are all done. Next:
+  Phase 4 — the DTCG export pipeline to code.
+
 ## 2026-07-05 — Styles and the Foundations sticker sheet
 
 - 26 text styles built in the Ply Figma file (heading/1–4, body lg/md/sm/xs ×
